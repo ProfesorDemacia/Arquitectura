@@ -28,30 +28,50 @@ public class VistaTrabajador extends javax.swing.JFrame {
     private void initComponents() {
 
         bto_venta = new javax.swing.JButton();
+        bto_cerrarSesion = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         bto_venta.setText("Venta");
+        bto_venta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bto_ventaActionPerformed(evt);
+            }
+        });
+
+        bto_cerrarSesion.setText("Cerrar Sesion");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(147, 147, 147)
+                .addGap(73, 73, 73)
                 .addComponent(bto_venta)
-                .addContainerGap(192, Short.MAX_VALUE))
+                .addContainerGap(266, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(bto_cerrarSesion)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(138, 138, 138)
+                .addContainerGap()
+                .addComponent(bto_cerrarSesion)
+                .addGap(82, 82, 82)
                 .addComponent(bto_venta)
-                .addContainerGap(139, Short.MAX_VALUE))
+                .addContainerGap(161, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void bto_ventaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bto_ventaActionPerformed
+        // TODO add your handling code here:
+        VistaVenta pMenu = new VistaVenta();
+        pMenu.setVisible(true);
+    }//GEN-LAST:event_bto_ventaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -89,6 +109,7 @@ public class VistaTrabajador extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bto_cerrarSesion;
     private javax.swing.JButton bto_venta;
     // End of variables declaration//GEN-END:variables
 }
