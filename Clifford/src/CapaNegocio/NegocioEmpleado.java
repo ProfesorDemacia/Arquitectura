@@ -51,11 +51,13 @@ public class NegocioEmpleado {
        this.configurarConexion();
        this.getConect1().setCadenaSQL("UPDATE empleado "
                                      + " SET "
-                                     + ", cantidad_producto = " + empleado.getCantidad_producto()
-                                     + ", precio_unitario = " + empleado.getPrecio_unitario()
-                                     + ", precio_total = " + empleado.getPrecio_total()
-                                     + ", id_producto = " + empleado.getId_producto()
-                                     + " WHERE it_id = " + empleado.getId_detalle_venta()+ ";");
+                                     + ", nombre_empleado = " + empleado.getNombre_empleado()
+                                     + ", apellido_empleado = " + empleado.getApellido_empleado()
+                                     + ", direccion_empleado = " + empleado.getDireccion_empleado()
+                                     + ", correo_empleado = " + empleado.getCorreo_empleado()
+                                     + ", id_cargo = " + empleado.getId_cargo()
+                                     + ", id_comuna = " + empleado.getId_comuna()
+                                     + " WHERE rut_empleado = " + empleado.getRut_empleado()+ ";");
        this.getConect1().setEsSelect(false);
        this.getConect1().conectar();
     }

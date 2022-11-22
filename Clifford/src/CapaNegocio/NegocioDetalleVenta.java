@@ -51,7 +51,7 @@ public class NegocioDetalleVenta {
                                      + ", precio_unitario = " + detalleventa.getPrecio_unitario()
                                      + ", precio_total = " + detalleventa.getPrecio_total()
                                      + ", id_producto = " + detalleventa.getId_producto()
-                                     + " WHERE it_id = " + detalleventa.getId_detalle_venta()+ ";");
+                                     + " WHERE id_detalle_venta = " + detalleventa.getId_detalle_venta()+ ";");
        this.getConect1().setEsSelect(false);
        this.getConect1().conectar();
     }
