@@ -11,6 +11,22 @@ package CapaGUI;
  */
 public class VistaMenu extends javax.swing.JFrame {
 
+    
+    
+    public void validarTrabajador (String rut){
+        
+        try
+        {
+            
+        }
+        catch
+        {
+            
+        }
+        
+    }
+    
+    
     /**
      * Creates new form VistaMenu
      */
@@ -52,15 +68,15 @@ public class VistaMenu extends javax.swing.JFrame {
             }
         });
         getContentPane().add(box_cargo);
-        box_cargo.setBounds(370, 150, 159, 22);
+        box_cargo.setBounds(370, 150, 159, 20);
 
         txt_rut.setToolTipText("");
         getContentPane().add(txt_rut);
-        txt_rut.setBounds(420, 190, 107, 22);
+        txt_rut.setBounds(420, 190, 107, 20);
 
         jLabel3.setText("Rut");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(390, 190, 19, 16);
+        jLabel3.setBounds(390, 190, 17, 14);
 
         bto_ingresar.setText("Ingresar");
         bto_ingresar.addActionListener(new java.awt.event.ActionListener() {
@@ -69,7 +85,7 @@ public class VistaMenu extends javax.swing.JFrame {
             }
         });
         getContentPane().add(bto_ingresar);
-        bto_ingresar.setBounds(360, 230, 81, 25);
+        bto_ingresar.setBounds(360, 230, 73, 23);
 
         bto_salir.setText("Salir");
         bto_salir.addActionListener(new java.awt.event.ActionListener() {
@@ -78,7 +94,7 @@ public class VistaMenu extends javax.swing.JFrame {
             }
         });
         getContentPane().add(bto_salir);
-        bto_salir.setBounds(470, 230, 59, 25);
+        bto_salir.setBounds(470, 230, 53, 23);
 
         jLabelLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/IconPeque.png"))); // NOI18N
         getContentPane().add(jLabelLogo);
@@ -98,6 +114,8 @@ public class VistaMenu extends javax.swing.JFrame {
 
     private void bto_ingresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bto_ingresarActionPerformed
         // TODO add your handling code here:
+        
+        
         VistaTrabajador pMenu = new VistaTrabajador();
         pMenu.setVisible(true);
         
