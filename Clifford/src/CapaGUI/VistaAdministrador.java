@@ -9,12 +9,12 @@ package CapaGUI;
  *
  * @author Cesar
  */
-public class VistaTrabajador extends javax.swing.JFrame {
+public class VistaAdministrador extends javax.swing.JFrame {
 
     /**
-     * Creates new form VistaTrabajador
+     * Creates new form VistaAdministrador
      */
-    public VistaTrabajador() {
+    public VistaAdministrador() {
         initComponents();
     }
 
@@ -28,59 +28,52 @@ public class VistaTrabajador extends javax.swing.JFrame {
     private void initComponents() {
 
         bto_venta = new javax.swing.JButton();
-        bto_cerrarSesion = new javax.swing.JButton();
         bto_cancelar = new javax.swing.JButton();
+        bto_registro = new javax.swing.JButton();
+        bto_cerrarSesion = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         bto_venta.setText("Venta");
-        bto_venta.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bto_ventaActionPerformed(evt);
-            }
-        });
-
-        bto_cerrarSesion.setText("Cerrar Sesion");
 
         bto_cancelar.setText("Cancelar Venta");
+
+        bto_registro.setText("Registro de Ventas");
+
+        bto_cerrarSesion.setText("Cerrar Sesion");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap(293, Short.MAX_VALUE)
-                        .addComponent(bto_cerrarSesion))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(78, 78, 78)
-                        .addComponent(bto_venta)
-                        .addGap(75, 75, 75)
-                        .addComponent(bto_cancelar)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(44, 44, 44)
+                .addComponent(bto_venta)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+                .addComponent(bto_registro)
+                .addGap(30, 30, 30)
+                .addComponent(bto_cancelar)
+                .addGap(31, 31, 31))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(bto_cerrarSesion)
+                .addGap(42, 42, 42))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(bto_cerrarSesion)
-                .addGap(125, 125, 125)
+                .addGap(91, 91, 91)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bto_cancelar)
                     .addComponent(bto_venta)
-                    .addComponent(bto_cancelar))
-                .addContainerGap(118, Short.MAX_VALUE))
+                    .addComponent(bto_registro))
+                .addContainerGap(152, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void bto_ventaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bto_ventaActionPerformed
-        // TODO add your handling code here:
-        VistaVenta pMenu = new VistaVenta();
-        pMenu.setVisible(true);
-    }//GEN-LAST:event_bto_ventaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -99,20 +92,20 @@ public class VistaTrabajador extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VistaTrabajador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VistaAdministrador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VistaTrabajador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VistaAdministrador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VistaTrabajador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VistaAdministrador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VistaTrabajador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VistaAdministrador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new VistaTrabajador().setVisible(true);
+                new VistaAdministrador().setVisible(true);
             }
         });
     }
@@ -120,6 +113,7 @@ public class VistaTrabajador extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bto_cancelar;
     private javax.swing.JButton bto_cerrarSesion;
+    private javax.swing.JButton bto_registro;
     private javax.swing.JButton bto_venta;
     // End of variables declaration//GEN-END:variables
 }
