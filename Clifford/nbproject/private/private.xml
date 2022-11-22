@@ -2,6 +2,15 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/D:/Universidad/Duoc/Segundo%20año/Segundo%20Semestre/Arquitectura/ArquitecturaFinal/Arquitectura/Clifford/src/CapaGUI/VistaTrabajador.java</file>
+            <file>file:/D:/Universidad/Duoc/Segundo%20año/Segundo%20Semestre/Arquitectura/ArquitecturaFinal/Arquitectura/Clifford/src/CapaGUI/VistaMenu.java</file>
+            <file>file:/D:/Universidad/Duoc/Segundo%20año/Segundo%20Semestre/Arquitectura/ArquitecturaFinal/Arquitectura/Clifford/src/CapaGUI/VistaAdministrador.java</file>
+            <file>file:/D:/Universidad/Duoc/Segundo%20año/Segundo%20Semestre/Arquitectura/ArquitecturaFinal/Arquitectura/Clifford/src/CapaDTO/Venta.java</file>
+            <file>file:/D:/Universidad/Duoc/Segundo%20año/Segundo%20Semestre/Arquitectura/ArquitecturaFinal/Arquitectura/Clifford/src/CapaDTO/Usuario.java</file>
+            <file>file:/D:/Universidad/Duoc/Segundo%20año/Segundo%20Semestre/Arquitectura/ArquitecturaFinal/Arquitectura/Clifford/src/CapaDTO/Producto.java</file>
+            <file>file:/D:/Universidad/Duoc/Segundo%20año/Segundo%20Semestre/Arquitectura/ArquitecturaFinal/Arquitectura/Clifford/src/CapaGUI/VistaVenta.java</file>
+            <file>file:/D:/Universidad/Duoc/Segundo%20año/Segundo%20Semestre/Arquitectura/ArquitecturaFinal/Arquitectura/Clifford/src/CapaDTO/DetalleVenta.java</file>
+        </group>
     </open-files>
 </project-private>
