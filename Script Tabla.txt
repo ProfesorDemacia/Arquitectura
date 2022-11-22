@@ -1,0 +1,139 @@
+CREATE DATABASE clifford;
+
+USE clifford;
+
+
+CREATE TABLE region (
+id_region int NOT NULL,
+nombre_region varchar(50) NOT NULL,
+PRIMARY KEY (id_region)
+);
+
+
+CREATE TABLE comuna (
+id_comuna int NOT NULL,
+nombre_comuna varchar(50) NOT NULL,
+id_region int references region(id_region),
+PRIMARY KEY (id_comuna)
+);
+
+CREATE TABLE tipo_cargo (
+id_cargo int NOT NULL,
+nombre_cargo varchar(100) NOT NULL,
+PRIMARY KEY (id_cargo)
+);
+
+
+CREATE TABLE empleado(
+rut_empleado varchar(11) NOT NULL,
+nombre_empleado varchar(50) NOT NULL,
+apellido_empleado varchar(50) NOT NULL,
+direccion_empleado varchar(100) NOT NULL,
+correo_empleado varchar(100) NOT NULL,
+id_cargo int references tipo_cargo(id_cargo),
+id_comuna int references comuna(id_comuna),
+PRIMARY KEY(rut_empleado)
+);
+
+
+CREATE TABLE producto(
+id_producto int AUTO_INCREMENT,
+nombre_producto varchar(50) NOT NULL,
+descripcion_producto varchar(100) NOT NULL,
+precio_unitario int NOT NULL,
+stock_producto int NOT NULL,
+PRIMARY KEY (id_producto)
+);
+
+
+CREATE TABLE metodo_pago(
+id_metodo_pago int NOT NULL,
+descripcion_pago varchar(50) NOT NULL,
+PRIMARY KEY (id_metodo_pago)
+);
+
+
+CREATE TABLE detalle_venta(
+id_detalle_venta int AUTO_INCREMENT,
+cantidad_producto int NOT NULL,
+precio_unitario int NOT NULL,
+precio_total int NOT NULL,
+id_producto int references producto(id_producto),
+PRIMARY KEY (id_detalle_venta)
+);
+
+CREATE TABLE venta (
+id_venta int AUTO_INCREMENT,
+fecha_venta date NOT NULL,
+nombre_empresa varchar(100) NOT NULL,
+monto_pagar int NOT NULL,
+id_detalle_venta int references detalle_venta(id_detalle_venta),
+rut_empleado varchar(11) references empleado(rut_empleado),
+id_metodo_pago int references pago(id_metodo_pago),
+id_producto int references producto(id_producto),
+PRIMARY KEY (id_venta)
+);
+
+CREATE TABLE anular_venta (
+id_anular_venta int AUTO_INCREMENT,
+motivo_anulacion varchar(100) NOT NULL,
+id_venta int references venta(id_venta),
+PRIMARY KEY (id_anular_venta)
+);
+
+
+
+ALTER TABLE comuna ADD FOREIGN KEY(id_region) REFERENCES region (id_region);
+ALTER TABLE empleado ADD FOREIGN KEY (id_cargo) REFERENCES tipo_cargo (id_cargo);
+ALTER TABLE empleado ADD FOREIGN KEY(id_comuna) REFERENCES comuna (id_comuna);
+ALTER TABLE detalle_venta ADD FOREIGN KEY(id_producto) REFERENCES producto (id_producto);
+ALTER TABLE venta ADD FOREIGN KEY(id_detalle_venta) REFERENCES detalle_venta (id_detalle_venta);
+ALTER TABLE venta ADD FOREIGN KEY(rut_empleado) REFERENCES empleado (rut_empleado);
+ALTER TABLE venta ADD FOREIGN KEY(id_metodo_pago) REFERENCES metodo_pago (id_metodo_pago);
+ALTER TABLE venta ADD FOREIGN KEY(id_producto) REFERENCES producto (id_producto);
+ALTER TABLE anular_venta ADD FOREIGN KEY(id_venta) REFERENCES venta (id_venta);
+
+INSERT INTO metodo_pago (id_metodo_pago,descripcion_pago) VALUES (1,'Efectivo');
+INSERT INTO metodo_pago (id_metodo_pago,descripcion_pago) VALUES (2,'Debito');
+INSERT INTO metodo_pago (id_metodo_pago,descripcion_pago) VALUES (3,'Credito');
+
+INSERT INTO tipo_cargo (id_cargo,nombre_cargo) VALUES (1,'Vendedor');
+INSERT INTO tipo_cargo (id_cargo,nombre_cargo) VALUES (2,'Administrador');
+
+
+INSERT INTO region (id_region,nombre_region) VALUES (1,'Tarapaca');
+INSERT INTO region (id_region,nombre_region) VALUES (2,'Antofagasta');
+INSERT INTO region (id_region,nombre_region) VALUES (3,'Atacama');
+INSERT INTO region (id_region,nombre_region) VALUES (4,'Coquimbo');
+INSERT INTO region (id_region,nombre_region) VALUES (5,'Valparaiso');
+INSERT INTO region (id_region,nombre_region) VALUES (6,'O higgins');
+INSERT INTO region (id_region,nombre_region) VALUES (7,'Maule');
+INSERT INTO region (id_region,nombre_region) VALUES (8,'Del Biobio');
+INSERT INTO region (id_region,nombre_region) VALUES (9,'Araucania');
+INSERT INTO region (id_region,nombre_region) VALUES (10,'Los Lagos');
+INSERT INTO region (id_region,nombre_region) VALUES (11,'Aysen');
+INSERT INTO region (id_region,nombre_region) VALUES (12,'Magallanes');
+INSERT INTO region (id_region,nombre_region) VALUES (13,'Metropolitana');
+INSERT INTO region (id_region,nombre_region) VALUES (14,'Los Rios');
+INSERT INTO region (id_region,nombre_region) VALUES (15,'Arica y Parinacota');
+INSERT INTO region (id_region,nombre_region) VALUES (16,'Ñuble');
+
+
+
+INSERT INTO comuna(id_comuna,nombre_comuna,id_region) VALUES (161,'Cerrillos',16);
+INSERT INTO comuna(id_comuna,nombre_comuna,id_region) VALUES (162,'Penalolen',16);
+INSERT INTO comuna(id_comuna,nombre_comuna,id_region) VALUES (163,'La Florida',16);
+INSERT INTO comuna(id_comuna,nombre_comuna,id_region) VALUES (164,'Puenta Alto',16);
+INSERT INTO comuna(id_comuna,nombre_comuna,id_region) VALUES (165,'Macul',16);
+INSERT INTO comuna(id_comuna,nombre_comuna,id_region) VALUES (166,'Providencia',16);
+INSERT INTO comuna(id_comuna,nombre_comuna,id_region) VALUES (167,'Las Condes',16);
+INSERT INTO comuna(id_comuna,nombre_comuna,id_region) VALUES (168,'Nunoa',16);
+INSERT INTO comuna(id_comuna,nombre_comuna,id_region) VALUES (169,'Quilicura',16);
+
+
+INSERT INTO empleado(rut_empleado,nombre_empleado,apellido_empleado,direccion_empleado
+			,correo_empleado,id_cargo,id_comuna) VALUES ('1-9','Juan','Perez','Las acasias 41','correo@gmail.com',1,163);
+INSERT INTO empleado(rut_empleado,nombre_empleado,apellido_empleado,direccion_empleado
+			,correo_empleado,id_cargo,id_comuna) VALUES ('2-8','Ana','Rosa','Las parcelas 41','correo2@gmail.com',1,162);
+INSERT INTO empleado(rut_empleado,nombre_empleado,apellido_empleado,direccion_empleado
+			,correo_empleado,id_cargo,id_comuna) VALUES ('3-7','Jose','Arancibia','Lautaro 899','admin@gmail.com',2,166);

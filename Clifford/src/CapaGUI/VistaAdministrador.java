@@ -38,19 +38,19 @@ public class VistaAdministrador extends javax.swing.JFrame {
 
         bto_venta.setText("Venta");
         getContentPane().add(bto_venta);
-        bto_venta.setBounds(44, 129, 65, 25);
+        bto_venta.setBounds(44, 129, 61, 23);
 
         bto_cancelar.setText("Cancelar Venta");
         getContentPane().add(bto_cancelar);
-        bto_cancelar.setBounds(317, 129, 119, 25);
+        bto_cancelar.setBounds(317, 129, 105, 23);
 
         bto_registro.setText("Registro de Ventas");
         getContentPane().add(bto_registro);
-        bto_registro.setBounds(146, 129, 141, 25);
+        bto_registro.setBounds(146, 129, 123, 23);
 
         bto_cerrarSesion.setText("Cerrar Sesion");
         getContentPane().add(bto_cerrarSesion);
-        bto_cerrarSesion.setBounds(314, 13, 111, 25);
+        bto_cerrarSesion.setBounds(314, 13, 97, 23);
 
         jLabelLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/IconMini.png"))); // NOI18N
         getContentPane().add(jLabelLogo);
@@ -62,37 +62,7 @@ public class VistaAdministrador extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VistaAdministrador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VistaAdministrador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VistaAdministrador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VistaAdministrador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new VistaAdministrador().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bto_cancelar;
