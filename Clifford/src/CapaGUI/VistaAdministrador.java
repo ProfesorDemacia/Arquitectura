@@ -31,46 +31,30 @@ public class VistaAdministrador extends javax.swing.JFrame {
         bto_cancelar = new javax.swing.JButton();
         bto_registro = new javax.swing.JButton();
         bto_cerrarSesion = new javax.swing.JButton();
+        jLabelLogo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(null);
 
         bto_venta.setText("Venta");
+        getContentPane().add(bto_venta);
+        bto_venta.setBounds(44, 129, 65, 25);
 
         bto_cancelar.setText("Cancelar Venta");
+        getContentPane().add(bto_cancelar);
+        bto_cancelar.setBounds(317, 129, 119, 25);
 
         bto_registro.setText("Registro de Ventas");
+        getContentPane().add(bto_registro);
+        bto_registro.setBounds(146, 129, 141, 25);
 
         bto_cerrarSesion.setText("Cerrar Sesion");
+        getContentPane().add(bto_cerrarSesion);
+        bto_cerrarSesion.setBounds(314, 13, 111, 25);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(44, 44, 44)
-                .addComponent(bto_venta)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
-                .addComponent(bto_registro)
-                .addGap(30, 30, 30)
-                .addComponent(bto_cancelar)
-                .addGap(31, 31, 31))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(bto_cerrarSesion)
-                .addGap(42, 42, 42))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(bto_cerrarSesion)
-                .addGap(91, 91, 91)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(bto_cancelar)
-                    .addComponent(bto_venta)
-                    .addComponent(bto_registro))
-                .addContainerGap(152, Short.MAX_VALUE))
-        );
+        jLabelLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/IconMini.png"))); // NOI18N
+        getContentPane().add(jLabelLogo);
+        jLabelLogo.setBounds(0, 0, 90, 70);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -115,5 +99,6 @@ public class VistaAdministrador extends javax.swing.JFrame {
     private javax.swing.JButton bto_cerrarSesion;
     private javax.swing.JButton bto_registro;
     private javax.swing.JButton bto_venta;
+    private javax.swing.JLabel jLabelLogo;
     // End of variables declaration//GEN-END:variables
 }

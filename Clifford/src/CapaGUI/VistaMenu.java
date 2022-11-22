@@ -33,12 +33,17 @@ public class VistaMenu extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         bto_ingresar = new javax.swing.JButton();
         bto_salir = new javax.swing.JButton();
+        jLabelLogo = new javax.swing.JLabel();
+        jLabelFondo = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel1.setText("¡Bienvenido!");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(420, 120, 74, 17);
 
         box_cargo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione Cargo", "Administrador", "Trabajador" }));
         box_cargo.addActionListener(new java.awt.event.ActionListener() {
@@ -46,10 +51,16 @@ public class VistaMenu extends javax.swing.JFrame {
                 box_cargoActionPerformed(evt);
             }
         });
+        getContentPane().add(box_cargo);
+        box_cargo.setBounds(370, 150, 159, 22);
 
         txt_rut.setToolTipText("");
+        getContentPane().add(txt_rut);
+        txt_rut.setBounds(420, 190, 107, 22);
 
         jLabel3.setText("Rut");
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(390, 190, 19, 16);
 
         bto_ingresar.setText("Ingresar");
         bto_ingresar.addActionListener(new java.awt.event.ActionListener() {
@@ -57,6 +68,8 @@ public class VistaMenu extends javax.swing.JFrame {
                 bto_ingresarActionPerformed(evt);
             }
         });
+        getContentPane().add(bto_ingresar);
+        bto_ingresar.setBounds(360, 230, 81, 25);
 
         bto_salir.setText("Salir");
         bto_salir.addActionListener(new java.awt.event.ActionListener() {
@@ -64,47 +77,17 @@ public class VistaMenu extends javax.swing.JFrame {
                 bto_salirActionPerformed(evt);
             }
         });
-        setJMenuBar(jMenuBar1);
+        getContentPane().add(bto_salir);
+        bto_salir.setBounds(470, 230, 59, 25);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(92, 92, 92)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txt_rut, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(bto_ingresar)
-                                .addGap(57, 57, 57)
-                                .addComponent(bto_salir))
-                            .addComponent(box_cargo, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1))
-                        .addGap(0, 246, Short.MAX_VALUE))))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(117, 117, 117)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(box_cargo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txt_rut, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
-                .addGap(28, 28, 28)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(bto_ingresar)
-                    .addComponent(bto_salir))
-                .addContainerGap(128, Short.MAX_VALUE))
-        );
+        jLabelLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/IconPeque.png"))); // NOI18N
+        getContentPane().add(jLabelLogo);
+        jLabelLogo.setBounds(10, 130, 150, 128);
+
+        jLabelFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/Fondopeque.jpg"))); // NOI18N
+        getContentPane().add(jLabelFondo);
+        jLabelFondo.setBounds(0, 0, 540, 400);
+        setJMenuBar(jMenuBar1);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -136,6 +119,8 @@ public class VistaMenu extends javax.swing.JFrame {
     private javax.swing.JButton bto_salir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabelFondo;
+    private javax.swing.JLabel jLabelLogo;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JTextField txt_rut;
     // End of variables declaration//GEN-END:variables

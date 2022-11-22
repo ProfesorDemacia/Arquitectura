@@ -30,8 +30,10 @@ public class VistaTrabajador extends javax.swing.JFrame {
         bto_venta = new javax.swing.JButton();
         bto_cerrarSesion = new javax.swing.JButton();
         bto_cancelar = new javax.swing.JButton();
+        jLabelLogo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(null);
 
         bto_venta.setText("Venta");
         bto_venta.addActionListener(new java.awt.event.ActionListener() {
@@ -39,39 +41,20 @@ public class VistaTrabajador extends javax.swing.JFrame {
                 bto_ventaActionPerformed(evt);
             }
         });
+        getContentPane().add(bto_venta);
+        bto_venta.setBounds(100, 170, 65, 25);
 
         bto_cerrarSesion.setText("Cerrar Sesion");
+        getContentPane().add(bto_cerrarSesion);
+        bto_cerrarSesion.setBounds(280, 20, 111, 25);
 
         bto_cancelar.setText("Cancelar Venta");
+        getContentPane().add(bto_cancelar);
+        bto_cancelar.setBounds(210, 170, 119, 25);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap(293, Short.MAX_VALUE)
-                        .addComponent(bto_cerrarSesion))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(78, 78, 78)
-                        .addComponent(bto_venta)
-                        .addGap(75, 75, 75)
-                        .addComponent(bto_cancelar)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(bto_cerrarSesion)
-                .addGap(125, 125, 125)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(bto_venta)
-                    .addComponent(bto_cancelar))
-                .addContainerGap(118, Short.MAX_VALUE))
-        );
+        jLabelLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/IconMini.png"))); // NOI18N
+        getContentPane().add(jLabelLogo);
+        jLabelLogo.setBounds(0, 0, 80, 70);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -121,5 +104,6 @@ public class VistaTrabajador extends javax.swing.JFrame {
     private javax.swing.JButton bto_cancelar;
     private javax.swing.JButton bto_cerrarSesion;
     private javax.swing.JButton bto_venta;
+    private javax.swing.JLabel jLabelLogo;
     // End of variables declaration//GEN-END:variables
 }
