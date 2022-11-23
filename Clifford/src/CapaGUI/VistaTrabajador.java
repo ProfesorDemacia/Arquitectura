@@ -33,30 +33,35 @@ public class VistaTrabajador extends javax.swing.JFrame {
         jLabelLogo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(600, 600));
         getContentPane().setLayout(null);
 
         bto_venta.setText("Venta");
+        bto_venta.setPreferredSize(new java.awt.Dimension(75, 23));
         bto_venta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bto_ventaActionPerformed(evt);
             }
         });
         getContentPane().add(bto_venta);
-        bto_venta.setBounds(100, 170, 65, 25);
+        bto_venta.setBounds(100, 170, 75, 23);
 
         bto_cerrarSesion.setText("Cerrar Sesion");
+        bto_cerrarSesion.setPreferredSize(new java.awt.Dimension(150, 23));
         getContentPane().add(bto_cerrarSesion);
-        bto_cerrarSesion.setBounds(280, 20, 111, 25);
+        bto_cerrarSesion.setBounds(280, 20, 150, 23);
 
         bto_cancelar.setText("Cancelar Venta");
+        bto_cancelar.setPreferredSize(new java.awt.Dimension(125, 23));
         getContentPane().add(bto_cancelar);
-        bto_cancelar.setBounds(210, 170, 119, 25);
+        bto_cancelar.setBounds(210, 170, 125, 23);
 
         jLabelLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/IconMini.png"))); // NOI18N
         getContentPane().add(jLabelLogo);
         jLabelLogo.setBounds(0, 0, 80, 70);
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void bto_ventaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bto_ventaActionPerformed
