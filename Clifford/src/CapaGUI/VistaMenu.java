@@ -15,15 +15,7 @@ public class VistaMenu extends javax.swing.JFrame {
     
     public void validarTrabajador (String rut){
         
-        try
-        {
-            
-        }
-        catch
-        {
-            
-        }
-        
+
     }
     
     
@@ -43,17 +35,22 @@ public class VistaMenu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        box_cargo = new javax.swing.JComboBox<>();
         txt_rut = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         bto_ingresar = new javax.swing.JButton();
         bto_salir = new javax.swing.JButton();
         jLabelLogo = new javax.swing.JLabel();
         jLabelFondo = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
 
+        jButton1.setText("jButton1");
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(600, 600));
         getContentPane().setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -61,40 +58,37 @@ public class VistaMenu extends javax.swing.JFrame {
         getContentPane().add(jLabel1);
         jLabel1.setBounds(420, 120, 74, 17);
 
-        box_cargo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione Cargo", "Administrador", "Trabajador" }));
-        box_cargo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                box_cargoActionPerformed(evt);
-            }
-        });
-        getContentPane().add(box_cargo);
-        box_cargo.setBounds(370, 150, 159, 20);
-
         txt_rut.setToolTipText("");
         getContentPane().add(txt_rut);
         txt_rut.setBounds(420, 190, 107, 20);
 
         jLabel3.setText("Rut");
+        jLabel3.setMaximumSize(new java.awt.Dimension(34, 14));
+        jLabel3.setMinimumSize(new java.awt.Dimension(34, 14));
+        jLabel3.setPreferredSize(new java.awt.Dimension(34, 14));
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(390, 190, 17, 14);
+        jLabel3.setBounds(390, 190, 34, 14);
 
         bto_ingresar.setText("Ingresar");
+        bto_ingresar.setMaximumSize(new java.awt.Dimension(80, 23));
+        bto_ingresar.setPreferredSize(new java.awt.Dimension(100, 23));
         bto_ingresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bto_ingresarActionPerformed(evt);
             }
         });
         getContentPane().add(bto_ingresar);
-        bto_ingresar.setBounds(360, 230, 73, 23);
+        bto_ingresar.setBounds(360, 230, 100, 23);
 
         bto_salir.setText("Salir");
+        bto_salir.setPreferredSize(new java.awt.Dimension(70, 23));
         bto_salir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bto_salirActionPerformed(evt);
             }
         });
         getContentPane().add(bto_salir);
-        bto_salir.setBounds(470, 230, 53, 23);
+        bto_salir.setBounds(470, 230, 70, 23);
 
         jLabelLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/IconPeque.png"))); // NOI18N
         getContentPane().add(jLabelLogo);
@@ -102,15 +96,19 @@ public class VistaMenu extends javax.swing.JFrame {
 
         jLabelFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/Fondopeque.jpg"))); // NOI18N
         getContentPane().add(jLabelFondo);
-        jLabelFondo.setBounds(0, 0, 540, 400);
+        jLabelFondo.setBounds(0, -20, 680, 470);
+
+        jLabel2.setText("jLabel2");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(440, 300, 34, 14);
+
+        jButton2.setText("jButton2");
+        getContentPane().add(jButton2);
+        jButton2.setBounds(620, 440, 73, 23);
         setJMenuBar(jMenuBar1);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void box_cargoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_box_cargoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_box_cargoActionPerformed
 
     private void bto_ingresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bto_ingresarActionPerformed
         // TODO add your handling code here:
@@ -132,10 +130,12 @@ public class VistaMenu extends javax.swing.JFrame {
      */
    
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> box_cargo;
     private javax.swing.JButton bto_ingresar;
     private javax.swing.JButton bto_salir;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabelFondo;
     private javax.swing.JLabel jLabelLogo;

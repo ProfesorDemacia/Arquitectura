@@ -70,7 +70,6 @@ monto_pagar int NOT NULL,
 id_detalle_venta int references detalle_venta(id_detalle_venta),
 rut_empleado varchar(11) references empleado(rut_empleado),
 id_metodo_pago int references pago(id_metodo_pago),
-id_producto int references producto(id_producto),
 PRIMARY KEY (id_venta)
 );
 
@@ -90,7 +89,6 @@ ALTER TABLE detalle_venta ADD FOREIGN KEY(id_producto) REFERENCES producto (id_p
 ALTER TABLE venta ADD FOREIGN KEY(id_detalle_venta) REFERENCES detalle_venta (id_detalle_venta);
 ALTER TABLE venta ADD FOREIGN KEY(rut_empleado) REFERENCES empleado (rut_empleado);
 ALTER TABLE venta ADD FOREIGN KEY(id_metodo_pago) REFERENCES metodo_pago (id_metodo_pago);
-ALTER TABLE venta ADD FOREIGN KEY(id_producto) REFERENCES producto (id_producto);
 ALTER TABLE anular_venta ADD FOREIGN KEY(id_venta) REFERENCES venta (id_venta);
 
 INSERT INTO metodo_pago (id_metodo_pago,descripcion_pago) VALUES (1,'Efectivo');

@@ -14,98 +14,74 @@ import java.util.Date;
  */
 public class Venta {
     
-    private int idVenta;
-    private Date fechaVenta;
-    private int medioPago;
-    private double totalVenta;
-    private String rutUsuario;
-    private String direccionVenta;
+    private int id_venta;
+    private Date fecha_venta;
+    private String nombre_empresa;
+    private double total_venta;
+    private int id_detalleVenta;
+    private String rut_empleado;
+    private int medio_pago;
 
-    /**
-     * @return the idVenta
-     */
-    public int getIdVenta() {
-        return idVenta;
+    public int getId_venta() {
+        return id_venta;
     }
 
-    /**
-     * @param idVenta the idVenta to set
-     */
-    public void setIdVenta(int idVenta) {
-        this.idVenta = idVenta;
+    public void setId_venta(int id_venta) {
+        this.id_venta = id_venta;
     }
 
-    /**
-     * @return the fechaVenta
-     */
-    public Date getFechaVenta() {
-        return fechaVenta;
+    public Date getFecha_venta() {
+        return fecha_venta;
     }
 
-    /**
-     * @param fechaVenta the fechaVenta to set
-     */
-    public void setFechaVenta(Date fechaVenta) {
-        this.fechaVenta = fechaVenta;
+    public void setFecha_venta(Date fecha_venta) {
+        this.fecha_venta = fecha_venta;
     }
 
-    /**
-     * @return the medioPago
-     */
-    public int getMedioPago() {
-        return medioPago;
+    public String getNombre_empresa() {
+        return nombre_empresa;
     }
 
-    /**
-     * @param medioPago the medioPago to set
-     */
-    public void setMedioPago(int medioPago) {
-        this.medioPago = medioPago;
+    public void setNombre_empresa(String nombre_empresa) {
+        this.nombre_empresa = nombre_empresa;
     }
 
-    /**
-     * @return the totalVenta
-     */
-    public double getTotalVenta() {
-        return totalVenta;
+    public double getTotal_venta() {
+        return total_venta;
     }
 
-    /**
-     * @param totalVenta the totalVenta to set
-     */
-    public void setTotalVenta(double totalVenta) {
-        this.totalVenta = totalVenta;
+    public void setTotal_venta(double total_venta) {
+        this.total_venta = total_venta;
     }
 
-    /**
-     * @return the rutUsuario
-     */
-    public String getRutUsuario() {
-        return rutUsuario;
+    public int getId_detalleVenta() {
+        return id_detalleVenta;
     }
 
-    /**
-     * @param rutUsuario the rutUsuario to set
-     */
-    public void setRutUsuario(String rutUsuario) {
-        this.rutUsuario = rutUsuario;
+    public void setId_detalleVenta(int id_detalleVenta) {
+        this.id_detalleVenta = id_detalleVenta;
     }
 
-    /**
-     * @return the direccionVenta
-     */
-    public String getDireccionVenta() {
-        return direccionVenta;
+    public String getRut_empleado() {
+        return rut_empleado;
     }
 
-    /**
-     * @param direccionVenta the direccionVenta to set
-     */
-    public void setDireccionVenta(String direccionVenta) {
-        this.direccionVenta = direccionVenta;
+    public void setRut_empleado(String rut_empleado) {
+        this.rut_empleado = rut_empleado;
+    }
+
+    public int getMedio_pago() {
+        return medio_pago;
+    }
+
+    public void setMedio_pago(int medio_pago) {
+        this.medio_pago = medio_pago;
     }
     
     
+
+   
+
     
     
     
