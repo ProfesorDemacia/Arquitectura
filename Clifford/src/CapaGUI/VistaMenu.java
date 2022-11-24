@@ -4,16 +4,41 @@
  * and open the template in the editor.
  */
 package CapaGUI;
+import CapaNegocio.NegocioMenu;
+import CapaDTO.Empleado;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author Cesar
  */
 public class VistaMenu extends javax.swing.JFrame {
+    /*Centrado 
+    public VistaMenu(){
+        initComponents();
+        this.setLocationRelativeTo(null);
+    }
+    */
 
     
     
-    public void validarTrabajador (String rut){
+    public void validarTrabajador (){
+        Empleado emp = new Empleado();
+        NegocioMenu menu = new NegocioMenu();
+        String rut = txt_rut.getText();
+        if(!"".equals(rut)){
+            emp = menu.emp(rut);
+            if (emp.getRut_empleado()!= null){
+                VistaTrabajador m = new VistaTrabajador();
+                m.setVisible(true);
+                dispose();
+            }
+            else 
+                JOptionPane.showMessageDialog(null, "Rut incorrecto");
+        }
+        
+        
+    }
         
 
     }
@@ -59,8 +84,13 @@ public class VistaMenu extends javax.swing.JFrame {
         jLabel1.setBounds(420, 120, 74, 17);
 
         txt_rut.setToolTipText("");
+        txt_rut.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_rutActionPerformed(evt);
+            }
+        });
         getContentPane().add(txt_rut);
-        txt_rut.setBounds(420, 190, 107, 20);
+        txt_rut.setBounds(420, 190, 107, 22);
 
         jLabel3.setText("Rut");
         jLabel3.setMaximumSize(new java.awt.Dimension(34, 14));
@@ -100,11 +130,11 @@ public class VistaMenu extends javax.swing.JFrame {
 
         jLabel2.setText("jLabel2");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(440, 300, 34, 14);
+        jLabel2.setBounds(440, 300, 41, 16);
 
         jButton2.setText("jButton2");
         getContentPane().add(jButton2);
-        jButton2.setBounds(620, 440, 73, 23);
+        jButton2.setBounds(620, 440, 79, 25);
         setJMenuBar(jMenuBar1);
 
         pack();
@@ -125,6 +155,10 @@ public class VistaMenu extends javax.swing.JFrame {
         this.dispose();
         System.gc();
     }//GEN-LAST:event_bto_salirActionPerformed
+
+    private void txt_rutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_rutActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_rutActionPerformed
 
     /**
      * @param args the command line arguments
