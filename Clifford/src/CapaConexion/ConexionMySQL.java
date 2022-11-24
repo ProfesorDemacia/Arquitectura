@@ -262,7 +262,7 @@ public class ConexionMySQL
   /*  public static void main(String[] args)
     {
          ConexionMySQL conec = new ConexionMySQL();
-         conec.setNombreBaseDatos("jdbc:mysql://localhost/prueba");
+         conec.setNombreBaseDatos("jdbc:mysql://localhost/clifford");
          conec.setNombreTabla("Cliente");
          conec.setCadenaConexion("com.mysql.jdbc.Driver");
          conec.setUsuario("root");

@@ -72,11 +72,11 @@ public class NegocioProducto {
     }
     
     
-    public ArrayList<Producto> consultarProducto()
+    public ArrayList<Producto> consultarProducto(int id_producto)
     {
        ArrayList<Producto> auxListProducto = new ArrayList<>();
        this.configurarConexion();
-       this.getConect1().setCadenaSQL("SELECT *  FROM producto;");
+       this.getConect1().setCadenaSQL("SELECT * FROM producto WHERE id_producto = "+id_producto+";");
        this.getConect1().setEsSelect(true);
        this.getConect1().conectar();
        
@@ -103,6 +103,7 @@ public class NegocioProducto {
     }
     
     
+  
 
     public ConexionMySQL getConect1() {
         return conect1;

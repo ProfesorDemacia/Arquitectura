@@ -74,7 +74,7 @@ PRIMARY KEY (id_venta)
 );
 
 CREATE TABLE anular_venta (
-id_anular_venta int AUTO_INCREMENT,
+id_anular_venta int AUTO_INCREMENT NOT NULL,
 motivo_anulacion varchar(100) NOT NULL,
 id_venta int references venta(id_venta),
 PRIMARY KEY (id_anular_venta)
