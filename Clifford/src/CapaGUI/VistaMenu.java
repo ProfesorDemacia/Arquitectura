@@ -54,12 +54,13 @@ public class VistaMenu extends javax.swing.JFrame {
     private void initComponents() {
 
         jButton1 = new javax.swing.JButton();
+        jLabelLogo = new javax.swing.JLabel();
         jLabelBienvenido = new javax.swing.JLabel();
         txt_rut = new javax.swing.JTextField();
         jLabelRut = new javax.swing.JLabel();
         bto_ingresar = new javax.swing.JButton();
         bto_salir = new javax.swing.JButton();
-        jLabelLogo = new javax.swing.JLabel();
+        jPanelNaranja = new javax.swing.JPanel();
         jLabelFondo = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
@@ -69,12 +70,14 @@ public class VistaMenu extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(600, 600));
-        getContentPane().setLayout(null);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabelBienvenido.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabelLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/IconPeque.png"))); // NOI18N
+        getContentPane().add(jLabelLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 120, -1, -1));
+
+        jLabelBienvenido.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabelBienvenido.setText("¡Bienvenido!");
-        getContentPane().add(jLabelBienvenido);
-        jLabelBienvenido.setBounds(420, 120, 74, 17);
+        getContentPane().add(jLabelBienvenido, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 280, -1, -1));
 
         txt_rut.setToolTipText("");
         txt_rut.addActionListener(new java.awt.event.ActionListener() {
@@ -82,15 +85,13 @@ public class VistaMenu extends javax.swing.JFrame {
                 txt_rutActionPerformed(evt);
             }
         });
-        getContentPane().add(txt_rut);
-        txt_rut.setBounds(420, 190, 107, 22);
+        getContentPane().add(txt_rut, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 350, 107, -1));
 
         jLabelRut.setText("Rut");
         jLabelRut.setMaximumSize(new java.awt.Dimension(34, 14));
         jLabelRut.setMinimumSize(new java.awt.Dimension(34, 14));
         jLabelRut.setPreferredSize(new java.awt.Dimension(34, 14));
-        getContentPane().add(jLabelRut);
-        jLabelRut.setBounds(390, 190, 34, 14);
+        getContentPane().add(jLabelRut, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 350, -1, -1));
 
         bto_ingresar.setText("Ingresar");
         bto_ingresar.setMaximumSize(new java.awt.Dimension(80, 23));
@@ -100,8 +101,7 @@ public class VistaMenu extends javax.swing.JFrame {
                 bto_ingresarActionPerformed(evt);
             }
         });
-        getContentPane().add(bto_ingresar);
-        bto_ingresar.setBounds(360, 230, 100, 23);
+        getContentPane().add(bto_ingresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 400, -1, -1));
 
         bto_salir.setText("Salir");
         bto_salir.setPreferredSize(new java.awt.Dimension(70, 23));
@@ -110,24 +110,19 @@ public class VistaMenu extends javax.swing.JFrame {
                 bto_salirActionPerformed(evt);
             }
         });
-        getContentPane().add(bto_salir);
-        bto_salir.setBounds(470, 230, 70, 23);
+        getContentPane().add(bto_salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 400, -1, -1));
 
-        jLabelLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/IconPeque.png"))); // NOI18N
-        getContentPane().add(jLabelLogo);
-        jLabelLogo.setBounds(10, 130, 150, 128);
+        jPanelNaranja.setBackground(new java.awt.Color(255, 153, 102));
+        getContentPane().add(jPanelNaranja, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 0, 330, 720));
 
         jLabelFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/FondoGrande.jpg"))); // NOI18N
-        getContentPane().add(jLabelFondo);
-        jLabelFondo.setBounds(-500, -80, 1650, 760);
+        getContentPane().add(jLabelFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(-500, -60, 1470, 780));
 
         jLabel2.setText("jLabel2");
-        getContentPane().add(jLabel2);
-        jLabel2.setBounds(440, 300, 41, 16);
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 300, -1, -1));
 
         jButton2.setText("jButton2");
-        getContentPane().add(jButton2);
-        jButton2.setBounds(620, 440, 79, 25);
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 440, -1, -1));
         setJMenuBar(jMenuBar1);
 
         pack();
@@ -164,6 +159,7 @@ public class VistaMenu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelLogo;
     private javax.swing.JLabel jLabelRut;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JPanel jPanelNaranja;
     private javax.swing.JTextField txt_rut;
     // End of variables declaration//GEN-END:variables
  }    

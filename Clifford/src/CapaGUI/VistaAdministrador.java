@@ -36,25 +36,28 @@ public class VistaAdministrador extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
 
+        bto_venta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/compras.png"))); // NOI18N
         bto_venta.setText("Venta");
         getContentPane().add(bto_venta);
-        bto_venta.setBounds(44, 129, 61, 23);
+        bto_venta.setBounds(40, 200, 120, 60);
 
+        bto_cancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/eliminar.png"))); // NOI18N
         bto_cancelar.setText("Cancelar Venta");
         getContentPane().add(bto_cancelar);
-        bto_cancelar.setBounds(317, 129, 105, 23);
+        bto_cancelar.setBounds(470, 210, 160, 50);
 
+        bto_registro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/nuevo.png"))); // NOI18N
         bto_registro.setText("Registro de Ventas");
         getContentPane().add(bto_registro);
-        bto_registro.setBounds(146, 129, 123, 23);
+        bto_registro.setBounds(230, 200, 180, 60);
 
         bto_cerrarSesion.setText("Cerrar Sesion");
         getContentPane().add(bto_cerrarSesion);
-        bto_cerrarSesion.setBounds(314, 13, 97, 23);
+        bto_cerrarSesion.setBounds(500, 60, 111, 25);
 
         jLabelLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/IconMini.png"))); // NOI18N
         getContentPane().add(jLabelLogo);
-        jLabelLogo.setBounds(0, 0, 90, 70);
+        jLabelLogo.setBounds(20, 20, 90, 70);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

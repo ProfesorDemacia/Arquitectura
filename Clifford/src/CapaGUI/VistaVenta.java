@@ -110,8 +110,8 @@ public class VistaVenta extends javax.swing.JFrame {
         bto_cancelar = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         txt_precioFinal = new javax.swing.JTextField();
-        jLabelLogo = new javax.swing.JLabel();
         bto_buscar = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(1000, 7000));
@@ -139,7 +139,7 @@ public class VistaVenta extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txt_idProducto);
-        txt_idProducto.setBounds(170, 150, 178, 20);
+        txt_idProducto.setBounds(170, 150, 178, 22);
 
         txt_cantidad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -147,7 +147,7 @@ public class VistaVenta extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txt_cantidad);
-        txt_cantidad.setBounds(170, 180, 178, 20);
+        txt_cantidad.setBounds(170, 180, 178, 22);
 
         jLabel6.setText("Nombre Producto");
         getContentPane().add(jLabel6);
@@ -159,7 +159,7 @@ public class VistaVenta extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txt_nombreProducto);
-        txt_nombreProducto.setBounds(170, 210, 178, 20);
+        txt_nombreProducto.setBounds(170, 210, 178, 22);
 
         txt_precioUnitario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -167,7 +167,7 @@ public class VistaVenta extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txt_precioUnitario);
-        txt_precioUnitario.setBounds(170, 240, 178, 20);
+        txt_precioUnitario.setBounds(170, 240, 178, 22);
 
         table_venta.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -216,11 +216,7 @@ public class VistaVenta extends javax.swing.JFrame {
         getContentPane().add(jLabel4);
         jLabel4.setBounds(460, 400, 80, 30);
         getContentPane().add(txt_precioFinal);
-        txt_precioFinal.setBounds(570, 402, 100, 20);
-
-        jLabelLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/IconMini.png"))); // NOI18N
-        getContentPane().add(jLabelLogo);
-        jLabelLogo.setBounds(0, -10, 110, 110);
+        txt_precioFinal.setBounds(570, 402, 100, 22);
 
         bto_buscar.setText("Buscar");
         bto_buscar.addActionListener(new java.awt.event.ActionListener() {
@@ -230,6 +226,10 @@ public class VistaVenta extends javax.swing.JFrame {
         });
         getContentPane().add(bto_buscar);
         bto_buscar.setBounds(40, 310, 80, 30);
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/banner.jpg"))); // NOI18N
+        getContentPane().add(jLabel5);
+        jLabel5.setBounds(0, 0, 990, 130);
 
         pack();
         setLocationRelativeTo(null);
@@ -280,8 +280,8 @@ public class VistaVenta extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabelLogo;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable table_venta;
     private javax.swing.JTextField txt_cantidad;
