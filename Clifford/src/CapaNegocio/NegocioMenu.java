@@ -25,12 +25,18 @@ public class NegocioMenu {
     Empleado l = new Empleado();
     String sql = "SELECT * FROM empleado WHERE rut_empleado = ?";
     try {
-        con = cn.getConnection();
+        con = cn.getConnection(); /*editar conexion*/
         ps = con.prepareStatement(sql);
         ps.setString(1, rut_empleado);
         rs = ps.executeQuery();
         if (rs.next()) {
             l.setRut_empleado(rs.getString("rut_empleado"));
+            l.setRut_empleado(rs.getString("nombre_empleado"));
+            l.setRut_empleado(rs.getString("apellido_empleado"));
+            l.setRut_empleado(rs.getString("direccion_empleado"));
+            l.setRut_empleado(rs.getString("correo_empleado"));
+            l.setRut_empleado(rs.getString("id_cargo"));
+            l.setRut_empleado(rs.getString("id_comuna"));
         } 
     } catch (SQLException e) {
         System.out.println(e.toString());  
