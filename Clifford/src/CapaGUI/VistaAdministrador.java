@@ -38,22 +38,43 @@ public class VistaAdministrador extends javax.swing.JFrame {
 
         bto_venta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/compras.png"))); // NOI18N
         bto_venta.setText("Venta");
+        bto_venta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bto_ventaActionPerformed(evt);
+            }
+        });
         getContentPane().add(bto_venta);
+<<<<<<< Updated upstream
         bto_venta.setBounds(40, 200, 120, 60);
+=======
+        bto_venta.setBounds(44, 129, 65, 25);
+>>>>>>> Stashed changes
 
         bto_cancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/eliminar.png"))); // NOI18N
         bto_cancelar.setText("Cancelar Venta");
         getContentPane().add(bto_cancelar);
+<<<<<<< Updated upstream
         bto_cancelar.setBounds(470, 210, 160, 50);
+=======
+        bto_cancelar.setBounds(317, 129, 119, 25);
+>>>>>>> Stashed changes
 
         bto_registro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/nuevo.png"))); // NOI18N
         bto_registro.setText("Registro de Ventas");
         getContentPane().add(bto_registro);
+<<<<<<< Updated upstream
         bto_registro.setBounds(230, 200, 180, 60);
 
         bto_cerrarSesion.setText("Cerrar Sesion");
         getContentPane().add(bto_cerrarSesion);
         bto_cerrarSesion.setBounds(500, 60, 111, 25);
+=======
+        bto_registro.setBounds(146, 129, 141, 25);
+
+        bto_cerrarSesion.setText("Cerrar Sesion");
+        getContentPane().add(bto_cerrarSesion);
+        bto_cerrarSesion.setBounds(314, 13, 111, 25);
+>>>>>>> Stashed changes
 
         jLabelLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/IconMini.png"))); // NOI18N
         getContentPane().add(jLabelLogo);
@@ -61,6 +82,10 @@ public class VistaAdministrador extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void bto_ventaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bto_ventaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bto_ventaActionPerformed
 
     /**
      * @param args the command line arguments

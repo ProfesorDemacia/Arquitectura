@@ -8,6 +8,10 @@ import CapaNegocio.NegocioMenu;
 import CapaDTO.Empleado;
 import javax.swing.JOptionPane;
 
+import CapaDTO.Menu;
+import CapaDTO.Empleado;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Cesar
@@ -19,13 +23,22 @@ public class VistaMenu extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
     }
     */
+<<<<<<< Updated upstream
     public void validarTrabajador (){
         Empleado emp = new Empleado();
         NegocioMenu menu = new NegocioMenu();
+=======
+
+    
+    public void validarTrabajador(){
+        Empleado emp = new Empleado();
+        Menu menu = new Menu();
+>>>>>>> Stashed changes
         String rut = txt_rut.getText();
         if(!"".equals(rut)){
             emp = menu.emp(rut);
             if (emp.getRut_empleado()!= null){
+<<<<<<< Updated upstream
                 VistaTrabajador pMenu = new VistaTrabajador();
                 pMenu.setVisible(true);
                 dispose();
@@ -35,6 +48,16 @@ public class VistaMenu extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Rut incorrecto");
         }
         }
+=======
+                VistaTrabajador m = new VistaTrabajador();
+                m.setVisible(true);
+                dispose();
+            }
+            else 
+                JOptionPane.showMessageDialog(null, "Rut incorrecto");
+        }
+        
+>>>>>>> Stashed changes
         
     }
     /**
@@ -53,9 +76,13 @@ public class VistaMenu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+<<<<<<< Updated upstream
         jButton1 = new javax.swing.JButton();
         jLabelLogo = new javax.swing.JLabel();
         jLabelBienvenido = new javax.swing.JLabel();
+=======
+        jLabel1 = new javax.swing.JLabel();
+>>>>>>> Stashed changes
         txt_rut = new javax.swing.JTextField();
         jLabelRut = new javax.swing.JLabel();
         bto_ingresar = new javax.swing.JButton();
@@ -72,16 +99,20 @@ public class VistaMenu extends javax.swing.JFrame {
         jLabelLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/IconPeque.png"))); // NOI18N
         getContentPane().add(jLabelLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 120, -1, -1));
 
+<<<<<<< Updated upstream
         jLabelBienvenido.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabelBienvenido.setText("¡Bienvenido!");
         getContentPane().add(jLabelBienvenido, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 280, -1, -1));
 
+=======
+>>>>>>> Stashed changes
         txt_rut.setToolTipText("");
         txt_rut.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_rutActionPerformed(evt);
             }
         });
+<<<<<<< Updated upstream
         getContentPane().add(txt_rut, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 350, 107, -1));
 
         jLabelRut.setText("Rut");
@@ -89,6 +120,14 @@ public class VistaMenu extends javax.swing.JFrame {
         jLabelRut.setMinimumSize(new java.awt.Dimension(34, 14));
         jLabelRut.setPreferredSize(new java.awt.Dimension(34, 14));
         getContentPane().add(jLabelRut, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 350, -1, -1));
+=======
+        getContentPane().add(txt_rut);
+        txt_rut.setBounds(420, 150, 107, 22);
+
+        jLabel3.setText("Rut");
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(390, 150, 19, 16);
+>>>>>>> Stashed changes
 
         bto_ingresar.setText("Ingresar");
         bto_ingresar.setMaximumSize(new java.awt.Dimension(80, 23));
@@ -98,7 +137,12 @@ public class VistaMenu extends javax.swing.JFrame {
                 bto_ingresarActionPerformed(evt);
             }
         });
+<<<<<<< Updated upstream
         getContentPane().add(bto_ingresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 400, -1, -1));
+=======
+        getContentPane().add(bto_ingresar);
+        bto_ingresar.setBounds(360, 230, 81, 25);
+>>>>>>> Stashed changes
 
         bto_salir.setText("Salir");
         bto_salir.setPreferredSize(new java.awt.Dimension(70, 23));
@@ -107,7 +151,12 @@ public class VistaMenu extends javax.swing.JFrame {
                 bto_salirActionPerformed(evt);
             }
         });
+<<<<<<< Updated upstream
         getContentPane().add(bto_salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 400, -1, -1));
+=======
+        getContentPane().add(bto_salir);
+        bto_salir.setBounds(470, 230, 59, 25);
+>>>>>>> Stashed changes
 
         jPanelNaranja.setBackground(new java.awt.Color(255, 153, 102));
         getContentPane().add(jPanelNaranja, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 0, 330, 720));
@@ -142,6 +191,7 @@ public class VistaMenu extends javax.swing.JFrame {
      * @param args the command line arguments
      */
    
+   
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bto_ingresar;
     private javax.swing.JButton bto_salir;
@@ -154,4 +204,9 @@ public class VistaMenu extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelNaranja;
     private javax.swing.JTextField txt_rut;
     // End of variables declaration//GEN-END:variables
+<<<<<<< Updated upstream
  }    
+=======
+}
+
+>>>>>>> Stashed changes
