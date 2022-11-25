@@ -13,6 +13,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.Iterator;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -31,19 +32,64 @@ public class VistaVenta extends javax.swing.JFrame {
         initComponents();
     }
     
-    PreparedStatement ps;
-    ResultSet rs;
     
-    
-    public void buscarProducto(int id_producto)
+    private void ValorTotal()
     {
+        int a = 0;
+        int b = 0;
         
-        Connection con1 = null;
-        try{
-            NegocioProducto auxNegocioProducto = new NegocioProducto();
-            Iterator iter = auxNegocioProducto.consultarProducto(id_producto).iterator();
+        if (table_venta.getRowCount()>0)
+        {
+            for (int i=0;i<table_venta.getRowCount();i++)
+            {
+                b = Integer.parseInt(table_venta.getValueAt(i,4).toString());
+                a+=b;
+            }
+            txt_precioFinal.setText(String.valueOf(a));
             
-            while(iter.hasNext())
+        }
+    }
+    
+    public void limpiarDatos()
+    {
+        this.txt_idProducto.setText("");
+        this.txt_cantidad.setText("");
+        this.txt_nombreProducto.setText("");
+        this.txt_precioUnitario.setText("");
+        
+    }
+    
+    
+    public boolean existeIdProducto(JTable jtable, String id_producto, int colum)
+    {
+        boolean Existe = false;
+        for (int i=0;i<jtable.getRowCount();i++)
+        {
+            if (jtable.getValueAt(i, colum).equals(id_producto))
+            {
+                Existe = true;
+            }
+        }
+        return Existe;
+    }
+ 
+    public void buscarProducto(String id_producto)
+    {
+  
+        try{
+            
+            NegocioProducto auxNegocioProducto = new NegocioProducto();
+            
+            if (this.txt_idProducto.getText().length() == 0 || this.txt_cantidad.getText().length() == 0)
+            {
+                JOptionPane.showMessageDialog(null, "Ingrese el codigo del producto");
+                
+            }else{
+                
+                
+                Iterator iter = auxNegocioProducto.buscarProducto(Integer.parseInt(id_producto)).iterator();
+                
+                while(iter.hasNext())
             {
                 Producto auxProducto = new Producto();
                 auxProducto = (Producto) iter.next();
@@ -51,37 +97,67 @@ public class VistaVenta extends javax.swing.JFrame {
                 this.txt_precioUnitario.setText(String.valueOf(auxProducto.getPrecioUnitario()));
                 
             }
-        } catch(Exception e){
-                System.err.println(e);}
+                
+            }
+            
+            
+        } catch(Exception ex){
+                JOptionPane.showMessageDialog(null,"No se ha podido agregar los productos" + ex.getMessage());
+    }
     }
     
     
-   /* public void agregarTablaProducto () {
+         public void agregarTablaProducto (JTable jtable, String id_producto) {
         try{
-        DefaultTableModel modelo = new DefaultTableModel();
-            modelo = (DefaultTableModel) this.table_venta.getModel();
-            modelo.setNumRows(0);
-            NegocioProducto auxNegocioProducto = new NegocioProducto();
-            Iterator iter = auxNegocioProducto.consultarProducto().iterator();
-            int fila = 0;
-            while(iter.hasNext())
+            
+            
+            if (this.txt_idProducto.getText().length() == 0 || this.txt_cantidad.getText().length() == 0 
+                    || this.txt_precioUnitario.getText().length() == 0 || this.txt_nombreProducto.getText().length() == 0)
             {
-                Producto auxProducto = new Producto();
-                auxProducto = (Producto) iter.next();
-                Object[] num = {};
-                modelo.addRow(num);
-                this.table_venta.setValueAt(auxProducto.getIdProducto(), fila, 0);
-                this.table_venta.setValueAt(auxProducto.getNombreProducto(), fila, 1);
-                this.table_venta.setValueAt(Integer.parseInt(this.txt_cantidad.getText()), fila, 2);
-                this.table_venta.setValueAt((Integer.parseInt(this.txt_cantidad.getText()) * auxProducto.getPrecioUnitario()), fila, 3);
-                fila++;
+                JOptionPane.showMessageDialog(null, "Primero busque el producto");
+                
+            }else
+            {
+                
+                
+            
+            DefaultTableModel modelo = new DefaultTableModel();
+            modelo = (DefaultTableModel) table_venta.getModel();
+                
+            
+                if (!existeIdProducto(jtable, id_producto, 0))
+                {
+                     Object[] num = new Object[5];
+                
+                
+                    num [0] =(txt_idProducto.getText());
+                    num [1] =(txt_nombreProducto.getText());
+                    num [2] =(Integer.parseInt(txt_cantidad.getText()));
+                    num [3] =(txt_precioUnitario.getText());
+                    num [4] =(Integer.parseInt(txt_cantidad.getText())*Integer.parseInt(txt_precioUnitario.getText())) ;
+
+                    modelo.addRow(num);
+
+                    this.table_venta.setModel(modelo);
+
+                    limpiarDatos();
+                }else
+                {
+                  JOptionPane.showMessageDialog(null,"El producto ya fue registrad");  
+                }
+            
+            
+         
+
+               
+            
             }
         }
         catch(Exception ex)
         {
             JOptionPane.showMessageDialog(null,"No se ha podido agregar los productos" + ex.getMessage());
         }
-    }/*
+    }
 
     /*
      * This method is called from within the constructor to initialize the form.
@@ -112,7 +188,7 @@ public class VistaVenta extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1000, 7000));
+        setMinimumSize(new java.awt.Dimension(983, 570));
         getContentPane().setLayout(null);
 
         jLabel1.setText("ID Producto");
@@ -137,7 +213,7 @@ public class VistaVenta extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txt_idProducto);
-        txt_idProducto.setBounds(170, 150, 178, 22);
+        txt_idProducto.setBounds(170, 150, 178, 20);
 
         txt_cantidad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -145,7 +221,7 @@ public class VistaVenta extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txt_cantidad);
-        txt_cantidad.setBounds(170, 180, 178, 22);
+        txt_cantidad.setBounds(170, 180, 178, 20);
 
         jLabel6.setText("Nombre Producto");
         getContentPane().add(jLabel6);
@@ -158,7 +234,7 @@ public class VistaVenta extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txt_nombreProducto);
-        txt_nombreProducto.setBounds(170, 210, 178, 22);
+        txt_nombreProducto.setBounds(170, 210, 178, 20);
 
         txt_precioUnitario.setEditable(false);
         txt_precioUnitario.addActionListener(new java.awt.event.ActionListener() {
@@ -167,15 +243,11 @@ public class VistaVenta extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txt_precioUnitario);
-        txt_precioUnitario.setBounds(170, 240, 178, 22);
+        txt_precioUnitario.setBounds(170, 240, 178, 20);
 
         table_venta.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+
             },
             new String [] {
                 "ID producto", "Nombre Producto", "Cantidad", "Precio Unitario ", "Precio Total"
@@ -216,7 +288,7 @@ public class VistaVenta extends javax.swing.JFrame {
         getContentPane().add(jLabel4);
         jLabel4.setBounds(460, 400, 80, 30);
         getContentPane().add(txt_precioFinal);
-        txt_precioFinal.setBounds(570, 402, 100, 22);
+        txt_precioFinal.setBounds(570, 402, 100, 20);
 
         bto_buscar.setText("Buscar");
         bto_buscar.addActionListener(new java.awt.event.ActionListener() {
@@ -253,17 +325,23 @@ public class VistaVenta extends javax.swing.JFrame {
 
     private void bto_agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bto_agregarActionPerformed
         // TODO add your handling code here:
-        //agregarTablaProducto();
+ 
+        agregarTablaProducto(table_venta,(txt_idProducto.getText()));
+        ValorTotal();
+        
     }//GEN-LAST:event_bto_agregarActionPerformed
 
     private void bto_salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bto_salirActionPerformed
         // TODO add your handling code here:
+        
+        this.dispose();
+        System.gc();
     }//GEN-LAST:event_bto_salirActionPerformed
 
     private void bto_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bto_buscarActionPerformed
         // TODO add your handling code here:
         
-        buscarProducto(Integer.parseInt(this.txt_idProducto.getText()));
+        buscarProducto((txt_idProducto.getText()));
         
         
     }//GEN-LAST:event_bto_buscarActionPerformed

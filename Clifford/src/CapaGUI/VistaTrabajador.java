@@ -33,7 +33,7 @@ public class VistaTrabajador extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(600, 600));
+        setMinimumSize(new java.awt.Dimension(960, 560));
         getContentPane().setLayout(null);
 
         bto_venta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/compras.png"))); // NOI18N

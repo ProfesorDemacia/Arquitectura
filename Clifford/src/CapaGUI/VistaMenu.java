@@ -62,14 +62,11 @@ public class VistaMenu extends javax.swing.JFrame {
         bto_salir = new javax.swing.JButton();
         jPanelNaranja = new javax.swing.JPanel();
         jLabelFondo = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
 
         jButton1.setText("jButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(600, 600));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabelLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/IconPeque.png"))); // NOI18N
@@ -117,12 +114,6 @@ public class VistaMenu extends javax.swing.JFrame {
 
         jLabelFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/FondoGrande.jpg"))); // NOI18N
         getContentPane().add(jLabelFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(-500, -60, 1470, 780));
-
-        jLabel2.setText("jLabel2");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 300, -1, -1));
-
-        jButton2.setText("jButton2");
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 440, -1, -1));
         setJMenuBar(jMenuBar1);
 
         pack();
@@ -131,7 +122,10 @@ public class VistaMenu extends javax.swing.JFrame {
 
     private void bto_ingresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bto_ingresarActionPerformed
         // TODO add your handling code here:
-        validarTrabajador();
+       // validarTrabajador();
+       VistaTrabajador pMenu = new VistaTrabajador();
+                pMenu.setVisible(true);
+                dispose();
     }//GEN-LAST:event_bto_ingresarActionPerformed
 
     private void bto_salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bto_salirActionPerformed
@@ -152,8 +146,6 @@ public class VistaMenu extends javax.swing.JFrame {
     private javax.swing.JButton bto_ingresar;
     private javax.swing.JButton bto_salir;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabelBienvenido;
     private javax.swing.JLabel jLabelFondo;
     private javax.swing.JLabel jLabelLogo;

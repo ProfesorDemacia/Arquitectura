@@ -72,7 +72,7 @@ public class NegocioProducto {
     }
     
     
-    public ArrayList<Producto> consultarProducto(int id_producto)
+    public ArrayList<Producto> buscarProducto(int id_producto)
     {
        ArrayList<Producto> auxListProducto = new ArrayList<>();
        this.configurarConexion();
@@ -101,6 +101,39 @@ public class NegocioProducto {
        return auxListProducto; 
     
     }
+    
+    public ArrayList<Producto> consultarProducto()
+    {
+       ArrayList<Producto> auxListProducto = new ArrayList<>();
+       this.configurarConexion();
+       this.getConect1().setCadenaSQL("SELECT * FROM producto;");
+       this.getConect1().setEsSelect(true);
+       this.getConect1().conectar();
+       
+       try
+       {
+           while(this.getConect1().getDbresultSet().next()) 
+           {
+              Producto auxProducto = new Producto();
+              auxProducto.setIdProducto(this.getConect1().getDbresultSet().getInt("id_producto"));
+              auxProducto.setNombreProducto(this.getConect1().getDbresultSet().getString("nombre_producto"));
+              auxProducto.setDescripcionProducto(this.getConect1().getDbresultSet().getString("descripcion_producto"));
+              auxProducto.setPrecioUnitario(this.getConect1().getDbresultSet().getInt("precio_unitario"));
+              auxProducto.setStockProducto(this.getConect1().getDbresultSet().getInt("stock_producto"));
+              auxListProducto.add(auxProducto);
+           
+           }
+       }
+       catch(Exception ex)
+       {
+          JOptionPane.showMessageDialog(null, "Error SQL ..." + ex.getMessage());
+       }
+       return auxListProducto; 
+    
+    }
+    
+    
+    
     
     
   
