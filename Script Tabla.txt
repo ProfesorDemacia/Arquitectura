@@ -55,7 +55,9 @@ PRIMARY KEY (id_metodo_pago)
 
 CREATE TABLE detalle_venta(
 id_detalle_venta int AUTO_INCREMENT,
+folio_detalle_venta int NOT NULL,
 cantidad_producto int NOT NULL,
+nombre_producto varchar(100) NOT NULL,
 precio_unitario int NOT NULL,
 precio_total int NOT NULL,
 id_producto int references producto(id_producto),

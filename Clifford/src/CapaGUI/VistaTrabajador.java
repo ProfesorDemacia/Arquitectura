@@ -49,12 +49,22 @@ public class VistaTrabajador extends javax.swing.JFrame {
 
         bto_cerrarSesion.setText("Cerrar Sesion");
         bto_cerrarSesion.setPreferredSize(new java.awt.Dimension(150, 23));
+        bto_cerrarSesion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bto_cerrarSesionActionPerformed(evt);
+            }
+        });
         getContentPane().add(bto_cerrarSesion);
         bto_cerrarSesion.setBounds(220, 60, 150, 23);
 
         bto_cancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/eliminar.png"))); // NOI18N
         bto_cancelar.setText("Cancelar Venta");
         bto_cancelar.setPreferredSize(new java.awt.Dimension(125, 23));
+        bto_cancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bto_cancelarActionPerformed(evt);
+            }
+        });
         getContentPane().add(bto_cancelar);
         bto_cancelar.setBounds(490, 310, 170, 50);
 
@@ -68,9 +78,23 @@ public class VistaTrabajador extends javax.swing.JFrame {
 
     private void bto_ventaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bto_ventaActionPerformed
         // TODO add your handling code here:
-        VistaVenta pMenu = new VistaVenta();
+        VistaDetalleVenta pMenu = new VistaDetalleVenta();
         pMenu.setVisible(true);
     }//GEN-LAST:event_bto_ventaActionPerformed
+
+    private void bto_cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bto_cancelarActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_bto_cancelarActionPerformed
+
+    private void bto_cerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bto_cerrarSesionActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+        System.gc();
+        VistaMenu pMenu = new VistaMenu();
+        pMenu.setVisible(true);
+        
+    }//GEN-LAST:event_bto_cerrarSesionActionPerformed
 
     /**
      * @param args the command line arguments

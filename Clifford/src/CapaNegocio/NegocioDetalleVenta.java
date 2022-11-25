@@ -7,6 +7,9 @@ package CapaNegocio;
 
 import CapaConexion.ConexionMySQL;
 import CapaDTO.DetalleVenta;
+import CapaDTO.Venta;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -30,10 +33,12 @@ public class NegocioDetalleVenta {
     {
         this.configurarConexion();
         this.getConect1().setCadenaSQL("INSERT INTO detalle_venta "
-                                     +" (id_detalle_venta,cantidad_producto,precio_unitario,"
-               + "precio_total,id_producto) VALUES ("+
+                                     +" (id_detalle_venta,folio_detalle_venta,cantidad_producto,nombre_producto,"
+               + "precio_unitario, precio_total,id_producto) VALUES ("+
                                       detalleventa.getId_detalle_venta()+ ","+
+                                      detalleventa.getFolio_detalle_venta()+ ","+
                                       detalleventa.getCantidad_producto()+ ","+
+                                      detalleventa.getNombre_producto()+ ","+
                                       detalleventa.getPrecio_unitario()+ ","+
                                       detalleventa.getPrecio_total()+ ","+
                                       detalleventa.getId_producto() + ");");
@@ -47,7 +52,9 @@ public class NegocioDetalleVenta {
        this.configurarConexion();
        this.getConect1().setCadenaSQL("UPDATE detalleventa "
                                      + " SET "
+                                     + ", folio_detalle_vemta = " + detalleventa.getFolio_detalle_venta()
                                      + ", cantidad_producto = " + detalleventa.getCantidad_producto()
+                                     + ", nombre_producto = " + detalleventa.getNombre_producto()
                                      + ", precio_unitario = " + detalleventa.getPrecio_unitario()
                                      + ", precio_total = " + detalleventa.getPrecio_total()
                                      + ", id_producto = " + detalleventa.getId_producto()
@@ -61,6 +68,39 @@ public class NegocioDetalleVenta {
         this.configurarConexion();
         this.getConect1().setCadenaSQL("DELETE FROM detalleventa "
                                        + " WHERE id_detalle_venta = "+id_detalle_venta );
+    }
+    
+    public ArrayList<DetalleVenta> consultaDetalleVenta()
+    {
+       ArrayList<DetalleVenta> auxLisDetalleVenta = new ArrayList<>();
+       this.configurarConexion();
+       this.getConect1().setCadenaSQL("SELECT *  FROM venta;");
+       this.getConect1().setEsSelect(true);
+       this.getConect1().conectar();
+       
+       try
+       {
+           while(this.getConect1().getDbresultSet().next()) 
+           {
+              DetalleVenta auxDetalleVenta = new DetalleVenta();
+              auxDetalleVenta.setId_detalle_venta(this.getConect1().getDbresultSet().getInt("id_detalle_venta"));
+              auxDetalleVenta.setFolio_detalle_venta(this.getConect1().getDbresultSet().getInt("folio_detalle_venta"));
+              auxDetalleVenta.setCantidad_producto(this.getConect1().getDbresultSet().getInt("cantidad_producto"));
+              auxDetalleVenta.setNombre_producto(this.getConect1().getDbresultSet().getString("nombre_producto"));
+              auxDetalleVenta.setPrecio_unitario(this.getConect1().getDbresultSet().getInt("precio_unitario"));
+              auxDetalleVenta.setPrecio_total(this.getConect1().getDbresultSet().getInt("precio_total"));
+              auxDetalleVenta.setId_producto(this.getConect1().getDbresultSet().getInt("id_producto"));
+           
+              auxLisDetalleVenta.add(auxDetalleVenta);
+           
+           }
+       }
+       catch(Exception ex)
+       {
+          JOptionPane.showMessageDialog(null, "Error SQL ..." + ex.getMessage());
+       }
+       return auxLisDetalleVenta; 
+    
     }
     
     

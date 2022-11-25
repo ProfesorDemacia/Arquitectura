@@ -12,7 +12,9 @@ package CapaDTO;
 public class DetalleVenta {
     
     private int id_detalle_venta;
+    private int folio_detalle_venta;
     private int cantidad_producto;
+    private String nombre_producto;
     private int precio_unitario;
     private int precio_total;
     private int id_producto;
@@ -57,6 +59,24 @@ public class DetalleVenta {
         this.id_producto = id_producto;
     }
 
+    public String getNombre_producto() {
+        return nombre_producto;
+    }
+
+    public void setNombre_producto(String nombre_producto) {
+        this.nombre_producto = nombre_producto;
+    }
+
+    public int getFolio_detalle_venta() {
+        return folio_detalle_venta;
+    }
+
+    public void setFolio_detalle_venta(int folio_detalle_venta) {
+        this.folio_detalle_venta = folio_detalle_venta;
+    }
+    
+
+    
 
     
     

@@ -130,8 +130,8 @@ public class VistaMenu extends javax.swing.JFrame {
 
     private void bto_salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bto_salirActionPerformed
         // TODO add your handling code here:
-        this.dispose();
-        System.gc();
+        
+        System.exit(0);
     }//GEN-LAST:event_bto_salirActionPerformed
 
     private void txt_rutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_rutActionPerformed
