@@ -142,3 +142,9 @@ INSERT INTO empleado(rut_empleado,nombre_empleado,apellido_empleado,direccion_em
 INSERT INTO producto (nombre_producto,descripcion_producto,precio_unitario,stock_producto) VALUES ('Champion dog','Comida para perro adulto',10000,100);
 INSERT INTO producto (nombre_producto,descripcion_producto,precio_unitario,stock_producto) VALUES ('Champion cat','Comida para gato adulto',8000,89);
 INSERT INTO producto (nombre_producto,descripcion_producto,precio_unitario,stock_producto) VALUES ('Simparica 20 mg','Comprimido Masticables antipulgas',200,77);
+
+INSERT INTO detalle_venta (folio_detalle_venta,cantidad_producto,nombre_producto,precio_unitario,precio_total,id_producto)
+VALUES (9,2,'Champion dog',10000,20000,10);
+
+
+

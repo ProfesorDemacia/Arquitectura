@@ -74,7 +74,7 @@ public class NegocioDetalleVenta {
     {
        ArrayList<DetalleVenta> auxLisDetalleVenta = new ArrayList<>();
        this.configurarConexion();
-       this.getConect1().setCadenaSQL("SELECT *  FROM venta;");
+       this.getConect1().setCadenaSQL("SELECT *  FROM detalle_venta;");
        this.getConect1().setEsSelect(true);
        this.getConect1().conectar();
        
@@ -102,6 +102,74 @@ public class NegocioDetalleVenta {
        return auxLisDetalleVenta; 
     
     }
+    
+     public ArrayList<DetalleVenta> buscarDetalleVenta(int id_detalle_venta)
+    {
+       ArrayList<DetalleVenta> auxLisDetalleVenta = new ArrayList<>();
+       this.configurarConexion();
+       this.getConect1().setCadenaSQL("SELECT *  FROM detalle_venta WHERE id_detalle_venta = "+id_detalle_venta+";)");
+       this.getConect1().setEsSelect(true);
+       this.getConect1().conectar();
+       
+       try
+       {
+           while(this.getConect1().getDbresultSet().next()) 
+           {
+              DetalleVenta auxDetalleVenta = new DetalleVenta();
+              auxDetalleVenta.setId_detalle_venta(this.getConect1().getDbresultSet().getInt("id_detalle_venta"));
+              auxDetalleVenta.setFolio_detalle_venta(this.getConect1().getDbresultSet().getInt("folio_detalle_venta"));
+              auxDetalleVenta.setCantidad_producto(this.getConect1().getDbresultSet().getInt("cantidad_producto"));
+              auxDetalleVenta.setNombre_producto(this.getConect1().getDbresultSet().getString("nombre_producto"));
+              auxDetalleVenta.setPrecio_unitario(this.getConect1().getDbresultSet().getInt("precio_unitario"));
+              auxDetalleVenta.setPrecio_total(this.getConect1().getDbresultSet().getInt("precio_total"));
+              auxDetalleVenta.setId_producto(this.getConect1().getDbresultSet().getInt("id_producto"));
+           
+              auxLisDetalleVenta.add(auxDetalleVenta);
+           
+           }
+       }
+       catch(Exception ex)
+       {
+          JOptionPane.showMessageDialog(null, "Error SQL ..." + ex.getMessage());
+       }
+       return auxLisDetalleVenta; 
+    
+    }
+     
+     public ArrayList<DetalleVenta> buscarFolio()
+    {
+       ArrayList<DetalleVenta> auxLisDetalleVenta = new ArrayList<>();
+       this.configurarConexion();
+       this.getConect1().setCadenaSQL("SELECT MAX(folio_detalle_venta) FROM detalle_venta;");
+       this.getConect1().setEsSelect(true);
+       this.getConect1().conectar();
+       
+       try
+       {
+           while(this.getConect1().getDbresultSet().next()) 
+           {
+              DetalleVenta auxDetalleVenta = new DetalleVenta();
+              auxDetalleVenta.setId_detalle_venta(this.getConect1().getDbresultSet().getInt("MAX(folio_detalle_venta)"));
+              auxDetalleVenta.setFolio_detalle_venta(this.getConect1().getDbresultSet().getInt("MAX(folio_detalle_venta)"));
+              auxDetalleVenta.setCantidad_producto(this.getConect1().getDbresultSet().getInt("MAX(folio_detalle_venta)"));
+              auxDetalleVenta.setNombre_producto(this.getConect1().getDbresultSet().getString("MAX(folio_detalle_venta)"));
+              auxDetalleVenta.setPrecio_unitario(this.getConect1().getDbresultSet().getInt("MAX(folio_detalle_venta)"));
+              auxDetalleVenta.setPrecio_total(this.getConect1().getDbresultSet().getInt("MAX(folio_detalle_venta)"));
+              auxDetalleVenta.setId_producto(this.getConect1().getDbresultSet().getInt("MAX(folio_detalle_venta)"));
+           
+              auxLisDetalleVenta.add(auxDetalleVenta);
+           
+           }
+       }
+       catch(Exception ex)
+       {
+          JOptionPane.showMessageDialog(null, "Error SQL ..." + ex.getMessage());
+       }
+       return auxLisDetalleVenta; 
+    
+    }
+    
+    
     
     
 

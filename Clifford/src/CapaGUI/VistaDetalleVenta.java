@@ -5,12 +5,15 @@
  */
 package CapaGUI;
 
+import CapaDTO.DetalleVenta;
 import CapaDTO.Producto;
+import CapaNegocio.NegocioDetalleVenta;
 import CapaNegocio.NegocioProducto;
 import CapaNegocio.NegocioVenta;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Iterator;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -33,6 +36,57 @@ public class VistaDetalleVenta extends javax.swing.JFrame {
     }
     
     
+    
+    private void grabarDetalleVenta()
+    {
+      if(table_venta.getRowCount()>0)
+      {
+          
+        try
+        {
+           NegocioDetalleVenta auxNegocioDetalleVenta = new NegocioDetalleVenta();
+           DetalleVenta auxDetalleVenta = new DetalleVenta();
+           int folio = 0;
+           
+            for(int i = 0;i<table_venta.getRowCount();i++)
+            {
+              try
+              {
+              
+              
+              auxNegocioDetalleVenta.configurarConexion();
+              auxNegocioDetalleVenta.getConect1().setCadenaSQL("INSERT INTO detalle_venta "
+                                     +" (folio_detalle_venta,cantidad_producto,nombre_producto,"
+               +"precio_unitario, precio_total,id_producto) VALUES ("+folio+","+table_venta.getValueAt(i, 2)+",'"+table_venta.getValueAt(i, 1)+"',"
+               +table_venta.getValueAt(i, 3)+","+table_venta.getValueAt(i, 4)+","+table_venta.getValueAt(i, 0)+");");
+
+                
+                auxNegocioDetalleVenta.getConect1().setEsSelect(false);
+                auxNegocioDetalleVenta.getConect1().conectar();
+                
+                
+                
+              
+              } catch(Exception ex){
+                  JOptionPane.showMessageDialog(null,"No se pudo registrar"+ex); 
+              }
+          }
+          JOptionPane.showMessageDialog(null,"Redireccionando a la venta");   
+           
+           
+           
+              
+              
+          }catch(Exception ex){
+                  JOptionPane.showMessageDialog(null,"No se pudo registrar"+ex); 
+              }
+          
+          
+      }else
+      {
+          JOptionPane.showMessageDialog(null, "No se han ingresado productos para su venta");
+      }
+    }
     
     
     private void ValorTotal()
@@ -145,7 +199,7 @@ public class VistaDetalleVenta extends javax.swing.JFrame {
                     limpiarDatos();
                 }else
                 {
-                  JOptionPane.showMessageDialog(null,"El producto ya fue registrad");  
+                  JOptionPane.showMessageDialog(null,"El producto ya fue registrado");  
                 }
             
             
@@ -270,6 +324,11 @@ public class VistaDetalleVenta extends javax.swing.JFrame {
         bto_agregar.setBounds(160, 310, 80, 30);
 
         bto_continuar.setText("Continuar");
+        bto_continuar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bto_continuarActionPerformed(evt);
+            }
+        });
         getContentPane().add(bto_continuar);
         bto_continuar.setBounds(710, 450, 90, 40);
 
@@ -349,6 +408,12 @@ public class VistaDetalleVenta extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_bto_buscarActionPerformed
+
+    private void bto_continuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bto_continuarActionPerformed
+        // TODO add your handling code here:
+        grabarDetalleVenta();
+        
+    }//GEN-LAST:event_bto_continuarActionPerformed
 
     /**
      * @param args the command line arguments
