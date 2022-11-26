@@ -5,6 +5,12 @@
  */
 package CapaGUI;
 
+import CapaDTO.DetalleVenta;
+import CapaNegocio.NegocioDetalleVenta;
+import java.util.Iterator;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Cesar
@@ -19,6 +25,37 @@ public class VistaVenta extends javax.swing.JFrame {
         VistaDetalleVenta pVenta = new VistaDetalleVenta();
         txt_montoFinal.setText(pVenta.montofinal);
         lbl_montoFinal.setText(pVenta.montofinal);
+    }
+    
+    
+    public void buscarVenta(int id_folio)
+    {
+        try
+        {
+            DefaultTableModel modelo = new DefaultTableModel();
+            modelo = (DefaultTableModel) this.table_venta.getModel();
+            modelo.setNumRows(0);
+            NegocioDetalleVenta auxNegocioDetalleVenta = new NegocioDetalleVenta();
+            id_folio = auxNegocioDetalleVenta.encontrarFolio();
+            Iterator iter = auxNegocioDetalleVenta.buscarDetalleVenta(id_folio).iterator();
+            int fila = 0;
+            while(iter.hasNext())
+            {
+                DetalleVenta auxDetalleVenta = new DetalleVenta();
+                auxDetalleVenta = (DetalleVenta) iter.next();
+                Object[] num = {};
+                modelo.addRow(num);
+                this.table_venta.setValueAt(auxDetalleVenta.getFolio_detalle_venta(), fila, 0);
+                this.table_venta.setValueAt(auxDetalleVenta.getId_producto(), fila, 1);
+                //this.table_venta.setValueAt(auxDetalleVenta.getNom_jugador(), fila, 2);
+                //this.table_venta.setValueAt(auxDetalleVenta.getTitular(), fila, 3);
+                fila++;
+            }
+        }
+        catch(Exception ex)
+        {
+            JOptionPane.showMessageDialog(null,"No se ha podido listar a los jugadores " + ex.getMessage());
+        }
     }
     
     
@@ -39,6 +76,8 @@ public class VistaVenta extends javax.swing.JFrame {
         bto_pagar = new javax.swing.JButton();
         bto_cancelarVenta = new javax.swing.JButton();
         lbl_montoFinal = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        table_venta = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -59,6 +98,16 @@ public class VistaVenta extends javax.swing.JFrame {
 
         bto_cancelarVenta.setText("Cancelar Venta");
 
+        table_venta.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Folio Venta", "ID Producto", "Nombre Producto", "Cantidad ", "Precio Unitario", "Precio Total"
+            }
+        ));
+        jScrollPane1.setViewportView(table_venta);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -74,11 +123,12 @@ public class VistaVenta extends javax.swing.JFrame {
                         .addGap(20, 20, 20)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(lbl_montoFinal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(txt_montoFinal)
-                        .addComponent(box_metodoPAgo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(bto_cancelarVenta, javax.swing.GroupLayout.Alignment.TRAILING)))
-                .addContainerGap(142, Short.MAX_VALUE))
+                    .addComponent(txt_montoFinal)
+                    .addComponent(box_metodoPAgo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(bto_cancelarVenta, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGap(80, 80, 80)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(87, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -97,7 +147,11 @@ public class VistaVenta extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bto_pagar)
                     .addComponent(bto_cancelarVenta))
-                .addContainerGap(193, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(95, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(215, 215, 215))
         );
 
         pack();
@@ -118,7 +172,9 @@ public class VistaVenta extends javax.swing.JFrame {
     private javax.swing.JButton bto_pagar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbl_montoFinal;
+    private javax.swing.JTable table_venta;
     private javax.swing.JTextField txt_montoFinal;
     // End of variables declaration//GEN-END:variables
 }

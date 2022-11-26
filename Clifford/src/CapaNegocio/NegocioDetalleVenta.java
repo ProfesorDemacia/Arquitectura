@@ -138,7 +138,36 @@ public class NegocioDetalleVenta {
     
     }
      
-     public int buscarFolio()
+     public int sumarFolio()
+    {
+
+       this.configurarConexion();
+       this.getConect1().setCadenaSQL("SELECT MAX(folio_detalle_venta) FROM detalle_venta;");
+       this.getConect1().setEsSelect(true);
+       this.getConect1().conectar();
+       int id_folio = 1;
+       try
+       {
+           while(this.getConect1().getDbresultSet().next()) 
+           {
+              
+              id_folio = (this.getConect1().getDbresultSet().getInt(1));
+
+           
+              
+           
+           }
+       }
+       catch(Exception ex)
+       {
+          JOptionPane.showMessageDialog(null, "Error SQL ..." + ex.getMessage());
+       }
+       return id_folio; 
+    
+    }
+     
+     
+     public int encontrarFolio()
     {
 
        this.configurarConexion();
@@ -165,7 +194,6 @@ public class NegocioDetalleVenta {
        return id_folio; 
     
     }
-     
     
     
     

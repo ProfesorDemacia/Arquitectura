@@ -40,14 +40,14 @@ public class VistaDetalleVenta extends javax.swing.JFrame {
     
     private void grabarDetalleVenta()
     {
-      if(table_venta.getRowCount()>0)
+      if(table_DetalleVenta.getRowCount()>0)
       {
           
         try
         {
             NegocioDetalleVenta auxNegocioDetalleVenta = new NegocioDetalleVenta();
-            int folio = auxNegocioDetalleVenta.buscarFolio();
-            for(int i = 0;i<table_venta.getRowCount();i++)
+            int folio = auxNegocioDetalleVenta.sumarFolio();
+            for(int i = 0;i<table_DetalleVenta.getRowCount();i++)
             {
               try
               {
@@ -61,8 +61,8 @@ public class VistaDetalleVenta extends javax.swing.JFrame {
               auxNegocioDetalleVenta.configurarConexion();
               auxNegocioDetalleVenta.getConect1().setCadenaSQL("INSERT INTO detalle_venta "
                                      +" (folio_detalle_venta,cantidad_producto,nombre_producto,"
-               +"precio_unitario, precio_total,id_producto) VALUES ("+folio+","+table_venta.getValueAt(i, 2)+",'"+table_venta.getValueAt(i, 1)+"',"
-               +table_venta.getValueAt(i, 3)+","+table_venta.getValueAt(i, 4)+","+table_venta.getValueAt(i, 0)+");");
+               +"precio_unitario, precio_total,id_producto) VALUES ("+folio+","+table_DetalleVenta.getValueAt(i, 2)+",'"+table_DetalleVenta.getValueAt(i, 1)+"',"
+               +table_DetalleVenta.getValueAt(i, 3)+","+table_DetalleVenta.getValueAt(i, 4)+","+table_DetalleVenta.getValueAt(i, 0)+");");
 
                 
                 auxNegocioDetalleVenta.getConect1().setEsSelect(false);
@@ -101,11 +101,11 @@ public class VistaDetalleVenta extends javax.swing.JFrame {
         int a = 0;
         int b = 0;
         
-        if (table_venta.getRowCount()>0)
+        if (table_DetalleVenta.getRowCount()>0)
         {
-            for (int i=0;i<table_venta.getRowCount();i++)
+            for (int i=0;i<table_DetalleVenta.getRowCount();i++)
             {
-                b = Integer.parseInt(table_venta.getValueAt(i,4).toString());
+                b = Integer.parseInt(table_DetalleVenta.getValueAt(i,4).toString());
                 a+=b;
             }
             txt_precioFinal.setText(String.valueOf(a));
@@ -185,7 +185,7 @@ public class VistaDetalleVenta extends javax.swing.JFrame {
                 
             
             DefaultTableModel modelo = new DefaultTableModel();
-            modelo = (DefaultTableModel) table_venta.getModel();
+            modelo = (DefaultTableModel) table_DetalleVenta.getModel();
                 
             
                 if (!existeIdProducto(jtable, id_producto, 0))
@@ -201,7 +201,7 @@ public class VistaDetalleVenta extends javax.swing.JFrame {
 
                     modelo.addRow(num);
 
-                    this.table_venta.setModel(modelo);
+                    this.table_DetalleVenta.setModel(modelo);
 
                     limpiarDatos();
                 }else
@@ -240,7 +240,7 @@ public class VistaDetalleVenta extends javax.swing.JFrame {
         txt_nombreProducto = new javax.swing.JTextField();
         txt_precioUnitario = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        table_venta = new javax.swing.JTable();
+        table_DetalleVenta = new javax.swing.JTable();
         bto_agregar = new javax.swing.JButton();
         bto_continuar = new javax.swing.JButton();
         bto_salir = new javax.swing.JButton();
@@ -276,7 +276,7 @@ public class VistaDetalleVenta extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txt_idProducto);
-        txt_idProducto.setBounds(170, 150, 178, 22);
+        txt_idProducto.setBounds(170, 150, 178, 20);
 
         txt_cantidad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -284,7 +284,7 @@ public class VistaDetalleVenta extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txt_cantidad);
-        txt_cantidad.setBounds(170, 180, 178, 22);
+        txt_cantidad.setBounds(170, 180, 178, 20);
 
         jLabel6.setText("Nombre Producto");
         getContentPane().add(jLabel6);
@@ -297,7 +297,7 @@ public class VistaDetalleVenta extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txt_nombreProducto);
-        txt_nombreProducto.setBounds(170, 210, 178, 22);
+        txt_nombreProducto.setBounds(170, 210, 178, 20);
 
         txt_precioUnitario.setEditable(false);
         txt_precioUnitario.addActionListener(new java.awt.event.ActionListener() {
@@ -306,9 +306,9 @@ public class VistaDetalleVenta extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txt_precioUnitario);
-        txt_precioUnitario.setBounds(170, 240, 178, 22);
+        txt_precioUnitario.setBounds(170, 240, 178, 20);
 
-        table_venta.setModel(new javax.swing.table.DefaultTableModel(
+        table_DetalleVenta.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -316,7 +316,7 @@ public class VistaDetalleVenta extends javax.swing.JFrame {
                 "ID producto", "Nombre Producto", "Cantidad", "Precio Unitario ", "Precio Total"
             }
         ));
-        jScrollPane1.setViewportView(table_venta);
+        jScrollPane1.setViewportView(table_DetalleVenta);
 
         getContentPane().add(jScrollPane1);
         jScrollPane1.setBounds(430, 150, 450, 140);
@@ -394,7 +394,7 @@ public class VistaDetalleVenta extends javax.swing.JFrame {
     private void bto_agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bto_agregarActionPerformed
         // TODO add your handling code here:
  
-        agregarTablaProducto(table_venta,(txt_idProducto.getText()));
+        agregarTablaProducto(table_DetalleVenta,(txt_idProducto.getText()));
         ValorTotal();
         
     }//GEN-LAST:event_bto_agregarActionPerformed
@@ -441,7 +441,7 @@ public class VistaDetalleVenta extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable table_venta;
+    private javax.swing.JTable table_DetalleVenta;
     private javax.swing.JTextField txt_cantidad;
     private javax.swing.JTextField txt_idProducto;
     private javax.swing.JTextField txt_nombreProducto;

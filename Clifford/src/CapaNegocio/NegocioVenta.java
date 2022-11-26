@@ -102,6 +102,39 @@ public class NegocioVenta {
        return auxLisVenta; 
     
     }
+    
+    public ArrayList<Venta> buscarVenta(int id_folio)
+    {
+       ArrayList<Venta> auxLisVenta = new ArrayList<>();
+       this.configurarConexion();
+       this.getConect1().setCadenaSQL("SELECT *  FROM venta WHERE id_folio = "+id_folio+";");
+       this.getConect1().setEsSelect(true);
+       this.getConect1().conectar();
+       
+       try
+       {
+           while(this.getConect1().getDbresultSet().next()) 
+           {
+              Venta auxVenta = new Venta();
+              auxVenta.setId_venta(this.getConect1().getDbresultSet().getInt("id_venta"));
+              auxVenta.setFecha_venta(this.getConect1().getDbresultSet().getDate("fecha_venta"));
+              auxVenta.setNombre_empresa(this.getConect1().getDbresultSet().getString("nombre_empresa"));
+              auxVenta.setTotal_venta(this.getConect1().getDbresultSet().getInt("monto_pagar"));
+              auxVenta.setId_detalleVenta(this.getConect1().getDbresultSet().getInt("id_detalle_venta"));
+              auxVenta.setRut_empleado(this.getConect1().getDbresultSet().getString("rut_empleado"));
+              auxVenta.setMedio_pago(this.getConect1().getDbresultSet().getInt("metodo_pago"));
+           
+              auxLisVenta.add(auxVenta);
+           
+           }
+       }
+       catch(Exception ex)
+       {
+          JOptionPane.showMessageDialog(null, "Error SQL ..." + ex.getMessage());
+       }
+       return auxLisVenta; 
+    
+    }
 
     public ConexionMySQL getConect1() {
         return conect1;
