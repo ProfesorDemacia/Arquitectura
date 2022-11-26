@@ -109,7 +109,7 @@ public class NegocioDetalleVenta {
     {
        ArrayList<DetalleVenta> auxLisDetalleVenta = new ArrayList<>();
        this.configurarConexion();
-       this.getConect1().setCadenaSQL("SELECT *  FROM detalle_venta WHERE id_detalle_venta = "+id_detalle_venta+";)");
+       this.getConect1().setCadenaSQL("SELECT * FROM detalle_venta WHERE id_detalle_venta = "+id_detalle_venta+";)");
        this.getConect1().setEsSelect(true);
        this.getConect1().conectar();
        
@@ -151,7 +151,7 @@ public class NegocioDetalleVenta {
            while(this.getConect1().getDbresultSet().next()) 
            {
               
-              id_folio = (this.getConect1().getDbresultSet().getInt(1));
+              id_folio = (this.getConect1().getDbresultSet().getInt(1))+1;
 
            
               
@@ -180,7 +180,7 @@ public class NegocioDetalleVenta {
            while(this.getConect1().getDbresultSet().next()) 
            {
               
-              id_folio = (this.getConect1().getDbresultSet().getInt(1))+1;
+              id_folio = (this.getConect1().getDbresultSet().getInt(1));
 
            
               

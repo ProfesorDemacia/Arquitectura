@@ -114,10 +114,10 @@ public class VistaMenu extends javax.swing.JFrame {
 
     private void bto_ingresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bto_ingresarActionPerformed
         // TODO add your handling code here:
-       validarTrabajador();
-       /*VistaAdministrador pMenu = new VistaAdministrador();
+       //validarTrabajador();
+       VistaTrabajador pMenu = new VistaTrabajador();
        pMenu.setVisible(true);
-       dispose();*/
+       dispose();
     }//GEN-LAST:event_bto_ingresarActionPerformed
 
     private void bto_salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bto_salirActionPerformed

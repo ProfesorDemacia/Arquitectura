@@ -7,6 +7,7 @@ package CapaGUI;
 
 import CapaDTO.DetalleVenta;
 import CapaNegocio.NegocioDetalleVenta;
+import CapaNegocio.NegocioVenta;
 import java.util.Iterator;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -17,6 +18,8 @@ import javax.swing.table.DefaultTableModel;
  */
 public class VistaVenta extends javax.swing.JFrame {
 
+    
+    int id_folio = 0;
     /**
      * Creates new form VistaDetalleVenta
      */
@@ -25,6 +28,9 @@ public class VistaVenta extends javax.swing.JFrame {
         VistaDetalleVenta pVenta = new VistaDetalleVenta();
         txt_montoFinal.setText(pVenta.montofinal);
         lbl_montoFinal.setText(pVenta.montofinal);
+        this.setLocationRelativeTo(null);
+        
+        
     }
     
     
@@ -36,8 +42,9 @@ public class VistaVenta extends javax.swing.JFrame {
             modelo = (DefaultTableModel) this.table_venta.getModel();
             modelo.setNumRows(0);
             NegocioDetalleVenta auxNegocioDetalleVenta = new NegocioDetalleVenta();
+            NegocioVenta auxNegocioVenta = new NegocioVenta();
             id_folio = auxNegocioDetalleVenta.encontrarFolio();
-            Iterator iter = auxNegocioDetalleVenta.buscarDetalleVenta(id_folio).iterator();
+            Iterator iter = auxNegocioVenta.buscarDetalleVenta(id_folio).iterator();
             int fila = 0;
             while(iter.hasNext())
             {
@@ -47,8 +54,10 @@ public class VistaVenta extends javax.swing.JFrame {
                 modelo.addRow(num);
                 this.table_venta.setValueAt(auxDetalleVenta.getFolio_detalle_venta(), fila, 0);
                 this.table_venta.setValueAt(auxDetalleVenta.getId_producto(), fila, 1);
-                //this.table_venta.setValueAt(auxDetalleVenta.getNom_jugador(), fila, 2);
-                //this.table_venta.setValueAt(auxDetalleVenta.getTitular(), fila, 3);
+                this.table_venta.setValueAt(auxDetalleVenta.getNombre_producto(), fila, 2);
+                this.table_venta.setValueAt(auxDetalleVenta.getCantidad_producto(), fila, 3);
+                this.table_venta.setValueAt(auxDetalleVenta.getPrecio_unitario(), fila, 3);
+                this.table_venta.setValueAt(auxDetalleVenta.getPrecio_total(), fila, 3);
                 fila++;
             }
         }
@@ -70,7 +79,6 @@ public class VistaVenta extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        txt_montoFinal = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         box_metodoPAgo = new javax.swing.JComboBox<>();
         bto_pagar = new javax.swing.JButton();
@@ -80,15 +88,13 @@ public class VistaVenta extends javax.swing.JFrame {
         table_venta = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jLabel1.setText("Monto Total a Pagar");
-
-        txt_montoFinal.setEditable(false);
-        txt_montoFinal.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_montoFinalActionPerformed(evt);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
             }
         });
+
+        jLabel1.setText("Monto Total a Pagar");
 
         jLabel2.setText("Modo de Pago");
 
@@ -97,6 +103,13 @@ public class VistaVenta extends javax.swing.JFrame {
         bto_pagar.setText("Pagar");
 
         bto_cancelarVenta.setText("Cancelar Venta");
+        bto_cancelarVenta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bto_cancelarVentaActionPerformed(evt);
+            }
+        });
+
+        lbl_montoFinal.setBorder(new javax.swing.border.MatteBorder(null));
 
         table_venta.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -121,25 +134,27 @@ public class VistaVenta extends javax.swing.JFrame {
                             .addComponent(bto_pagar)
                             .addComponent(jLabel2))
                         .addGap(20, 20, 20)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(lbl_montoFinal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txt_montoFinal)
-                    .addComponent(box_metodoPAgo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(bto_cancelarVenta, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addGap(80, 80, 80)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(51, 51, 51)
+                        .addComponent(bto_cancelarVenta)
+                        .addGap(59, 59, 59))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(box_metodoPAgo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbl_montoFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(27, 27, 27)))
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(87, Short.MAX_VALUE))
+                .addContainerGap(108, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(99, 99, 99)
-                .addComponent(lbl_montoFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGap(124, 124, 124)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel1)
-                    .addComponent(txt_montoFinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(31, 31, 31)
+                    .addComponent(lbl_montoFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(box_metodoPAgo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -157,9 +172,15 @@ public class VistaVenta extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txt_montoFinalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_montoFinalActionPerformed
+    private void bto_cancelarVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bto_cancelarVentaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txt_montoFinalActionPerformed
+       
+    }//GEN-LAST:event_bto_cancelarVentaActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        // TODO add your handling code here:
+        buscarVenta(id_folio);
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments
@@ -175,6 +196,5 @@ public class VistaVenta extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbl_montoFinal;
     private javax.swing.JTable table_venta;
-    private javax.swing.JTextField txt_montoFinal;
     // End of variables declaration//GEN-END:variables
 }
