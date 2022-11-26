@@ -47,6 +47,7 @@ public class VistaMenu extends javax.swing.JFrame {
      */
     public VistaMenu() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -67,6 +68,8 @@ public class VistaMenu extends javax.swing.JFrame {
         jLabelFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setFocusCycleRoot(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/banner.jpg"))); // NOI18N
@@ -104,7 +107,7 @@ public class VistaMenu extends javax.swing.JFrame {
         getContentPane().add(bto_salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 340, 79, -1));
 
         jLabelFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/FondoGrande.jpg"))); // NOI18N
-        getContentPane().add(jLabelFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(-490, -40, 1490, 830));
+        getContentPane().add(jLabelFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(-490, -40, 1430, 830));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
