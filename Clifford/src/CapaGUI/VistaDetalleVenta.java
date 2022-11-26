@@ -34,6 +34,7 @@ public class VistaDetalleVenta extends javax.swing.JFrame {
     public VistaDetalleVenta() {
         initComponents();
     }
+     public static String montofinal = "";
     
     
     
@@ -44,14 +45,17 @@ public class VistaDetalleVenta extends javax.swing.JFrame {
           
         try
         {
-           NegocioDetalleVenta auxNegocioDetalleVenta = new NegocioDetalleVenta();
-           DetalleVenta auxDetalleVenta = new DetalleVenta();
-           int folio = 0;
-           
+            NegocioDetalleVenta auxNegocioDetalleVenta = new NegocioDetalleVenta();
+            int folio = auxNegocioDetalleVenta.buscarFolio();
             for(int i = 0;i<table_venta.getRowCount();i++)
             {
               try
               {
+              
+             
+              
+              auxNegocioDetalleVenta.consultaDetalleVenta();
+              DetalleVenta auxDetalleVenta = new DetalleVenta();
               
               
               auxNegocioDetalleVenta.configurarConexion();
@@ -67,12 +71,15 @@ public class VistaDetalleVenta extends javax.swing.JFrame {
                 
                 
               
-              } catch(Exception ex){
+                } catch(Exception ex){
                   JOptionPane.showMessageDialog(null,"No se pudo registrar"+ex); 
+                    }
               }
-          }
-          JOptionPane.showMessageDialog(null,"Redireccionando a la venta");   
-           
+              JOptionPane.showMessageDialog(null,"Redireccionando a la venta");
+              VistaVenta pMenu = new VistaVenta();
+              ;
+              pMenu.setVisible(true);
+              this.setVisible(false);
            
            
               
@@ -323,7 +330,7 @@ public class VistaDetalleVenta extends javax.swing.JFrame {
         getContentPane().add(bto_agregar);
         bto_agregar.setBounds(160, 310, 80, 30);
 
-        bto_continuar.setText("Continuar");
+        bto_continuar.setText("Pagar");
         bto_continuar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bto_continuarActionPerformed(evt);
@@ -347,9 +354,9 @@ public class VistaDetalleVenta extends javax.swing.JFrame {
 
         jLabel4.setText("Precio Final");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(460, 400, 80, 30);
+        jLabel4.setBounds(650, 360, 80, 30);
         getContentPane().add(txt_precioFinal);
-        txt_precioFinal.setBounds(570, 402, 100, 20);
+        txt_precioFinal.setBounds(730, 360, 160, 30);
 
         bto_buscar.setText("Buscar");
         bto_buscar.addActionListener(new java.awt.event.ActionListener() {
@@ -411,6 +418,7 @@ public class VistaDetalleVenta extends javax.swing.JFrame {
 
     private void bto_continuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bto_continuarActionPerformed
         // TODO add your handling code here:
+        montofinal = txt_precioFinal.getText();
         grabarDetalleVenta();
         
     }//GEN-LAST:event_bto_continuarActionPerformed
@@ -440,4 +448,9 @@ public class VistaDetalleVenta extends javax.swing.JFrame {
     private javax.swing.JTextField txt_precioFinal;
     private javax.swing.JTextField txt_precioUnitario;
     // End of variables declaration//GEN-END:variables
+
+    /**
+     * @return the montofinal
+     */
+
 }

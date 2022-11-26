@@ -16,8 +16,13 @@ public class VistaVenta extends javax.swing.JFrame {
      */
     public VistaVenta() {
         initComponents();
+        VistaDetalleVenta pVenta = new VistaDetalleVenta();
+        txt_montoFinal.setText(pVenta.montofinal);
+        lbl_montoFinal.setText(pVenta.montofinal);
     }
-
+    
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -27,21 +32,80 @@ public class VistaVenta extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
+        txt_montoFinal = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        box_metodoPAgo = new javax.swing.JComboBox<>();
+        bto_pagar = new javax.swing.JButton();
+        bto_cancelarVenta = new javax.swing.JButton();
+        lbl_montoFinal = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jLabel1.setText("Monto Total a Pagar");
+
+        txt_montoFinal.setEditable(false);
+        txt_montoFinal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_montoFinalActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setText("Modo de Pago");
+
+        box_metodoPAgo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione Metodo de Pago", "Credito", "Debido", "Efectivo" }));
+
+        bto_pagar.setText("Pagar");
+
+        bto_cancelarVenta.setText("Cancelar Venta");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 800, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(74, 74, 74)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(bto_pagar)
+                            .addComponent(jLabel2))
+                        .addGap(20, 20, 20)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(lbl_montoFinal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(txt_montoFinal)
+                        .addComponent(box_metodoPAgo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(bto_cancelarVenta, javax.swing.GroupLayout.Alignment.TRAILING)))
+                .addContainerGap(142, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 427, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(99, 99, 99)
+                .addComponent(lbl_montoFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(txt_montoFinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(31, 31, 31)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(box_metodoPAgo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(79, 79, 79)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bto_pagar)
+                    .addComponent(bto_cancelarVenta))
+                .addContainerGap(193, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txt_montoFinalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_montoFinalActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_montoFinalActionPerformed
 
     /**
      * @param args the command line arguments
@@ -49,5 +113,12 @@ public class VistaVenta extends javax.swing.JFrame {
  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> box_metodoPAgo;
+    private javax.swing.JButton bto_cancelarVenta;
+    private javax.swing.JButton bto_pagar;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel lbl_montoFinal;
+    private javax.swing.JTextField txt_montoFinal;
     // End of variables declaration//GEN-END:variables
 }

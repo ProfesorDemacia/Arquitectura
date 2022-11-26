@@ -25,6 +25,9 @@ public class NegocioMenu {
     Empleado l = new Empleado();
     String sql = "SELECT * FROM empleado WHERE rut_empleado = ?";
     try {
+        NegocioEmpleado auxNegocio = new NegocioEmpleado();
+
+        auxNegocio.getConect1().getConnection();
         con = cn.getConnection(); /*editar conexion*/
         ps = con.prepareStatement(sql);
         ps.setString(1, rut_empleado);

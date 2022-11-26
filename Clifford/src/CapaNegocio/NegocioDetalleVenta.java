@@ -8,6 +8,8 @@ package CapaNegocio;
 import CapaConexion.ConexionMySQL;
 import CapaDTO.DetalleVenta;
 import CapaDTO.Venta;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
@@ -136,28 +138,23 @@ public class NegocioDetalleVenta {
     
     }
      
-     public ArrayList<DetalleVenta> buscarFolio()
+     public int buscarFolio()
     {
-       ArrayList<DetalleVenta> auxLisDetalleVenta = new ArrayList<>();
+
        this.configurarConexion();
        this.getConect1().setCadenaSQL("SELECT MAX(folio_detalle_venta) FROM detalle_venta;");
        this.getConect1().setEsSelect(true);
        this.getConect1().conectar();
-       
+       int id_folio = 1;
        try
        {
            while(this.getConect1().getDbresultSet().next()) 
            {
-              DetalleVenta auxDetalleVenta = new DetalleVenta();
-              auxDetalleVenta.setId_detalle_venta(this.getConect1().getDbresultSet().getInt("MAX(folio_detalle_venta)"));
-              auxDetalleVenta.setFolio_detalle_venta(this.getConect1().getDbresultSet().getInt("MAX(folio_detalle_venta)"));
-              auxDetalleVenta.setCantidad_producto(this.getConect1().getDbresultSet().getInt("MAX(folio_detalle_venta)"));
-              auxDetalleVenta.setNombre_producto(this.getConect1().getDbresultSet().getString("MAX(folio_detalle_venta)"));
-              auxDetalleVenta.setPrecio_unitario(this.getConect1().getDbresultSet().getInt("MAX(folio_detalle_venta)"));
-              auxDetalleVenta.setPrecio_total(this.getConect1().getDbresultSet().getInt("MAX(folio_detalle_venta)"));
-              auxDetalleVenta.setId_producto(this.getConect1().getDbresultSet().getInt("MAX(folio_detalle_venta)"));
+              
+              id_folio = (this.getConect1().getDbresultSet().getInt(1))+1;
+
            
-              auxLisDetalleVenta.add(auxDetalleVenta);
+              
            
            }
        }
@@ -165,10 +162,10 @@ public class NegocioDetalleVenta {
        {
           JOptionPane.showMessageDialog(null, "Error SQL ..." + ex.getMessage());
        }
-       return auxLisDetalleVenta; 
+       return id_folio; 
     
     }
-    
+     
     
     
     
