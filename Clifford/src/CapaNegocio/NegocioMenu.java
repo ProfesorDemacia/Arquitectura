@@ -28,6 +28,7 @@ public class NegocioMenu {
         NegocioEmpleado auxNegocio = new NegocioEmpleado();
 
         auxNegocio.getConect1().getConnection();
+        auxNegocio.getConect1().conectar();
         con = cn.getConnection(); /*editar conexion*/
         ps = con.prepareStatement(sql);
         ps.setString(1, rut_empleado);
