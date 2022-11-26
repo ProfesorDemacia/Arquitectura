@@ -26,6 +26,10 @@ public class VistaMenu extends javax.swing.JFrame {
         String rut_empleado = txt_rut.getText();
         if(!"".equals(rut_empleado)){
             emp = menu.emp(rut_empleado);
+            if (txt_rut.getText().equals("")){
+                JOptionPane.showMessageDialog(null, "Ingrese su rut en el campo");}
+            else{
+            
             if (emp.getRut_empleado()!= null){
                 VistaTrabajador pMenu = new VistaTrabajador();
                 pMenu.setVisible(true);
@@ -34,6 +38,7 @@ public class VistaMenu extends javax.swing.JFrame {
             else{
                 JOptionPane.showMessageDialog(null, "Rut incorrecto");
                 }
+        }
         }
         }
 
