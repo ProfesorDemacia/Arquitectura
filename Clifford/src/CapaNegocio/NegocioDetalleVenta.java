@@ -52,9 +52,9 @@ public class NegocioDetalleVenta {
     public void actualizarDetalleVenta(DetalleVenta detalleventa)
     {
        this.configurarConexion();
-       this.getConect1().setCadenaSQL("UPDATE detalleventa "
+       this.getConect1().setCadenaSQL("UPDATE detalle_venta "
                                      + " SET "
-                                     + ", folio_detalle_vemta = " + detalleventa.getFolio_detalle_venta()
+                                     + ", folio_detalle_venta = " + detalleventa.getFolio_detalle_venta()
                                      + ", cantidad_producto = " + detalleventa.getCantidad_producto()
                                      + ", nombre_producto = " + detalleventa.getNombre_producto()
                                      + ", precio_unitario = " + detalleventa.getPrecio_unitario()
@@ -65,11 +65,11 @@ public class NegocioDetalleVenta {
        this.getConect1().conectar();
     }
     
-    public void eliminarDetalleVenta(int id_detalle_venta)
+    public void eliminarDetalleVenta(int id_folio)
     {
         this.configurarConexion();
-        this.getConect1().setCadenaSQL("DELETE FROM detalleventa "
-                                       + " WHERE id_detalle_venta = "+id_detalle_venta );
+        this.getConect1().setCadenaSQL("DELETE FROM detalle_venta "
+                                       + " WHERE folio_detalle_venta = "+id_folio+";" );
     }
     
     public ArrayList<DetalleVenta> consultaDetalleVenta()

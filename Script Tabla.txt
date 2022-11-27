@@ -93,9 +93,9 @@ ALTER TABLE venta ADD FOREIGN KEY(rut_empleado) REFERENCES empleado (rut_emplead
 ALTER TABLE venta ADD FOREIGN KEY(id_metodo_pago) REFERENCES metodo_pago (id_metodo_pago);
 ALTER TABLE anular_venta ADD FOREIGN KEY(id_venta) REFERENCES venta (id_venta);
 
-INSERT INTO metodo_pago (id_metodo_pago,descripcion_pago) VALUES (1,'Efectivo');
+INSERT INTO metodo_pago (id_metodo_pago,descripcion_pago) VALUES (1,'Credito');
 INSERT INTO metodo_pago (id_metodo_pago,descripcion_pago) VALUES (2,'Debito');
-INSERT INTO metodo_pago (id_metodo_pago,descripcion_pago) VALUES (3,'Credito');
+INSERT INTO metodo_pago (id_metodo_pago,descripcion_pago) VALUES (3,'Efectivo');
 
 INSERT INTO tipo_cargo (id_cargo,nombre_cargo) VALUES (1,'Vendedor');
 INSERT INTO tipo_cargo (id_cargo,nombre_cargo) VALUES (2,'Administrador');

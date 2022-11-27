@@ -46,7 +46,7 @@ public class NegocioVenta {
     }
     
     
-    public void actualizarDetalleVenta(Venta venta)
+    public void actualizarVenta(Venta venta)
     {
        this.configurarConexion();
        this.getConect1().setCadenaSQL("UPDATE venta "
@@ -62,7 +62,7 @@ public class NegocioVenta {
        this.getConect1().conectar();
     }
     
-    public void eliminarDetalleVenta(int id_venta)
+    public void eliminarVenta(int id_venta)
     {
         this.configurarConexion();
         this.getConect1().setCadenaSQL("DELETE FROM venta "
@@ -89,7 +89,7 @@ public class NegocioVenta {
               auxVenta.setTotal_venta(this.getConect1().getDbresultSet().getInt("monto_pagar"));
               auxVenta.setId_detalleVenta(this.getConect1().getDbresultSet().getInt("id_detalle_venta"));
               auxVenta.setRut_empleado(this.getConect1().getDbresultSet().getString("rut_empleado"));
-              auxVenta.setMedio_pago(this.getConect1().getDbresultSet().getInt("metodo_pago"));
+              auxVenta.setMedio_pago(this.getConect1().getDbresultSet().getInt("id_metodo_pago"));
            
               auxLisVenta.add(auxVenta);
            
@@ -136,6 +136,30 @@ public class NegocioVenta {
        }
        return auxLisVenta; 
     
+    }
+    
+    
+    public int buscarIdDetalleVenta(int id_folio)
+    {
+        this.configurarConexion();
+        this.getConect1().setCadenaSQL("SELECT MAX(`id_detalle_venta`) FROM detalle_venta WHERE folio_detalle_venta = "+id_folio+";" );
+        this.getConect1().setEsSelect(true);
+        this.getConect1().conectar();
+        try
+        {
+           while(this.getConect1().getDbresultSet().next()) 
+           {
+              
+              id_folio = (this.getConect1().getDbresultSet().getInt(1));
+
+           }
+       }
+       catch(Exception ex)
+       {
+          JOptionPane.showMessageDialog(null, "Error SQL ..." + ex.getMessage());
+       }
+       return id_folio;
+        
     }
 
     public ConexionMySQL getConect1() {

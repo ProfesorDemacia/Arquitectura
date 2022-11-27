@@ -19,18 +19,81 @@ import javax.swing.table.DefaultTableModel;
 public class VistaVenta extends javax.swing.JFrame {
 
     
-    int id_folio = 0;
+    private int id_folio = 0;
+    private String nombre_empresa = "Clifford INC";
     /**
      * Creates new form VistaDetalleVenta
      */
     public VistaVenta() {
         initComponents();
         VistaDetalleVenta pVenta = new VistaDetalleVenta();
-        txt_montoFinal.setText(pVenta.montofinal);
+       
         lbl_montoFinal.setText(pVenta.montofinal);
         this.setLocationRelativeTo(null);
         
         
+    }
+   
+    
+    private int id_detalle_venta = 0;
+    
+    public void cancelarVenta()
+    {
+        try
+        {
+            NegocioVenta auxNegocioVenta = new NegocioVenta();
+            NegocioDetalleVenta auxNegocioDetalleVenta = new NegocioDetalleVenta();
+            id_folio = auxNegocioDetalleVenta.encontrarFolio();
+            auxNegocioDetalleVenta.configurarConexion();
+            auxNegocioDetalleVenta.eliminarDetalleVenta(id_folio);
+            auxNegocioDetalleVenta.getConect1().setEsSelect(false);
+            auxNegocioDetalleVenta.getConect1().conectar();
+            JOptionPane.showMessageDialog(null, "La venta fue cancelada...");
+            this.dispose();
+            
+        }catch(Exception ex){
+            JOptionPane.showMessageDialog(null, "No se pudo cancelar la venta"+ex.getMessage());
+        }
+    }
+    
+    public void validarVenta()
+    {
+        try
+        {
+            if(box_metodoPAgo.getSelectedIndex() == 0)
+            {
+                JOptionPane.showMessageDialog(null, "Seleccione un metodo de pago");
+            }else{
+                try
+                {
+                    
+                    VistaMenu pMenu = new VistaMenu();
+                    String rut_empleado = pMenu.rut_empleado;
+                    NegocioVenta auxNegocioVenta = new NegocioVenta();
+                    NegocioDetalleVenta auxNegocioDetalleVenta = new NegocioDetalleVenta();
+                    id_folio = auxNegocioDetalleVenta.encontrarFolio();
+                    id_detalle_venta =auxNegocioVenta.buscarIdDetalleVenta(id_folio);
+                    auxNegocioVenta.configurarConexion();
+                    auxNegocioVenta.getConect1().setCadenaSQL("INSERT INTO venta (fecha_venta,nombre_empresa, monto_pagar,"
+                            + "id_detalle_venta,rut_empleado,id_metodo_pago) VALUES ((SELECT CURRENT_DATE()),'"+nombre_empresa+"',"
+                            +Integer.parseInt(lbl_montoFinal.getText())+","+id_detalle_venta+",'"+rut_empleado+"',"
+                                    +box_metodoPAgo.getSelectedIndex()+");");
+                    auxNegocioVenta.getConect1().setEsSelect(false);
+                    auxNegocioVenta.getConect1().conectar();
+                    JOptionPane.showMessageDialog(null, "La venta fue realizada...");
+                    this.dispose();
+                
+                }catch(Exception ex){
+                    JOptionPane.showMessageDialog(null, "No se ha podido realizar el pago"+ex.getMessage());
+                }
+                
+                
+            }
+            
+            
+        }catch(Exception ex){
+            JOptionPane.showMessageDialog(null, "No se ha podido realizar el pago"+ex.getMessage());
+        }
     }
     
     
@@ -56,8 +119,8 @@ public class VistaVenta extends javax.swing.JFrame {
                 this.table_venta.setValueAt(auxDetalleVenta.getId_producto(), fila, 1);
                 this.table_venta.setValueAt(auxDetalleVenta.getNombre_producto(), fila, 2);
                 this.table_venta.setValueAt(auxDetalleVenta.getCantidad_producto(), fila, 3);
-                this.table_venta.setValueAt(auxDetalleVenta.getPrecio_unitario(), fila, 3);
-                this.table_venta.setValueAt(auxDetalleVenta.getPrecio_total(), fila, 3);
+                this.table_venta.setValueAt(auxDetalleVenta.getPrecio_unitario(), fila, 4);
+                this.table_venta.setValueAt(auxDetalleVenta.getPrecio_total(), fila, 5);
                 fila++;
             }
         }
@@ -101,6 +164,11 @@ public class VistaVenta extends javax.swing.JFrame {
         box_metodoPAgo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione Metodo de Pago", "Credito", "Debido", "Efectivo" }));
 
         bto_pagar.setText("Pagar");
+        bto_pagar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bto_pagarActionPerformed(evt);
+            }
+        });
 
         bto_cancelarVenta.setText("Cancelar Venta");
         bto_cancelarVenta.addActionListener(new java.awt.event.ActionListener() {
@@ -174,6 +242,7 @@ public class VistaVenta extends javax.swing.JFrame {
 
     private void bto_cancelarVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bto_cancelarVentaActionPerformed
         // TODO add your handling code here:
+        cancelarVenta();
        
     }//GEN-LAST:event_bto_cancelarVentaActionPerformed
 
@@ -181,6 +250,11 @@ public class VistaVenta extends javax.swing.JFrame {
         // TODO add your handling code here:
         buscarVenta(id_folio);
     }//GEN-LAST:event_formWindowOpened
+
+    private void bto_pagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bto_pagarActionPerformed
+        // TODO add your handling code here:
+        validarVenta();
+    }//GEN-LAST:event_bto_pagarActionPerformed
 
     /**
      * @param args the command line arguments

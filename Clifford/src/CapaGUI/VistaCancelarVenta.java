@@ -5,6 +5,13 @@
  */
 package CapaGUI;
 
+import CapaDTO.Venta;
+import CapaNegocio.NegocioCancelarVenta;
+import CapaNegocio.NegocioVenta;
+import java.util.Iterator;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Cesar
@@ -16,6 +23,59 @@ public class VistaCancelarVenta extends javax.swing.JFrame {
      */
     public VistaCancelarVenta() {
         initComponents();
+        buscarVenta();
+    }
+    
+    public void eliminarVenta()
+    {
+        int fila = table_cancelarVenta.getSelectedRow();
+        int id_venta = Integer.parseInt(table_cancelarVenta.getValueAt(fila, 0).toString());
+        int folio = 0;
+        try {
+            
+            NegocioCancelarVenta auxNegocioCancelarVenta = new NegocioCancelarVenta() ;
+            auxNegocioCancelarVenta.configurarConexion();
+            folio = auxNegocioCancelarVenta.encontrarFolio(id_venta);
+            auxNegocioCancelarVenta.eliminarVenta(id_venta);
+            auxNegocioCancelarVenta.eliminarDetalleVenta(folio);
+            auxNegocioCancelarVenta.getConect1().setEsSelect(false);
+            auxNegocioCancelarVenta.getConect1().conectar();
+            
+        } catch (Exception ex) {
+        }
+    }
+    
+    public void buscarVenta()
+    {
+        try
+        {
+            DefaultTableModel modelo = new DefaultTableModel();
+            modelo = (DefaultTableModel) this.table_cancelarVenta.getModel();
+            modelo.setNumRows(0);
+            NegocioVenta auxNegocioVenta = new NegocioVenta();
+            Iterator iter = auxNegocioVenta.consultaVenta().iterator();
+            int fila = 0;
+            while(iter.hasNext())
+            {
+                Venta auxVenta = new Venta();
+                auxVenta = (Venta) iter.next();
+                Object[] num = {};
+                modelo.addRow(num);
+                this.table_cancelarVenta.setValueAt(auxVenta.getId_venta(), fila, 0);
+                this.table_cancelarVenta.setValueAt(auxVenta.getFecha_venta(), fila, 1);
+                this.table_cancelarVenta.setValueAt(auxVenta.getNombre_empresa(), fila, 2);
+                this.table_cancelarVenta.setValueAt(String.valueOf(auxVenta.getTotal_venta()), fila, 3);
+                this.table_cancelarVenta.setValueAt(auxVenta.getId_venta(), fila, 4);
+                this.table_cancelarVenta.setValueAt(auxVenta.getRut_empleado(), fila, 5);
+                this.table_cancelarVenta.setValueAt(auxVenta.getMedio_pago(), fila, 6);
+                fila++;
+                
+            }
+        }
+        catch(Exception ex)
+        {
+            JOptionPane.showMessageDialog(null,"No se ha podido listar a los jugadores " + ex.getMessage());
+        }
     }
 
     /**
@@ -27,17 +87,59 @@ public class VistaCancelarVenta extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        table_cancelarVenta = new javax.swing.JTable();
+        bto_buscar = new javax.swing.JButton();
+        txt_idVenta = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        table_cancelarVenta.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ID Venta", "Fecha Venta", "Nombre Empresa", "Monto a Pagar", "ID Detalle Venta", "Rut Trabajador", "Metodo de PAgo"
+            }
+        ));
+        jScrollPane1.setViewportView(table_cancelarVenta);
+
+        bto_buscar.setText("Buscar");
+
+        jLabel1.setText("ID Venta");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(bto_buscar)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(txt_idVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 642, Short.MAX_VALUE)
+                .addGap(86, 86, 86))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 318, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(66, 66, 66)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_idVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(47, 47, 47)
+                        .addComponent(bto_buscar)))
+                .addContainerGap(90, Short.MAX_VALUE))
         );
 
         pack();
@@ -49,5 +151,10 @@ public class VistaCancelarVenta extends javax.swing.JFrame {
   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bto_buscar;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable table_cancelarVenta;
+    private javax.swing.JTextField txt_idVenta;
     // End of variables declaration//GEN-END:variables
 }

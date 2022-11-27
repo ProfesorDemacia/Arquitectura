@@ -20,10 +20,13 @@ public class VistaMenu extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
     }
     */
+    
+    
+    public static String rut_empleado = "";
+    
     public void validarTrabajador (){
         Empleado emp = new Empleado();
         NegocioMenu menu = new NegocioMenu();
-        String rut_empleado = txt_rut.getText();
         if(!"".equals(rut_empleado)){
             emp = menu.emp(rut_empleado);
             if (txt_rut.getText().equals("")){
@@ -115,9 +118,14 @@ public class VistaMenu extends javax.swing.JFrame {
     private void bto_ingresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bto_ingresarActionPerformed
         // TODO add your handling code here:
        //validarTrabajador();
+       
+       rut_empleado = txt_rut.getText();
        VistaTrabajador pMenu = new VistaTrabajador();
+       
        pMenu.setVisible(true);
-       dispose();
+       this.setVisible(false);
+       
+       
     }//GEN-LAST:event_bto_ingresarActionPerformed
 
     private void bto_salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bto_salirActionPerformed

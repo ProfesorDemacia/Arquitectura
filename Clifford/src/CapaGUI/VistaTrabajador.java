@@ -16,7 +16,11 @@ public class VistaTrabajador extends javax.swing.JFrame {
      */
     public VistaTrabajador() {
         initComponents();
+        VistaMenu pMenu = new VistaMenu();
+        lbl_rutTrabajador.setText(pMenu.rut_empleado);
     }
+    
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -31,6 +35,8 @@ public class VistaTrabajador extends javax.swing.JFrame {
         bto_cerrarSesion = new javax.swing.JButton();
         bto_cancelar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        lbl_rutTrabajador = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(960, 560));
@@ -72,6 +78,14 @@ public class VistaTrabajador extends javax.swing.JFrame {
         getContentPane().add(jLabel1);
         jLabel1.setBounds(0, 0, 980, 140);
 
+        jLabel2.setText("Rut Trabajador");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(30, 170, 90, 30);
+
+        lbl_rutTrabajador.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        getContentPane().add(lbl_rutTrabajador);
+        lbl_rutTrabajador.setBounds(160, 170, 130, 30);
+
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
@@ -84,6 +98,8 @@ public class VistaTrabajador extends javax.swing.JFrame {
 
     private void bto_cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bto_cancelarActionPerformed
         // TODO add your handling code here:
+        VistaCancelarVenta pMenu = new VistaCancelarVenta();
+        pMenu.setVisible(true);
         
     }//GEN-LAST:event_bto_cancelarActionPerformed
 
@@ -106,5 +122,7 @@ public class VistaTrabajador extends javax.swing.JFrame {
     private javax.swing.JButton bto_cerrarSesion;
     private javax.swing.JButton bto_venta;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel lbl_rutTrabajador;
     // End of variables declaration//GEN-END:variables
 }

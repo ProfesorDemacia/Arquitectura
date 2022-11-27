@@ -6,7 +6,10 @@
 package CapaNegocio;
 
 import CapaConexion.ConexionMySQL;
+import CapaDTO.DetalleVenta;
 import CapaDTO.Empleado;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -67,6 +70,41 @@ public class NegocioEmpleado {
         this.configurarConexion();
         this.getConect1().setCadenaSQL("DELETE FROM empleado "
                                        + " WHERE id_detalle_venta = "+id_detalle_venta );
+    }
+    
+    
+    
+    public ArrayList<DetalleVenta> buscarEmpleado(String rut_empleado)
+    {
+       ArrayList<DetalleVenta> auxLisDetalleVenta = new ArrayList<>();
+       this.configurarConexion();
+       this.getConect1().setCadenaSQL("SELECT * FROM empleado WHERE rut_empleado = "+rut_empleado+";)");
+       this.getConect1().setEsSelect(true);
+       this.getConect1().conectar();
+       
+       try
+       {
+           while(this.getConect1().getDbresultSet().next()) 
+           {
+              Empleado auxEmpleado = new Empleado();
+              auxDetalleVenta.setId_detalle_venta(this.getConect1().getDbresultSet().getInt("id_detalle_venta"));
+              auxDetalleVenta.setFolio_detalle_venta(this.getConect1().getDbresultSet().getInt("folio_detalle_venta"));
+              auxDetalleVenta.setCantidad_producto(this.getConect1().getDbresultSet().getInt("cantidad_producto"));
+              auxDetalleVenta.setNombre_producto(this.getConect1().getDbresultSet().getString("nombre_producto"));
+              auxDetalleVenta.setPrecio_unitario(this.getConect1().getDbresultSet().getInt("precio_unitario"));
+              auxDetalleVenta.setPrecio_total(this.getConect1().getDbresultSet().getInt("precio_total"));
+              auxDetalleVenta.setId_producto(this.getConect1().getDbresultSet().getInt("id_producto"));
+           
+              auxLisDetalleVenta.add(auxDetalleVenta);
+           
+           }
+       }
+       catch(Exception ex)
+       {
+          JOptionPane.showMessageDialog(null, "Error SQL ..." + ex.getMessage());
+       }
+       return auxLisDetalleVenta; 
+    
     }
 
     public ConexionMySQL getConect1() {

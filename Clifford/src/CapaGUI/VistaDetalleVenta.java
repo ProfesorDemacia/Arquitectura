@@ -82,7 +82,7 @@ public class VistaDetalleVenta extends javax.swing.JFrame {
               this.setVisible(false);
            
            
-              
+            
               
           }catch(Exception ex){
                   JOptionPane.showMessageDialog(null,"No se pudo registrar"+ex); 
