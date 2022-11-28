@@ -22,6 +22,25 @@ public class VistaRegistro extends javax.swing.JFrame {
      */
     public VistaRegistro() {
         initComponents();
+        registroVentaTable();
+        this.setLocationRelativeTo(null);
+    }
+    
+    private void ValorFinal()
+    {
+        int a = 0;
+        int b = 0;
+        
+        if (tabla_registro.getRowCount()>0)
+        {
+            for (int i=0;i<tabla_registro.getRowCount();i++)
+            {
+                b = Integer.parseInt(tabla_registro.getValueAt(i,3).toString());
+                a+=b;
+            }
+            txt_total.setText(String.valueOf(a));
+            
+        }
     }
     
     private void registroVentaTable(){
@@ -70,6 +89,7 @@ public class VistaRegistro extends javax.swing.JFrame {
         tabla_registro = new javax.swing.JTable();
         txt_total = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
+        bto_volver = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -81,7 +101,7 @@ public class VistaRegistro extends javax.swing.JFrame {
                 bto_mostrarActionPerformed(evt);
             }
         });
-        getContentPane().add(bto_mostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 420, 200, 70));
+        getContentPane().add(bto_mostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 420, 200, 70));
 
         jLabelBanner.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/banner.jpg"))); // NOI18N
         getContentPane().add(jLabelBanner, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 956, 140));
@@ -103,12 +123,30 @@ public class VistaRegistro extends javax.swing.JFrame {
         jLabel2.setText("Total");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 360, -1, -1));
 
+        bto_volver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/salir.png"))); // NOI18N
+        bto_volver.setText("Volver");
+        bto_volver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bto_volverActionPerformed(evt);
+            }
+        });
+        getContentPane().add(bto_volver, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 420, 170, 70));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void bto_mostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bto_mostrarActionPerformed
         // TODO add your handling code here:
+        ValorFinal();
     }//GEN-LAST:event_bto_mostrarActionPerformed
+
+    private void bto_volverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bto_volverActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+        System.gc();
+        VistaAdministrador pMenu = new VistaAdministrador();
+        pMenu.setVisible(true);
+    }//GEN-LAST:event_bto_volverActionPerformed
 
     /**
      * @param args the command line arguments
@@ -117,6 +155,7 @@ public class VistaRegistro extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bto_mostrar;
+    private javax.swing.JButton bto_volver;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabelBanner;
     private javax.swing.JScrollPane jScrollPane1;

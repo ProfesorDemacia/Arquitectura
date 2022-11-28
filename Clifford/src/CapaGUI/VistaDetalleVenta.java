@@ -33,6 +33,7 @@ public class VistaDetalleVenta extends javax.swing.JFrame {
      */
     public VistaDetalleVenta() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
      public static String montofinal = "";
     
@@ -258,17 +259,17 @@ public class VistaDetalleVenta extends javax.swing.JFrame {
         jLabel1.setMaximumSize(new java.awt.Dimension(75, 14));
         jLabel1.setPreferredSize(new java.awt.Dimension(80, 14));
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(40, 150, 70, 20);
+        jLabel1.setBounds(40, 160, 70, 20);
 
         jLabel2.setText("Cantidad");
         jLabel2.setMaximumSize(new java.awt.Dimension(80, 14));
         jLabel2.setPreferredSize(new java.awt.Dimension(80, 14));
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(40, 180, 80, 14);
+        jLabel2.setBounds(40, 210, 80, 14);
 
         jLabel3.setText("Precio Unitario");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(40, 240, 90, 20);
+        jLabel3.setBounds(40, 280, 90, 20);
 
         txt_idProducto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -281,7 +282,7 @@ public class VistaDetalleVenta extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txt_idProducto);
-        txt_idProducto.setBounds(170, 150, 178, 22);
+        txt_idProducto.setBounds(170, 160, 178, 22);
 
         txt_cantidad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -294,11 +295,11 @@ public class VistaDetalleVenta extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txt_cantidad);
-        txt_cantidad.setBounds(170, 180, 178, 22);
+        txt_cantidad.setBounds(170, 200, 178, 22);
 
         jLabel6.setText("Nombre Producto");
         getContentPane().add(jLabel6);
-        jLabel6.setBounds(40, 210, 100, 20);
+        jLabel6.setBounds(40, 240, 100, 20);
 
         txt_nombreProducto.setEditable(false);
         txt_nombreProducto.addActionListener(new java.awt.event.ActionListener() {
@@ -307,7 +308,7 @@ public class VistaDetalleVenta extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txt_nombreProducto);
-        txt_nombreProducto.setBounds(170, 210, 178, 22);
+        txt_nombreProducto.setBounds(170, 240, 178, 22);
 
         txt_precioUnitario.setEditable(false);
         txt_precioUnitario.addActionListener(new java.awt.event.ActionListener() {
@@ -316,7 +317,7 @@ public class VistaDetalleVenta extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txt_precioUnitario);
-        txt_precioUnitario.setBounds(170, 240, 178, 22);
+        txt_precioUnitario.setBounds(170, 280, 178, 22);
 
         table_DetalleVenta.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -339,7 +340,7 @@ public class VistaDetalleVenta extends javax.swing.JFrame {
             }
         });
         getContentPane().add(bto_agregar);
-        bto_agregar.setBounds(170, 320, 120, 60);
+        bto_agregar.setBounds(170, 360, 120, 60);
 
         bto_continuar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/pagar.png"))); // NOI18N
         bto_continuar.setText("Pagar");
@@ -364,7 +365,7 @@ public class VistaDetalleVenta extends javax.swing.JFrame {
         bto_cancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/eliminar.png"))); // NOI18N
         bto_cancelar.setText("Cancelar");
         getContentPane().add(bto_cancelar);
-        bto_cancelar.setBounds(300, 320, 130, 60);
+        bto_cancelar.setBounds(300, 360, 130, 60);
 
         jLabel4.setText("Precio Final");
         getContentPane().add(jLabel4);
@@ -380,7 +381,7 @@ public class VistaDetalleVenta extends javax.swing.JFrame {
             }
         });
         getContentPane().add(bto_buscar);
-        bto_buscar.setBounds(40, 320, 120, 60);
+        bto_buscar.setBounds(40, 360, 120, 60);
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/banner.jpg"))); // NOI18N
         getContentPane().add(jLabel5);

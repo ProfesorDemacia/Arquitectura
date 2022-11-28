@@ -18,7 +18,7 @@ public class VistaAdministrador extends javax.swing.JFrame {
         initComponents();
         VistaMenu pMenu = new VistaMenu();
         lbl_rut.setText(pMenu.rut_empleado);
-        
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -30,26 +30,20 @@ public class VistaAdministrador extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        bto_cerrar = new javax.swing.JButton();
-        jLabelBanner = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         bto_venta = new javax.swing.JButton();
         bto_cancelar = new javax.swing.JButton();
-        bto_reportes = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        bto_reporte = new javax.swing.JButton();
         lbl_rut = new javax.swing.JLabel();
-        bto_cerrarSesion = new javax.swing.JButton();
+        bto_cerrar = new javax.swing.JButton();
+        jLabelBanner = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(null);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        bto_cerrar.setText("Cerrar Sesión");
-        getContentPane().add(bto_cerrar);
-        bto_cerrar.setBounds(820, 90, 97, 23);
-
-        jLabelBanner.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/banner.jpg"))); // NOI18N
-        jLabelBanner.setText("jLabel1");
-        getContentPane().add(jLabelBanner);
-        jLabelBanner.setBounds(0, 0, 980, 140);
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel1.setText("Rut Administrador");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, 210, -1));
 
         bto_venta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/compras.png"))); // NOI18N
         bto_venta.setText("Venta");
@@ -58,8 +52,7 @@ public class VistaAdministrador extends javax.swing.JFrame {
                 bto_ventaActionPerformed(evt);
             }
         });
-        getContentPane().add(bto_venta);
-        bto_venta.setBounds(380, 190, 200, 60);
+        getContentPane().add(bto_venta, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 210, 190, 60));
 
         bto_cancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/eliminar.png"))); // NOI18N
         bto_cancelar.setText("Cancelar Venta");
@@ -68,25 +61,30 @@ public class VistaAdministrador extends javax.swing.JFrame {
                 bto_cancelarActionPerformed(evt);
             }
         });
-        getContentPane().add(bto_cancelar);
-        bto_cancelar.setBounds(380, 280, 200, 60);
+        getContentPane().add(bto_cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 300, 190, 60));
 
-        bto_reportes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/nuevo.png"))); // NOI18N
-        bto_reportes.setText("Reportes");
-        getContentPane().add(bto_reportes);
-        bto_reportes.setBounds(380, 370, 200, 60);
+        bto_reporte.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/nuevo.png"))); // NOI18N
+        bto_reporte.setText("Reportes");
+        bto_reporte.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bto_reporteActionPerformed(evt);
+            }
+        });
+        getContentPane().add(bto_reporte, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 390, 190, 60));
 
-        jLabel1.setText("Rut Administrador");
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(50, 180, 90, 30);
+        lbl_rut.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        getContentPane().add(lbl_rut, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 210, 140, 30));
 
-        lbl_rut.setBorder(new javax.swing.border.MatteBorder(null));
-        getContentPane().add(lbl_rut);
-        lbl_rut.setBounds(150, 190, 70, 20);
+        bto_cerrar.setText("Cerrar Sesión");
+        bto_cerrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bto_cerrarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(bto_cerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 70, 120, -1));
 
-        bto_cerrarSesion.setText("Cerrar Sesion");
-        getContentPane().add(bto_cerrarSesion);
-        bto_cerrarSesion.setBounds(120, 250, 110, 20);
+        jLabelBanner.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/banner.jpg"))); // NOI18N
+        getContentPane().add(jLabelBanner, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 950, 160));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -103,17 +101,30 @@ public class VistaAdministrador extends javax.swing.JFrame {
         pMenu.setVisible(true);
     }//GEN-LAST:event_bto_cancelarActionPerformed
 
+    private void bto_reporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bto_reporteActionPerformed
+        // TODO add your handling code here:
+        VistaRegistro pMenu = new VistaRegistro();
+        pMenu.setVisible(true);
+    }//GEN-LAST:event_bto_reporteActionPerformed
+
+    private void bto_cerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bto_cerrarActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+        System.gc();
+        VistaMenu pMenu = new VistaMenu();
+        pMenu.setVisible(true);
+        
+    }//GEN-LAST:event_bto_cerrarActionPerformed
+
     /**
      * @param args the command line arguments
      */
-
-    
+   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bto_cancelar;
     private javax.swing.JButton bto_cerrar;
-    private javax.swing.JButton bto_cerrarSesion;
-    private javax.swing.JButton bto_reportes;
+    private javax.swing.JButton bto_reporte;
     private javax.swing.JButton bto_venta;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabelBanner;

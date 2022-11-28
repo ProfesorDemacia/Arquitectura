@@ -18,6 +18,7 @@ public class VistaTrabajador extends javax.swing.JFrame {
         initComponents();
         VistaMenu pMenu = new VistaMenu();
         lbl_rutTrabajador.setText(pMenu.rut_empleado);
+        this.setLocationRelativeTo(null);
     }
     
 

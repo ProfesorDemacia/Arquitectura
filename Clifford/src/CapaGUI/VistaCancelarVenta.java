@@ -25,6 +25,7 @@ public class VistaCancelarVenta extends javax.swing.JFrame {
     public VistaCancelarVenta() {
         initComponents();
         buscarVenta();
+        this.setLocationRelativeTo(null);
     }
     
     public void eliminarVenta()

@@ -149,7 +149,8 @@ public class VistaVenta extends javax.swing.JFrame {
         lbl_montoFinal = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         table_venta = new javax.swing.JTable();
-        jLabelBanner = new javax.swing.JLabel();
+        bto_salir = new javax.swing.JButton();
+        bto_cerrar = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -208,9 +209,19 @@ public class VistaVenta extends javax.swing.JFrame {
         getContentPane().add(jScrollPane1);
         jScrollPane1.setBounds(400, 200, 570, 350);
 
-        jLabelBanner.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/banner.jpg"))); // NOI18N
-        getContentPane().add(jLabelBanner);
-        jLabelBanner.setBounds(0, 0, 1040, 130);
+        bto_salir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/salir.png"))); // NOI18N
+        bto_salir.setText("Salir");
+        bto_salir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bto_salirActionPerformed(evt);
+            }
+        });
+        getContentPane().add(bto_salir);
+        bto_salir.setBounds(130, 490, 110, 50);
+
+        bto_cerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/banner.jpg"))); // NOI18N
+        getContentPane().add(bto_cerrar);
+        bto_cerrar.setBounds(0, 0, 1040, 130);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -231,6 +242,11 @@ public class VistaVenta extends javax.swing.JFrame {
         validarVenta();
     }//GEN-LAST:event_bto_pagarActionPerformed
 
+    private void bto_salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bto_salirActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_bto_salirActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -239,10 +255,11 @@ public class VistaVenta extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> box_metodoPAgo;
     private javax.swing.JButton bto_cancelarVenta;
+    private javax.swing.JLabel bto_cerrar;
     private javax.swing.JButton bto_pagar;
+    private javax.swing.JButton bto_salir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabelBanner;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbl_montoFinal;
     private javax.swing.JTable table_venta;
