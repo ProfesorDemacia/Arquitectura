@@ -5,11 +5,10 @@
  */
 package CapaGUI;
 
-import CapaDTO.DetalleVenta;
-import CapaDTO.Producto;
-import CapaNegocio.NegocioDetalleVenta;
-import CapaNegocio.NegocioProducto;
-import CapaNegocio.NegocioVenta;
+
+import capaservicio.DetalleVenta;
+import capaservicio.WebServiceDetalleVenta_Service;
+import capaservicio.WebServiceVenta_Service;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -48,39 +47,35 @@ public class VistaDetalleVenta extends javax.swing.JFrame {
           
         try
         {
-            NegocioDetalleVenta auxNegocioDetalleVenta = new NegocioDetalleVenta();
-            int folio = auxNegocioDetalleVenta.sumarFolio();
+            //NegocioDetalleVenta auxNegocioDetalleVenta = new NegocioDetalleVenta();
+            WebServiceDetalleVenta_Service auxNegocioDetalleVenta = new WebServiceDetalleVenta_Service();
+            int folio = auxNegocioDetalleVenta.getWebServiceDetalleVentaPort().webSumarFolio();
             for(int i = 0;i<table_DetalleVenta.getRowCount();i++)
             {
               try
               {
+              Object cantidad_producto = table_DetalleVenta.getValueAt(i, 2);
+              Object nombre_producto = table_DetalleVenta.getValueAt(i, 1);
+              Object precio_unitario = table_DetalleVenta.getValueAt(i, 3);
+              Object precio_total = table_DetalleVenta.getValueAt(i, 4);
+              Object id_producto = table_DetalleVenta.getValueAt(i, 0);
               
-             
-              
-              auxNegocioDetalleVenta.consultaDetalleVenta();
+              auxNegocioDetalleVenta.getWebServiceDetalleVentaPort().webSumarFolio();
               DetalleVenta auxDetalleVenta = new DetalleVenta();
               
               
-              auxNegocioDetalleVenta.configurarConexion();
-              auxNegocioDetalleVenta.getConect1().setCadenaSQL("INSERT INTO detalle_venta "
-                                     +" (folio_detalle_venta,cantidad_producto,nombre_producto,"
-               +"precio_unitario, precio_total,id_producto) VALUES ("+folio+","+table_DetalleVenta.getValueAt(i, 2)+",'"+table_DetalleVenta.getValueAt(i, 1)+"',"
-               +table_DetalleVenta.getValueAt(i, 3)+","+table_DetalleVenta.getValueAt(i, 4)+","+table_DetalleVenta.getValueAt(i, 0)+");");
+              auxNegocioDetalleVenta.getWebServiceDetalleVentaPort().webConfigurarConexion();
+              auxNegocioDetalleVenta.getWebServiceDetalleVentaPort().webInsertarDetalleVenta(folio,Integer.parseInt(cantidad_producto.toString())
+                      , nombre_producto.toString(),Integer.parseInt(precio_unitario.toString()), Integer.parseInt(precio_total.toString()),
+                      Integer.parseInt(id_producto.toString()));
 
-                
-                auxNegocioDetalleVenta.getConect1().setEsSelect(false);
-                auxNegocioDetalleVenta.getConect1().conectar();
-                
-                
-                
-              
+   
                 } catch(Exception ex){
                   JOptionPane.showMessageDialog(null,"No se pudo registrar"+ex); 
                     }
               }
               JOptionPane.showMessageDialog(null,"Redireccionando a la venta");
               VistaVenta pMenu = new VistaVenta();
-              ;
               pMenu.setVisible(true);
               this.setVisible(false);
            
@@ -294,7 +289,7 @@ public class VistaDetalleVenta extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txt_idProducto);
-        txt_idProducto.setBounds(170, 160, 178, 22);
+        txt_idProducto.setBounds(170, 160, 178, 20);
 
         txt_cantidad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -307,7 +302,7 @@ public class VistaDetalleVenta extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txt_cantidad);
-        txt_cantidad.setBounds(170, 200, 178, 22);
+        txt_cantidad.setBounds(170, 200, 178, 20);
 
         jLabel6.setText("Nombre Producto");
         getContentPane().add(jLabel6);
@@ -320,7 +315,7 @@ public class VistaDetalleVenta extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txt_nombreProducto);
-        txt_nombreProducto.setBounds(170, 240, 178, 22);
+        txt_nombreProducto.setBounds(170, 240, 178, 20);
 
         txt_precioUnitario.setEditable(false);
         txt_precioUnitario.addActionListener(new java.awt.event.ActionListener() {
@@ -329,7 +324,7 @@ public class VistaDetalleVenta extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txt_precioUnitario);
-        txt_precioUnitario.setBounds(170, 280, 178, 22);
+        txt_precioUnitario.setBounds(170, 280, 178, 20);
 
         table_DetalleVenta.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

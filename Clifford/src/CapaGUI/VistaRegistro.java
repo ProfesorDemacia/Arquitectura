@@ -5,8 +5,9 @@
  */
 package CapaGUI;
 
-import CapaDTO.Venta;
-import CapaNegocio.NegocioVenta;
+
+import capaservicio.Venta;
+import capaservicio.WebServiceVenta_Service;
 import java.util.Iterator;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -49,8 +50,8 @@ public class VistaRegistro extends javax.swing.JFrame {
             DefaultTableModel modelo = new DefaultTableModel();
             modelo = (DefaultTableModel) this.tabla_registro.getModel();
             modelo.setNumRows(0);
-            NegocioVenta auxNegocio = new NegocioVenta();
-            Iterator iter = auxNegocio.consultaVenta().iterator();
+            WebServiceVenta_Service auxNegocioVenta = new WebServiceVenta_Service();
+            Iterator iter = auxNegocioVenta.getWebServiceVentaPort().webConsultaVenta().iterator();
             int fila = 0;
             while(iter.hasNext())
             {
@@ -58,13 +59,13 @@ public class VistaRegistro extends javax.swing.JFrame {
                 auxVent = (Venta) iter.next();
                 Object[] num = {};
                 modelo.addRow(num);
-                this.tabla_registro.setValueAt(auxVent.getId_venta(), fila, 0);
-                this.tabla_registro.setValueAt(auxVent.getFecha_venta(), fila, 1);
-                this.tabla_registro.setValueAt(auxVent.getNombre_empresa(), fila, 2);
-                this.tabla_registro.setValueAt(auxVent.getTotal_venta(), fila, 3);
-                this.tabla_registro.setValueAt(auxVent.getId_detalleVenta(), fila, 4);
-                this.tabla_registro.setValueAt(auxVent.getRut_empleado(), fila, 5);
-                this.tabla_registro.setValueAt(auxVent.getMedio_pago(), fila, 6);
+                this.tabla_registro.setValueAt(auxVent.getIdVenta(), fila, 0);
+                this.tabla_registro.setValueAt(auxVent.getFechaVenta(), fila, 1);
+                this.tabla_registro.setValueAt(auxVent.getNombreEmpresa(), fila, 2);
+                this.tabla_registro.setValueAt(auxVent.getTotalVenta(), fila, 3);
+                this.tabla_registro.setValueAt(auxVent.getIdDetalleVenta(), fila, 4);
+                this.tabla_registro.setValueAt(auxVent.getRutEmpleado(), fila, 5);
+                this.tabla_registro.setValueAt(auxVent.getMedioPago(), fila, 6);
                 fila++;
             }
         }

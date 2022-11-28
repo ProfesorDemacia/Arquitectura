@@ -28,19 +28,13 @@ public class NegocioVenta {
         this.getConect1().setUsuario("root");
         this.getConect1().setPass("");
 }
-    public void insertarVenta(Venta venta)
+    public void insertarVenta(String nombre_empresa,String lbl_montoFinal,int id_detalle_venta,String rut_empleado,int metodo_pago)
     {
         this.configurarConexion();
-        this.getConect1().setCadenaSQL("INSERT INTO venta "
-                                     +" (id_venta,fecha_venta,nombre_empresa,monto_pagar,"
-               + "id_detalle_venta,rut_empleado,id_metodo_pago) VALUES ("+
-                                      venta.getId_venta()+ ","+
-                                      venta.getFecha_venta()+ ","+
-                                      venta.getNombre_empresa()+ ","+
-                                      venta.getMedio_pago()+ ","+
-                                      venta.getId_detalleVenta()+ ","+
-                                      venta.getRut_empleado()+ ","+
-                                      venta.getMedio_pago() + ");");
+        this.getConect1().setCadenaSQL("INSERT INTO venta (fecha_venta,nombre_empresa, monto_pagar,"
+                            + "id_detalle_venta,rut_empleado,id_metodo_pago) VALUES ((SELECT CURRENT_DATE()),'"+nombre_empresa+"',"
+                            +Integer.parseInt(lbl_montoFinal)+","+id_detalle_venta+",'"+rut_empleado+"',"
+                                    +metodo_pago+");");
        this.getConect1().setEsSelect(false);
        this.getConect1().conectar();
     }
@@ -137,40 +131,7 @@ public class NegocioVenta {
     }
     
     
-    public ArrayList<DetalleVenta> buscarDetalleVenta(int id_folio)
-    {
-       ArrayList<DetalleVenta> auxLisVenta = new ArrayList<>();
-       this.configurarConexion();
-       this.getConect1().setCadenaSQL("SELECT *  FROM detalle_venta WHERE folio_detalle_venta = "+id_folio+";");
-       this.getConect1().setEsSelect(true);
-       this.getConect1().conectar();
-       
-       try
-       {
-           while(this.getConect1().getDbresultSet().next()) 
-           {
-              DetalleVenta auxVenta = new DetalleVenta();
-              
-              
-              auxVenta.setId_detalle_venta(this.getConect1().getDbresultSet().getInt("id_detalle_venta"));
-              auxVenta.setFolio_detalle_venta(this.getConect1().getDbresultSet().getInt("folio_detalle_venta"));
-              auxVenta.setCantidad_producto(this.getConect1().getDbresultSet().getInt("cantidad_producto"));
-              auxVenta.setNombre_producto(this.getConect1().getDbresultSet().getString("nombre_producto"));
-              auxVenta.setPrecio_unitario(this.getConect1().getDbresultSet().getInt("precio_unitario"));
-              auxVenta.setPrecio_total(this.getConect1().getDbresultSet().getInt("precio_total"));
-              auxVenta.setId_producto(this.getConect1().getDbresultSet().getInt("id_producto"));
-           
-              auxLisVenta.add(auxVenta);
-           
-           }
-       }
-       catch(Exception ex)
-       {
-          JOptionPane.showMessageDialog(null, "Error SQL ..." + ex.getMessage());
-       }
-       return auxLisVenta; 
-    
-    }
+ 
     
     
     public int buscarIdDetalleVenta(int id_folio)

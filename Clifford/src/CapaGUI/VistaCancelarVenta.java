@@ -5,10 +5,9 @@
  */
 package CapaGUI;
 
-import CapaDTO.Venta;
-import CapaNegocio.NegocioCancelarVenta;
-import CapaNegocio.NegocioDetalleVenta;
-import CapaNegocio.NegocioVenta;
+import capaservicio.Venta;
+import capaservicio.WebServiceDetalleVenta_Service;
+import capaservicio.WebServiceVenta_Service;
 import java.util.Iterator;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -36,25 +35,19 @@ public class VistaCancelarVenta extends javax.swing.JFrame {
         int folio = 0;
         try {
             
-            NegocioCancelarVenta auxNegocioCancelarVenta = new NegocioCancelarVenta() ;
-            NegocioDetalleVenta auxNegocioDetalleVenta =  new NegocioDetalleVenta();
+            WebServiceVenta_Service auxNegocioVenta = new WebServiceVenta_Service();
+            WebServiceDetalleVenta_Service auxNegocioDetalleVenta = new WebServiceDetalleVenta_Service();
             
          
-            auxNegocioCancelarVenta.configurarConexion();
-            folio = auxNegocioDetalleVenta.encontrarFolioEspecifico(id_detalle);
-            auxNegocioCancelarVenta.eliminarVenta(id_venta);  
-            auxNegocioCancelarVenta.getConect1().setEsSelect(false);
-            auxNegocioCancelarVenta.getConect1().conectar();
-            auxNegocioCancelarVenta.getConect1().cerrar();
+            auxNegocioDetalleVenta.getWebServiceDetalleVentaPort().webConfigurarConexion();
+            folio = auxNegocioDetalleVenta.getWebServiceDetalleVentaPort().webEncontrarFolioEspecifico(id_detalle);
+            auxNegocioVenta.getWebServiceVentaPort().webEliminarVenta(id_venta);  
             
             
             
             
-            auxNegocioDetalleVenta.configurarConexion();
-            auxNegocioDetalleVenta.eliminarDetalleVenta(folio);
-            auxNegocioDetalleVenta.getConect1().setEsSelect(false);
-            
-            auxNegocioDetalleVenta.getConect1().conectar();
+            auxNegocioDetalleVenta.getWebServiceDetalleVentaPort().webConfigurarConexion();
+            auxNegocioDetalleVenta.getWebServiceDetalleVentaPort().webEliminarDetalleVenta(folio);
             JOptionPane.showMessageDialog(null,"Se borro la tabla con exito");
             
             
@@ -70,8 +63,8 @@ public class VistaCancelarVenta extends javax.swing.JFrame {
             DefaultTableModel modelo = new DefaultTableModel();
             modelo = (DefaultTableModel) this.table_cancelarVenta.getModel();
             modelo.setNumRows(0);
-            NegocioVenta auxNegocioVenta = new NegocioVenta();
-            Iterator iter = auxNegocioVenta.consultaVenta().iterator();
+            WebServiceVenta_Service auxNegocioVenta = new WebServiceVenta_Service();
+            Iterator iter = auxNegocioVenta.getWebServiceVentaPort().webConsultaVenta().iterator();
             int fila = 0;
             while(iter.hasNext())
             {
@@ -79,13 +72,13 @@ public class VistaCancelarVenta extends javax.swing.JFrame {
                 auxVenta = (Venta) iter.next();
                 Object[] num = {};
                 modelo.addRow(num);
-                this.table_cancelarVenta.setValueAt(auxVenta.getId_venta(), fila, 0);
-                this.table_cancelarVenta.setValueAt(auxVenta.getFecha_venta(), fila, 1);
-                this.table_cancelarVenta.setValueAt(auxVenta.getNombre_empresa(), fila, 2);
-                this.table_cancelarVenta.setValueAt((auxVenta.getTotal_venta()), fila, 3);
-                this.table_cancelarVenta.setValueAt(auxVenta.getId_detalleVenta(), fila, 4);
-                this.table_cancelarVenta.setValueAt(auxVenta.getRut_empleado(), fila, 5);
-                this.table_cancelarVenta.setValueAt(auxVenta.getMedio_pago(), fila, 6);
+                this.table_cancelarVenta.setValueAt(auxVenta.getIdVenta(), fila, 0);
+                this.table_cancelarVenta.setValueAt(auxVenta.getFechaVenta(), fila, 1);
+                this.table_cancelarVenta.setValueAt(auxVenta.getNombreEmpresa(), fila, 2);
+                this.table_cancelarVenta.setValueAt((auxVenta.getTotalVenta()), fila, 3);
+                this.table_cancelarVenta.setValueAt(auxVenta.getIdDetalleVenta(), fila, 4);
+                this.table_cancelarVenta.setValueAt(auxVenta.getRutEmpleado(), fila, 5);
+                this.table_cancelarVenta.setValueAt(auxVenta.getMedioPago(), fila, 6);
                 fila++;
                 
             }
@@ -102,8 +95,8 @@ public class VistaCancelarVenta extends javax.swing.JFrame {
             DefaultTableModel modelo = new DefaultTableModel();
             modelo = (DefaultTableModel) this.table_cancelarVenta.getModel();
             modelo.setNumRows(0);
-            NegocioVenta auxNegocioVenta = new NegocioVenta();
-            Iterator iter = auxNegocioVenta.consultaVentaEspecifica(id_venta).iterator();
+            WebServiceVenta_Service auxNegocioVenta = new WebServiceVenta_Service();
+            Iterator iter = auxNegocioVenta.getWebServiceVentaPort().webConsultarVentaEspecifica(id_venta).iterator();
             int fila = 0;
             while(iter.hasNext())
             {
@@ -111,13 +104,13 @@ public class VistaCancelarVenta extends javax.swing.JFrame {
                 auxVenta = (Venta) iter.next();
                 Object[] num = {};
                 modelo.addRow(num);
-                this.table_cancelarVenta.setValueAt(auxVenta.getId_venta(), fila, 0);
-                this.table_cancelarVenta.setValueAt(auxVenta.getFecha_venta(), fila, 1);
-                this.table_cancelarVenta.setValueAt(auxVenta.getNombre_empresa(), fila, 2);
-                this.table_cancelarVenta.setValueAt((auxVenta.getTotal_venta()), fila, 3);
-                this.table_cancelarVenta.setValueAt(auxVenta.getId_detalleVenta(), fila, 4);
-                this.table_cancelarVenta.setValueAt(auxVenta.getRut_empleado(), fila, 5);
-                this.table_cancelarVenta.setValueAt(auxVenta.getMedio_pago(), fila, 6);
+                this.table_cancelarVenta.setValueAt(auxVenta.getIdVenta(), fila, 0);
+                this.table_cancelarVenta.setValueAt(auxVenta.getFechaVenta(), fila, 1);
+                this.table_cancelarVenta.setValueAt(auxVenta.getNombreEmpresa(), fila, 2);
+                this.table_cancelarVenta.setValueAt((auxVenta.getTotalVenta()), fila, 3);
+                this.table_cancelarVenta.setValueAt(auxVenta.getIdDetalleVenta(), fila, 4);
+                this.table_cancelarVenta.setValueAt(auxVenta.getRutEmpleado(), fila, 5);
+                this.table_cancelarVenta.setValueAt(auxVenta.getMedioPago(), fila, 6);
                 fila++;
 
             }

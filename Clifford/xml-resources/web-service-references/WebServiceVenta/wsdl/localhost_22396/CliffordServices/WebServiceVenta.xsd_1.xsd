@@ -1,0 +1,118 @@
+<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI (http://jax-ws.java.net). RI's version is Metro/2.3.2-b608 (trunk-7979; 2015-01-21T12:50:19+0000) JAXWS-RI/2.2.11-b150120.1832 JAXWS-API/2.2.12 JAXB-RI/2.2.12-b141219.1637 JAXB-API/2.2.13-b141020.1521 svn-revision#unknown. --><xs:schema xmlns:tns="http://CapaServicio/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://CapaServicio/">
+
+<xs:element name="webActualizarVenta" type="tns:webActualizarVenta"/>
+
+<xs:element name="webActualizarVentaResponse" type="tns:webActualizarVentaResponse"/>
+
+<xs:element name="webBuscarIdDetalleVenta" type="tns:webBuscarIdDetalleVenta"/>
+
+<xs:element name="webBuscarIdDetalleVentaResponse" type="tns:webBuscarIdDetalleVentaResponse"/>
+
+<xs:element name="webConfigurarConexion" type="tns:webConfigurarConexion"/>
+
+<xs:element name="webConfigurarConexionResponse" type="tns:webConfigurarConexionResponse"/>
+
+<xs:element name="webConsultaVenta" type="tns:webConsultaVenta"/>
+
+<xs:element name="webConsultaVentaResponse" type="tns:webConsultaVentaResponse"/>
+
+<xs:element name="webConsultarVentaEspecifica" type="tns:webConsultarVentaEspecifica"/>
+
+<xs:element name="webConsultarVentaEspecificaResponse" type="tns:webConsultarVentaEspecificaResponse"/>
+
+<xs:element name="webEliminarVenta" type="tns:webEliminarVenta"/>
+
+<xs:element name="webEliminarVentaResponse" type="tns:webEliminarVentaResponse"/>
+
+<xs:element name="webInsertarVenta" type="tns:webInsertarVenta"/>
+
+<xs:element name="webInsertarVentaResponse" type="tns:webInsertarVentaResponse"/>
+
+<xs:complexType name="webConsultarVentaEspecifica">
+<xs:sequence>
+<xs:element name="id_venta" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="webConsultarVentaEspecificaResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:venta" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="venta">
+<xs:sequence>
+<xs:element name="fecha_venta" type="xs:dateTime" minOccurs="0"/>
+<xs:element name="id_detalleVenta" type="xs:int"/>
+<xs:element name="id_venta" type="xs:int"/>
+<xs:element name="medio_pago" type="xs:int"/>
+<xs:element name="nombre_empresa" type="xs:string" minOccurs="0"/>
+<xs:element name="rut_empleado" type="xs:string" minOccurs="0"/>
+<xs:element name="total_venta" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="webInsertarVenta">
+<xs:sequence>
+<xs:element name="Venta" type="xs:string" minOccurs="0"/>
+<xs:element name="arg1" type="xs:string" minOccurs="0"/>
+<xs:element name="arg2" type="xs:int"/>
+<xs:element name="arg3" type="xs:string" minOccurs="0"/>
+<xs:element name="arg4" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="webInsertarVentaResponse">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="webConsultaVenta">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="webConsultaVentaResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:venta" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="webActualizarVenta">
+<xs:sequence>
+<xs:element name="Venta" type="tns:venta" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="webActualizarVentaResponse">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="webConfigurarConexion">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="webConfigurarConexionResponse">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="webEliminarVenta">
+<xs:sequence>
+<xs:element name="id_venta" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="webEliminarVentaResponse">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="webBuscarIdDetalleVenta">
+<xs:sequence>
+<xs:element name="folio_detalle_venta" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="webBuscarIdDetalleVentaResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>

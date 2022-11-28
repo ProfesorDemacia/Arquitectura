@@ -5,9 +5,10 @@
  */
 package CapaGUI;
 
-import CapaDTO.DetalleVenta;
-import CapaNegocio.NegocioDetalleVenta;
-import CapaNegocio.NegocioVenta;
+
+import capaservicio.DetalleVenta;
+import capaservicio.WebServiceDetalleVenta_Service;
+import capaservicio.WebServiceVenta_Service;
 import java.util.Iterator;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -35,19 +36,19 @@ public class VistaVenta extends javax.swing.JFrame {
     }
    
     
-    private int id_detalle_venta = 0;
+    
     
     public void cancelarVenta()
     {
+        int id_detalle_venta = 0;
         try
         {
-            NegocioVenta auxNegocioVenta = new NegocioVenta();
-            NegocioDetalleVenta auxNegocioDetalleVenta = new NegocioDetalleVenta();
-            id_folio = auxNegocioDetalleVenta.encontrarFolio();
-            auxNegocioDetalleVenta.configurarConexion();
-            auxNegocioDetalleVenta.eliminarDetalleVenta(id_folio);
-            auxNegocioDetalleVenta.getConect1().setEsSelect(false);
-            auxNegocioDetalleVenta.getConect1().conectar();
+            //NegocioVenta auxNegocioVenta = new NegocioVenta();
+            WebServiceVenta_Service auxNegocioVenta = new WebServiceVenta_Service();
+            WebServiceDetalleVenta_Service auxNegocioDetalleVenta = new WebServiceDetalleVenta_Service();
+            id_folio = auxNegocioDetalleVenta.getWebServiceDetalleVentaPort().webEncontrarFolio();
+            auxNegocioDetalleVenta.getWebServiceDetalleVentaPort().webConfigurarConexion();
+            auxNegocioDetalleVenta.getWebServiceDetalleVentaPort().webEliminarDetalleVenta(id_detalle_venta);
             JOptionPane.showMessageDialog(null, "La venta fue cancelada...");
             this.dispose();
             
@@ -58,6 +59,7 @@ public class VistaVenta extends javax.swing.JFrame {
     
     public void validarVenta()
     {
+        int id_detalle_venta = 0;
         try
         {
             if(box_metodoPAgo.getSelectedIndex() == 0)
@@ -69,17 +71,15 @@ public class VistaVenta extends javax.swing.JFrame {
                     
                     VistaMenu pMenu = new VistaMenu();
                     String rut_empleado = pMenu.rut_empleado;
-                    NegocioVenta auxNegocioVenta = new NegocioVenta();
-                    NegocioDetalleVenta auxNegocioDetalleVenta = new NegocioDetalleVenta();
-                    id_folio = auxNegocioDetalleVenta.encontrarFolio();
-                    id_detalle_venta =auxNegocioVenta.buscarIdDetalleVenta(id_folio);
-                    auxNegocioVenta.configurarConexion();
-                    auxNegocioVenta.getConect1().setCadenaSQL("INSERT INTO venta (fecha_venta,nombre_empresa, monto_pagar,"
-                            + "id_detalle_venta,rut_empleado,id_metodo_pago) VALUES ((SELECT CURRENT_DATE()),'"+nombre_empresa+"',"
-                            +Integer.parseInt(lbl_montoFinal.getText())+","+id_detalle_venta+",'"+rut_empleado+"',"
-                                    +box_metodoPAgo.getSelectedIndex()+");");
-                    auxNegocioVenta.getConect1().setEsSelect(false);
-                    auxNegocioVenta.getConect1().conectar();
+                    //NegocioVenta auxNegocioVenta = new NegocioVenta();
+                    WebServiceVenta_Service auxNegocioVenta = new WebServiceVenta_Service();
+                    WebServiceDetalleVenta_Service auxNegocioDetalleVenta = new WebServiceDetalleVenta_Service();
+                    id_folio = auxNegocioDetalleVenta.getWebServiceDetalleVentaPort().webEncontrarFolio();
+                    id_detalle_venta =auxNegocioVenta.getWebServiceVentaPort().webBuscarIdDetalleVenta(id_folio);
+                    auxNegocioVenta.getWebServiceVentaPort().webConfigurarConexion();
+                    auxNegocioVenta.getWebServiceVentaPort().webInsertarVenta(nombre_empresa,lbl_montoFinal.getText(),
+                            +id_detalle_venta,rut_empleado,box_metodoPAgo.getSelectedIndex());
+                    
                     JOptionPane.showMessageDialog(null, "La venta fue realizada...");
                     this.dispose();
                 
@@ -104,10 +104,9 @@ public class VistaVenta extends javax.swing.JFrame {
             DefaultTableModel modelo = new DefaultTableModel();
             modelo = (DefaultTableModel) this.table_venta.getModel();
             modelo.setNumRows(0);
-            NegocioDetalleVenta auxNegocioDetalleVenta = new NegocioDetalleVenta();
-            NegocioVenta auxNegocioVenta = new NegocioVenta();
-            id_folio = auxNegocioDetalleVenta.encontrarFolio();
-            Iterator iter = auxNegocioVenta.buscarDetalleVenta(id_folio).iterator();
+            WebServiceDetalleVenta_Service auxNegocioDetalleVenta = new WebServiceDetalleVenta_Service();
+            id_folio = auxNegocioDetalleVenta.getWebServiceDetalleVentaPort().webEncontrarFolio();
+            Iterator iter = auxNegocioDetalleVenta.getWebServiceDetalleVentaPort().webBuscarDetalleVenta(id_folio).iterator();
             int fila = 0;
             while(iter.hasNext())
             {
@@ -115,12 +114,12 @@ public class VistaVenta extends javax.swing.JFrame {
                 auxDetalleVenta = (DetalleVenta) iter.next();
                 Object[] num = {};
                 modelo.addRow(num);
-                this.table_venta.setValueAt(auxDetalleVenta.getFolio_detalle_venta(), fila, 0);
-                this.table_venta.setValueAt(auxDetalleVenta.getId_producto(), fila, 1);
-                this.table_venta.setValueAt(auxDetalleVenta.getNombre_producto(), fila, 2);
-                this.table_venta.setValueAt(auxDetalleVenta.getCantidad_producto(), fila, 3);
-                this.table_venta.setValueAt(auxDetalleVenta.getPrecio_unitario(), fila, 4);
-                this.table_venta.setValueAt(auxDetalleVenta.getPrecio_total(), fila, 5);
+                this.table_venta.setValueAt(auxDetalleVenta.getFolioDetalleVenta(), fila, 0);
+                this.table_venta.setValueAt(auxDetalleVenta.getIdProducto(), fila, 1);
+                this.table_venta.setValueAt(auxDetalleVenta.getNombreProducto(), fila, 2);
+                this.table_venta.setValueAt(auxDetalleVenta.getCantidadProducto(), fila, 3);
+                this.table_venta.setValueAt(auxDetalleVenta.getPrecioUnitario(), fila, 4);
+                this.table_venta.setValueAt(auxDetalleVenta.getPrecioTotal(), fila, 5);
                 fila++;
             }
         }

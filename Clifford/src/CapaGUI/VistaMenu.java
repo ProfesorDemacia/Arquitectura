@@ -4,9 +4,6 @@
  * and open the template in the editor.
  */
 package CapaGUI;
-import CapaNegocio.NegocioMenu;
-import CapaDTO.Empleado;
-import CapaNegocio.NegocioCargo;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <system systemId="http://localhost:22396/CliffordServices/WebServiceVenta?WSDL" uri="wsdl/localhost_22396/CliffordServices/WebServiceVenta.wsdl"/>
+    <system systemId="http://localhost:22396/CliffordServices/WebServiceVenta?xsd=1" uri="wsdl/localhost_22396/CliffordServices/WebServiceVenta.xsd_1.xsd"/>
+    <system systemId="http://localhost:22396/CliffordServices/WebServiceDetalleVenta?WSDL" uri="wsdl/localhost_22396/CliffordServices/WebServiceDetalleVenta.wsdl"/>
+    <system systemId="http://localhost:22396/CliffordServices/WebServiceDetalleVenta?xsd=1" uri="wsdl/localhost_22396/CliffordServices/WebServiceDetalleVenta.xsd_1.xsd"/>
+</catalog>

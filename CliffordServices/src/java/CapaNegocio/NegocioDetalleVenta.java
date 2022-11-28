@@ -31,19 +31,14 @@ public class NegocioDetalleVenta {
         this.getConect1().setPass("");
 }
     
-    public void insertarDetalleVenta(DetalleVenta detalleventa)
+    public void insertarDetalleVenta(int folio, int cantidad_producto, String nombre_producto, int precio_unitario, int precio_total, int id_producto)
     {
         this.configurarConexion();
         this.getConect1().setCadenaSQL("INSERT INTO detalle_venta "
-                                     +" (id_detalle_venta,folio_detalle_venta,cantidad_producto,nombre_producto,"
-               + "precio_unitario, precio_total,id_producto) VALUES ("+
-                                      detalleventa.getId_detalle_venta()+ ","+
-                                      detalleventa.getFolio_detalle_venta()+ ","+
-                                      detalleventa.getCantidad_producto()+ ","+
-                                      detalleventa.getNombre_producto()+ ","+
-                                      detalleventa.getPrecio_unitario()+ ","+
-                                      detalleventa.getPrecio_total()+ ","+
-                                      detalleventa.getId_producto() + ");");
+                                     +" (folio_detalle_venta,cantidad_producto,nombre_producto,"
+               +"precio_unitario, precio_total,id_producto) VALUES "
+                + "("+folio+","+cantidad_producto+",'"+nombre_producto+"',"
+               +precio_unitario+","+precio_total+","+id_producto+");");
        this.getConect1().setEsSelect(false);
        this.getConect1().conectar();
     }
