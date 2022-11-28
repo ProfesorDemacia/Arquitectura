@@ -128,6 +128,17 @@ public class VistaCancelarVenta extends javax.swing.JFrame {
 
         bto_buscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/buscar.png"))); // NOI18N
         bto_buscar.setText("Buscar");
+        bto_buscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bto_buscarActionPerformed(evt);
+            }
+        });
+
+        txt_idVenta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_idVentaActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setText("ID Venta");
@@ -217,6 +228,14 @@ public class VistaCancelarVenta extends javax.swing.JFrame {
         VistaMenu auxMenu = new VistaMenu();
         this.dispose();
     }//GEN-LAST:event_bto_salirActionPerformed
+
+    private void txt_idVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_idVentaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_idVentaActionPerformed
+
+    private void bto_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bto_buscarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bto_buscarActionPerformed
 
     /**
      * @param args the command line arguments

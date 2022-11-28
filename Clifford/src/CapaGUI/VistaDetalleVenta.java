@@ -366,6 +366,11 @@ public class VistaDetalleVenta extends javax.swing.JFrame {
 
         bto_cancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/eliminar.png"))); // NOI18N
         bto_cancelar.setText("Cancelar");
+        bto_cancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bto_cancelarActionPerformed(evt);
+            }
+        });
         getContentPane().add(bto_cancelar);
         bto_cancelar.setBounds(300, 360, 130, 60);
 
@@ -460,6 +465,10 @@ public class VistaDetalleVenta extends javax.swing.JFrame {
             evt.consume();
         }
     }//GEN-LAST:event_txt_cantidadKeyTyped
+
+    private void bto_cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bto_cancelarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bto_cancelarActionPerformed
 
     /**
      * @param args the command line arguments

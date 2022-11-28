@@ -28,28 +28,6 @@ public class VistaMenu extends javax.swing.JFrame {
     
     public static String rut_empleado = "";
     
-    public void validarTrabajador (){
-        Empleado emp = new Empleado();
-        NegocioMenu menu = new NegocioMenu();
-        if(!"".equals(rut_empleado)){
-            emp = menu.emp(rut_empleado);
-            if (txt_rut.getText().equals("")){
-                JOptionPane.showMessageDialog(null, "Ingrese su rut en el campo");}
-            else{
-            
-            if (emp.getRut_empleado()!= null){
-                VistaTrabajador pMenu = new VistaTrabajador();
-                pMenu.setVisible(true);
-                dispose();
-            }
-            else{
-                JOptionPane.showMessageDialog(null, "Rut incorrecto");
-                }
-        }
-        }
-        }
-    
-    
     public void redireccionarVentana() throws SQLException{
         NegocioCargo control = new NegocioCargo();
         VistaTrabajador ventana1 = new VistaTrabajador();
@@ -63,7 +41,7 @@ public class VistaMenu extends javax.swing.JFrame {
             ventana2.setVisible(true);
             this.dispose();
         } else {
-            JOptionPane.showMessageDialog(null, "Error.");
+            JOptionPane.showMessageDialog(null, "Ingrese un usuario válido");
         }
     }
     
