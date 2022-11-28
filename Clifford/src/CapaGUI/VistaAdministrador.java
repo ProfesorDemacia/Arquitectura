@@ -16,6 +16,9 @@ public class VistaAdministrador extends javax.swing.JFrame {
      */
     public VistaAdministrador() {
         initComponents();
+        VistaMenu pMenu = new VistaMenu();
+        lbl_rut.setText(pMenu.rut_empleado);
+        
     }
 
     /**
@@ -32,13 +35,16 @@ public class VistaAdministrador extends javax.swing.JFrame {
         bto_venta = new javax.swing.JButton();
         bto_cancelar = new javax.swing.JButton();
         bto_reportes = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        lbl_rut = new javax.swing.JLabel();
+        bto_cerrarSesion = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
 
         bto_cerrar.setText("Cerrar Sesión");
         getContentPane().add(bto_cerrar);
-        bto_cerrar.setBounds(820, 90, 111, 25);
+        bto_cerrar.setBounds(820, 90, 97, 23);
 
         jLabelBanner.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/banner.jpg"))); // NOI18N
         jLabelBanner.setText("jLabel1");
@@ -57,6 +63,11 @@ public class VistaAdministrador extends javax.swing.JFrame {
 
         bto_cancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/eliminar.png"))); // NOI18N
         bto_cancelar.setText("Cancelar Venta");
+        bto_cancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bto_cancelarActionPerformed(evt);
+            }
+        });
         getContentPane().add(bto_cancelar);
         bto_cancelar.setBounds(380, 280, 200, 60);
 
@@ -65,12 +76,32 @@ public class VistaAdministrador extends javax.swing.JFrame {
         getContentPane().add(bto_reportes);
         bto_reportes.setBounds(380, 370, 200, 60);
 
+        jLabel1.setText("Rut Administrador");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(50, 180, 90, 30);
+
+        lbl_rut.setBorder(new javax.swing.border.MatteBorder(null));
+        getContentPane().add(lbl_rut);
+        lbl_rut.setBounds(150, 190, 70, 20);
+
+        bto_cerrarSesion.setText("Cerrar Sesion");
+        getContentPane().add(bto_cerrarSesion);
+        bto_cerrarSesion.setBounds(120, 250, 110, 20);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void bto_ventaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bto_ventaActionPerformed
         // TODO add your handling code here:
+        VistaDetalleVenta pMenu = new VistaDetalleVenta();
+        pMenu.setVisible(true);
     }//GEN-LAST:event_bto_ventaActionPerformed
+
+    private void bto_cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bto_cancelarActionPerformed
+        // TODO add your handling code here:
+        VistaCancelarVenta pMenu = new VistaCancelarVenta();
+        pMenu.setVisible(true);
+    }//GEN-LAST:event_bto_cancelarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -81,8 +112,11 @@ public class VistaAdministrador extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bto_cancelar;
     private javax.swing.JButton bto_cerrar;
+    private javax.swing.JButton bto_cerrarSesion;
     private javax.swing.JButton bto_reportes;
     private javax.swing.JButton bto_venta;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabelBanner;
+    private javax.swing.JLabel lbl_rut;
     // End of variables declaration//GEN-END:variables
 }

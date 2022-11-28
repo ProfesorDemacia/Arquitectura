@@ -275,12 +275,22 @@ public class VistaDetalleVenta extends javax.swing.JFrame {
                 txt_idProductoActionPerformed(evt);
             }
         });
+        txt_idProducto.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_idProductoKeyTyped(evt);
+            }
+        });
         getContentPane().add(txt_idProducto);
         txt_idProducto.setBounds(170, 150, 178, 20);
 
         txt_cantidad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_cantidadActionPerformed(evt);
+            }
+        });
+        txt_cantidad.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_cantidadKeyTyped(evt);
             }
         });
         getContentPane().add(txt_cantidad);
@@ -422,6 +432,23 @@ public class VistaDetalleVenta extends javax.swing.JFrame {
         grabarDetalleVenta();
         
     }//GEN-LAST:event_bto_continuarActionPerformed
+
+    private void txt_idProductoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_idProductoKeyTyped
+        // TODO add your handling code here:
+        if (txt_idProducto.getText().length()>4)
+        {
+            evt.consume();
+        }
+        
+    }//GEN-LAST:event_txt_idProductoKeyTyped
+
+    private void txt_cantidadKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_cantidadKeyTyped
+        // TODO add your handling code here:
+        if (txt_cantidad.getText().length()>4)
+        {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txt_cantidadKeyTyped
 
     /**
      * @param args the command line arguments
