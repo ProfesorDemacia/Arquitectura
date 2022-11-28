@@ -117,6 +117,8 @@ public class VistaRegistro extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tabla_registro);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 910, 170));
+
+        txt_total.setEditable(false);
         getContentPane().add(txt_total, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 360, 180, -1));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N

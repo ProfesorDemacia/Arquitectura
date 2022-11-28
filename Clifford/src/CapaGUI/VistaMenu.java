@@ -144,7 +144,7 @@ public class VistaMenu extends javax.swing.JFrame {
 
     private void txt_rutKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_rutKeyTyped
         // TODO add your handling code here:
-        if(txt_rut.getText().length()>11)
+        if(txt_rut.getText().length()>9)
         {
             evt.consume();
             
