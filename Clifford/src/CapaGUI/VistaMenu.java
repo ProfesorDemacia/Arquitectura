@@ -6,6 +6,10 @@
 package CapaGUI;
 import CapaNegocio.NegocioMenu;
 import CapaDTO.Empleado;
+import CapaNegocio.NegocioCargo;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 
@@ -44,7 +48,25 @@ public class VistaMenu extends javax.swing.JFrame {
         }
         }
         }
+    
+    
+    public void redireccionarVentana() throws SQLException{
+        NegocioCargo control = new NegocioCargo();
+        VistaTrabajador ventana1 = new VistaTrabajador();
+        VistaAdministrador ventana2 = new VistaAdministrador();
+        int cargo = control.consultarCargo(txt_rut.getText());
 
+        if (cargo == 1) {
+            ventana1.setVisible(true);
+            this.dispose();
+        } else if (cargo == 2) {
+            ventana2.setVisible(true);
+            this.dispose();
+        } else {
+            JOptionPane.showMessageDialog(null, "Error.");
+        }
+    }
+    
     /**
      * Creates new form VistaMenu
      */
@@ -81,6 +103,11 @@ public class VistaMenu extends javax.swing.JFrame {
         txt_rut.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_rutActionPerformed(evt);
+            }
+        });
+        txt_rut.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_rutKeyTyped(evt);
             }
         });
         getContentPane().add(txt_rut, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 280, 140, 30));
@@ -120,11 +147,11 @@ public class VistaMenu extends javax.swing.JFrame {
        //validarTrabajador();
        
        rut_empleado = txt_rut.getText();
-       VistaTrabajador pMenu = new VistaTrabajador();
-       
-       pMenu.setVisible(true);
-       this.setVisible(false);
-       
+        try {
+            redireccionarVentana();
+        } catch (SQLException ex) {
+            Logger.getLogger(VistaMenu.class.getName()).log(Level.SEVERE, null, ex);
+        }
        
     }//GEN-LAST:event_bto_ingresarActionPerformed
 
@@ -136,6 +163,15 @@ public class VistaMenu extends javax.swing.JFrame {
     private void txt_rutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_rutActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_rutActionPerformed
+
+    private void txt_rutKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_rutKeyTyped
+        // TODO add your handling code here:
+        if(txt_rut.getText().length()>11)
+        {
+            evt.consume();
+            
+        }
+    }//GEN-LAST:event_txt_rutKeyTyped
 
     /**
      * @param args the command line arguments
