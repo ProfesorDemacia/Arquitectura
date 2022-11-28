@@ -6,7 +6,7 @@
 package CapaGUI;
 
 import CapaDTO.Venta;
-import CapaNegocio.NegocioRegistro;
+import CapaNegocio.NegocioVenta;
 import java.util.Iterator;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -30,8 +30,8 @@ public class VistaRegistro extends javax.swing.JFrame {
             DefaultTableModel modelo = new DefaultTableModel();
             modelo = (DefaultTableModel) this.tabla_registro.getModel();
             modelo.setNumRows(0);
-            NegocioRegistro auxNegocio = new NegocioRegistro();
-            Iterator iter = auxNegocio.listarRegistro().iterator();
+            NegocioVenta auxNegocio = new NegocioVenta();
+            Iterator iter = auxNegocio.consultaVenta().iterator();
             int fila = 0;
             while(iter.hasNext())
             {
@@ -39,9 +39,13 @@ public class VistaRegistro extends javax.swing.JFrame {
                 auxVent = (Venta) iter.next();
                 Object[] num = {};
                 modelo.addRow(num);
-                this.tabla_registro.setValueAt(auxVent.getFecha_venta(), fila, 0);
-                this.tabla_registro.setValueAt(auxVent.getNombre_producto(), fila, 1);
-                this.tabla_registro.setValueAt(auxVent.getTotal_venta(), fila, 2);
+                this.tabla_registro.setValueAt(auxVent.getId_venta(), fila, 0);
+                this.tabla_registro.setValueAt(auxVent.getFecha_venta(), fila, 1);
+                this.tabla_registro.setValueAt(auxVent.getNombre_empresa(), fila, 2);
+                this.tabla_registro.setValueAt(auxVent.getTotal_venta(), fila, 3);
+                this.tabla_registro.setValueAt(auxVent.getId_detalleVenta(), fila, 4);
+                this.tabla_registro.setValueAt(auxVent.getRut_empleado(), fila, 5);
+                this.tabla_registro.setValueAt(auxVent.getMedio_pago(), fila, 6);
                 fila++;
             }
         }
@@ -64,6 +68,8 @@ public class VistaRegistro extends javax.swing.JFrame {
         jLabelBanner = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabla_registro = new javax.swing.JTable();
+        txt_total = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -75,7 +81,7 @@ public class VistaRegistro extends javax.swing.JFrame {
                 bto_mostrarActionPerformed(evt);
             }
         });
-        getContentPane().add(bto_mostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 360, 200, 70));
+        getContentPane().add(bto_mostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 420, 200, 70));
 
         jLabelBanner.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/banner.jpg"))); // NOI18N
         getContentPane().add(jLabelBanner, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 956, 140));
@@ -85,12 +91,17 @@ public class VistaRegistro extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Fecha ", "Producto", "Suma Venta"
+                "Id Venta", "Fecha", "Nombre Empresa", "Monto", "Id Detalle", "Empleado", "Id Método de Pago"
             }
         ));
         jScrollPane1.setViewportView(tabla_registro);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 180, 610, 170));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 910, 170));
+        getContentPane().add(txt_total, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 360, 180, -1));
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel2.setText("Total");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 360, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -106,8 +117,10 @@ public class VistaRegistro extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bto_mostrar;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabelBanner;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tabla_registro;
+    private javax.swing.JTextField txt_total;
     // End of variables declaration//GEN-END:variables
 }
