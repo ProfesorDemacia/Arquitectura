@@ -75,7 +75,7 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/Imagen/nuevo.png"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Reportes"/>
+        <Property name="text" type="java.lang.String" value="Registro de Reportes"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bto_reporteActionPerformed"/>

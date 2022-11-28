@@ -64,7 +64,7 @@ public class VistaAdministrador extends javax.swing.JFrame {
         getContentPane().add(bto_cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 300, 190, 60));
 
         bto_reporte.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/nuevo.png"))); // NOI18N
-        bto_reporte.setText("Reportes");
+        bto_reporte.setText("Registro de Reportes");
         bto_reporte.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bto_reporteActionPerformed(evt);

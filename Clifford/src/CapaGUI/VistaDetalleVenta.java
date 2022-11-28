@@ -284,7 +284,7 @@ public class VistaDetalleVenta extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txt_idProducto);
-        txt_idProducto.setBounds(170, 160, 178, 20);
+        txt_idProducto.setBounds(170, 160, 178, 22);
 
         txt_cantidad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -297,7 +297,7 @@ public class VistaDetalleVenta extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txt_cantidad);
-        txt_cantidad.setBounds(170, 200, 178, 20);
+        txt_cantidad.setBounds(170, 200, 178, 22);
 
         jLabel6.setText("Nombre Producto");
         getContentPane().add(jLabel6);
@@ -310,7 +310,7 @@ public class VistaDetalleVenta extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txt_nombreProducto);
-        txt_nombreProducto.setBounds(170, 240, 178, 20);
+        txt_nombreProducto.setBounds(170, 240, 178, 22);
 
         txt_precioUnitario.setEditable(false);
         txt_precioUnitario.addActionListener(new java.awt.event.ActionListener() {
@@ -319,7 +319,7 @@ public class VistaDetalleVenta extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txt_precioUnitario);
-        txt_precioUnitario.setBounds(170, 280, 178, 20);
+        txt_precioUnitario.setBounds(170, 280, 178, 22);
 
         table_DetalleVenta.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -355,7 +355,7 @@ public class VistaDetalleVenta extends javax.swing.JFrame {
         bto_continuar.setBounds(650, 440, 110, 60);
 
         bto_salir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/salir.png"))); // NOI18N
-        bto_salir.setText("Salir");
+        bto_salir.setText("Volver");
         bto_salir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bto_salirActionPerformed(evt);

@@ -210,7 +210,7 @@ public class VistaVenta extends javax.swing.JFrame {
         jScrollPane1.setBounds(400, 200, 570, 350);
 
         bto_salir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/salir.png"))); // NOI18N
-        bto_salir.setText("Salir");
+        bto_salir.setText("Volver");
         bto_salir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bto_salirActionPerformed(evt);
@@ -244,6 +244,8 @@ public class VistaVenta extends javax.swing.JFrame {
 
     private void bto_salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bto_salirActionPerformed
         // TODO add your handling code here:
+        VistaMenu auxMenu = new VistaMenu();
+        this.dispose();
         
     }//GEN-LAST:event_bto_salirActionPerformed
 
