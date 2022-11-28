@@ -4,14 +4,14 @@
     <service name="WebServiceEmpleado">
       <implementation-class>CapaServicio.WebServiceEmpleado</implementation-class>
     </service>
+    <service name="WebServiceProducto">
+      <implementation-class>CapaServicio.WebServiceProducto</implementation-class>
+    </service>
     <service name="WebServiceDetalleVenta">
       <implementation-class>CapaServicio.WebServiceDetalleVenta</implementation-class>
     </service>
     <service name="WebServiceVenta">
       <implementation-class>CapaServicio.WebServiceVenta</implementation-class>
-    </service>
-    <service name="WebServiceProducto">
-      <implementation-class>CapaServicio.WebServiceProducto</implementation-class>
     </service>
   </services>
   <clients/>
