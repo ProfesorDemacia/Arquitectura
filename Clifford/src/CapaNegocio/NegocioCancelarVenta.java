@@ -43,35 +43,5 @@ public class NegocioCancelarVenta {
     }
     
     
-    public void eliminarDetalleVenta(int id_folio)
-    {
-        this.configurarConexion();
-        this.getConect1().setCadenaSQL("DELETE FROM detalle_venta "
-                                       + " WHERE folio_detalle_venta = "+id_folio+";" );
-    }
     
-    
-    public int encontrarFolio(int id_detalle_venta)
-    {
-        int folio_detalle_venta = 0;
-        this.configurarConexion();
-        this.getConect1().setCadenaSQL("SELECT folio_detalle_venta WHERE id_detalle_venta = "+id_detalle_venta+";");
-        this.getConect1().setEsSelect(true);
-        this.getConect1().conectar();
-        try {
-            
-            while(this.getConect1().getDbresultSet().next()) 
-           {
-              
-              folio_detalle_venta = (this.getConect1().getDbresultSet().getInt(1));
-
-           
-              
-           
-           }
-            
-        } catch (Exception e) {
-        }
-        return folio_detalle_venta;
-    }
 }

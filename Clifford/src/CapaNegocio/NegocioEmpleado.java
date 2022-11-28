@@ -87,15 +87,15 @@ public class NegocioEmpleado {
            while(this.getConect1().getDbresultSet().next()) 
            {
               Empleado auxEmpleado = new Empleado();
-              auxEmpleado.setId_detalle_venta(this.getConect1().getDbresultSet().getInt("id_detalle_venta"));
-              auxEmpleado.setFolio_detalle_venta(this.getConect1().getDbresultSet().getInt("folio_detalle_venta"));
-              auxEmpleado.setCantidad_producto(this.getConect1().getDbresultSet().getInt("cantidad_producto"));
-              auxEmpleado.setNombre_producto(this.getConect1().getDbresultSet().getString("nombre_producto"));
-              auxEmpleado.setPrecio_unitario(this.getConect1().getDbresultSet().getInt("precio_unitario"));
-              auxEmpleado.setPrecio_total(this.getConect1().getDbresultSet().getInt("precio_total"));
-              auxEmpleado.setId_producto(this.getConect1().getDbresultSet().getInt("id_producto"));
+              //auxEmpleado.setRut_empleado(this.getConect1().getDbresultSet().getInt("id_detalle_venta"));
+              //auxEmpleado.setNombre_empleado(this.getConect1().getDbresultSet().getInt("folio_detalle_venta"));
+              //auxEmpleado.setCantidad_producto(this.getConect1().getDbresultSet().getInt("cantidad_producto"));
+              //auxEmpleado.setNombre_producto(this.getConect1().getDbresultSet().getString("nombre_producto"));
+              //auxEmpleado.setPrecio_unitario(this.getConect1().getDbresultSet().getInt("precio_unitario"));
+              //auxEmpleado.setPrecio_total(this.getConect1().getDbresultSet().getInt("precio_total"));
+              //auxEmpleado.setId_producto(this.getConect1().getDbresultSet().getInt("id_producto"));
            
-              auxListEmpleado.add(auxEmpleado);
+              //auxListEmpleado.add(auxEmpleado);
            
            }
        }

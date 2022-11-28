@@ -17,7 +17,7 @@ public class Venta {
     private int id_venta;
     private Date fecha_venta;
     private String nombre_empresa;
-    private double total_venta;
+    private int total_venta;
     private int id_detalleVenta;
     private String rut_empleado;
     private int medio_pago;
@@ -46,11 +46,11 @@ public class Venta {
         this.nombre_empresa = nombre_empresa;
     }
 
-    public double getTotal_venta() {
+    public int getTotal_venta() {
         return total_venta;
     }
 
-    public void setTotal_venta(double total_venta) {
+    public void setTotal_venta(int total_venta) {
         this.total_venta = total_venta;
     }
 
@@ -77,7 +77,8 @@ public class Venta {
     public void setMedio_pago(int medio_pago) {
         this.medio_pago = medio_pago;
     }
-    
+
+   
     
 
    

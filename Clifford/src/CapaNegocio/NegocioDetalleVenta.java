@@ -181,10 +181,7 @@ public class NegocioDetalleVenta {
            {
               
               id_folio = (this.getConect1().getDbresultSet().getInt(1));
-
-           
-              
-           
+    
            }
        }
        catch(Exception ex)
@@ -193,6 +190,30 @@ public class NegocioDetalleVenta {
        }
        return id_folio; 
     
+    }
+     
+    
+    
+    public int encontrarFolioEspecifico(int id_detalle_venta)
+    {
+        
+        this.configurarConexion();
+        this.getConect1().setCadenaSQL("SELECT folio_detalle_venta FROM detalle_venta WHERE id_detalle_venta = "+id_detalle_venta+";");
+        this.getConect1().setEsSelect(true);
+        this.getConect1().conectar();
+        int folio_detalle_venta = 0;
+        try {
+            
+            while(this.getConect1().getDbresultSet().next()) 
+           {
+              
+              folio_detalle_venta = (this.getConect1().getDbresultSet().getInt(1));
+   
+           }
+            
+        } catch (Exception e) {
+        }
+        return folio_detalle_venta;
     }
     
     

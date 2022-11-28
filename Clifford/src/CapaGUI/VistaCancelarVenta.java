@@ -7,6 +7,7 @@ package CapaGUI;
 
 import CapaDTO.Venta;
 import CapaNegocio.NegocioCancelarVenta;
+import CapaNegocio.NegocioDetalleVenta;
 import CapaNegocio.NegocioVenta;
 import java.util.Iterator;
 import javax.swing.JOptionPane;
@@ -30,18 +31,34 @@ public class VistaCancelarVenta extends javax.swing.JFrame {
     {
         int fila = table_cancelarVenta.getSelectedRow();
         int id_venta = Integer.parseInt(table_cancelarVenta.getValueAt(fila, 0).toString());
+        int id_detalle = Integer.parseInt(table_cancelarVenta.getValueAt(fila,4).toString());
         int folio = 0;
         try {
             
             NegocioCancelarVenta auxNegocioCancelarVenta = new NegocioCancelarVenta() ;
+            NegocioDetalleVenta auxNegocioDetalleVenta =  new NegocioDetalleVenta();
+            
+         
             auxNegocioCancelarVenta.configurarConexion();
-            folio = auxNegocioCancelarVenta.encontrarFolio(id_venta);
-            auxNegocioCancelarVenta.eliminarVenta(id_venta);
-            auxNegocioCancelarVenta.eliminarDetalleVenta(folio);
+            folio = auxNegocioDetalleVenta.encontrarFolioEspecifico(id_detalle);
+            auxNegocioCancelarVenta.eliminarVenta(id_venta);  
             auxNegocioCancelarVenta.getConect1().setEsSelect(false);
             auxNegocioCancelarVenta.getConect1().conectar();
+            auxNegocioCancelarVenta.getConect1().cerrar();
+            
+            
+            
+            
+            auxNegocioDetalleVenta.configurarConexion();
+            auxNegocioDetalleVenta.eliminarDetalleVenta(folio);
+            auxNegocioDetalleVenta.getConect1().setEsSelect(false);
+            
+            auxNegocioDetalleVenta.getConect1().conectar();
+            JOptionPane.showMessageDialog(null,"Se borro la tabla con exito");
+            
             
         } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null,"No se pudo borrar la venta " + ex.getMessage());
         }
     }
     
@@ -64,8 +81,8 @@ public class VistaCancelarVenta extends javax.swing.JFrame {
                 this.table_cancelarVenta.setValueAt(auxVenta.getId_venta(), fila, 0);
                 this.table_cancelarVenta.setValueAt(auxVenta.getFecha_venta(), fila, 1);
                 this.table_cancelarVenta.setValueAt(auxVenta.getNombre_empresa(), fila, 2);
-                this.table_cancelarVenta.setValueAt(String.valueOf(auxVenta.getTotal_venta()), fila, 3);
-                this.table_cancelarVenta.setValueAt(auxVenta.getId_venta(), fila, 4);
+                this.table_cancelarVenta.setValueAt((auxVenta.getTotal_venta()), fila, 3);
+                this.table_cancelarVenta.setValueAt(auxVenta.getId_detalleVenta(), fila, 4);
                 this.table_cancelarVenta.setValueAt(auxVenta.getRut_empleado(), fila, 5);
                 this.table_cancelarVenta.setValueAt(auxVenta.getMedio_pago(), fila, 6);
                 fila++;
@@ -74,7 +91,7 @@ public class VistaCancelarVenta extends javax.swing.JFrame {
         }
         catch(Exception ex)
         {
-            JOptionPane.showMessageDialog(null,"No se ha podido listar a los jugadores " + ex.getMessage());
+            JOptionPane.showMessageDialog(null,"No se encontro venta " + ex.getMessage());
         }
     }
 
@@ -92,6 +109,7 @@ public class VistaCancelarVenta extends javax.swing.JFrame {
         bto_buscar = new javax.swing.JButton();
         txt_idVenta = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
+        bto_borrar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -109,6 +127,14 @@ public class VistaCancelarVenta extends javax.swing.JFrame {
 
         jLabel1.setText("ID Venta");
 
+        bto_borrar.setBackground(new java.awt.Color(255, 153, 51));
+        bto_borrar.setText("Borrar");
+        bto_borrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bto_borrarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -116,10 +142,13 @@ public class VistaCancelarVenta extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(bto_buscar)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(bto_buscar)
+                        .addGap(45, 45, 45)
+                        .addComponent(bto_borrar))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txt_idVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 642, Short.MAX_VALUE)
@@ -138,12 +167,19 @@ public class VistaCancelarVenta extends javax.swing.JFrame {
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txt_idVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(47, 47, 47)
-                        .addComponent(bto_buscar)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(bto_buscar)
+                            .addComponent(bto_borrar))))
                 .addContainerGap(90, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void bto_borrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bto_borrarActionPerformed
+        // TODO add your handling code here:
+        eliminarVenta();
+    }//GEN-LAST:event_bto_borrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -151,6 +187,7 @@ public class VistaCancelarVenta extends javax.swing.JFrame {
   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bto_borrar;
     private javax.swing.JButton bto_buscar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
