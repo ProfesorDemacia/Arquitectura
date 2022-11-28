@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jax-ws xmlns="http://www.netbeans.org/ns/jax-ws/1">
   <services>
-    <service name="WebServiceVenta">
-      <implementation-class>Servicios.WebServiceVenta</implementation-class>
+    <service name="WebServiceMenu">
+      <implementation-class>CapaServicio.WebServiceMenu</implementation-class>
+    </service>
+    <service name="WebServiceEmpleado">
+      <implementation-class>CapaServicio.WebServiceEmpleado</implementation-class>
     </service>
   </services>
   <clients/>
