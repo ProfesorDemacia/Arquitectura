@@ -78,13 +78,14 @@ public class VistaTrabajador extends javax.swing.JFrame {
         getContentPane().add(jLabel1);
         jLabel1.setBounds(0, 0, 980, 140);
 
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel2.setText("Rut Trabajador");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(30, 170, 90, 30);
+        jLabel2.setBounds(60, 190, 130, 50);
 
         lbl_rutTrabajador.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         getContentPane().add(lbl_rutTrabajador);
-        lbl_rutTrabajador.setBounds(160, 170, 130, 30);
+        lbl_rutTrabajador.setBounds(190, 200, 130, 30);
 
         pack();
         setLocationRelativeTo(null);
