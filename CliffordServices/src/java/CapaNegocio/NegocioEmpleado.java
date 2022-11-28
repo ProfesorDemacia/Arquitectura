@@ -8,6 +8,7 @@ package CapaNegocio;
 import CapaConexion.ConexionMySQL;
 import CapaDTO.DetalleVenta;
 import CapaDTO.Empleado;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
@@ -72,6 +73,23 @@ public class NegocioEmpleado {
                                        + " WHERE id_detalle_venta = "+id_detalle_venta );
     }
     
+    public int consultarCargo (String rut_empleado) throws SQLException{
+        int id_cargo = 0;
+        this.configurarConexion();
+        this.getConect1().setCadenaSQL("SELECT id_cargo FROM empleado WHERE rut_empleado = '" + rut_empleado + "';");
+        this.getConect1().setEsSelect(true);
+        this.getConect1().conectar();
+
+        try {
+            while (this.getConect1().getDbresultSet().next()){
+        id_cargo = this.getConect1().getDbresultSet().getInt("id_cargo");
+                return id_cargo;
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return id_cargo;
+    }
     
     
     public ArrayList<DetalleVenta> buscarEmpleado(String rut_empleado)
