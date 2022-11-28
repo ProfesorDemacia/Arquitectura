@@ -132,11 +132,11 @@ INSERT INTO comuna(id_comuna,nombre_comuna,id_region) VALUES (169,'Quilicura',16
 
 
 INSERT INTO empleado(rut_empleado,nombre_empleado,apellido_empleado,direccion_empleado
-			,correo_empleado,id_cargo,id_comuna) VALUES ('1-9','Juan','Perez','Las acasias 41','correo@gmail.com',1,163);
+			,correo_empleado,id_cargo,id_comuna) VALUES ('19890682-4','Juan','Perez','Las acasias 41','correo@gmail.com',1,163);
 INSERT INTO empleado(rut_empleado,nombre_empleado,apellido_empleado,direccion_empleado
 			,correo_empleado,id_cargo,id_comuna) VALUES ('2-8','Ana','Rosa','Las parcelas 41','correo2@gmail.com',1,162);
 INSERT INTO empleado(rut_empleado,nombre_empleado,apellido_empleado,direccion_empleado
-			,correo_empleado,id_cargo,id_comuna) VALUES ('3-7','Jose','Arancibia','Lautaro 899','admin@gmail.com',2,166);
+			,correo_empleado,id_cargo,id_comuna) VALUES ('20613734-7','Jose','Arancibia','Lautaro 899','admin@gmail.com',2,166);
 			
 			
 INSERT INTO producto (nombre_producto,descripcion_producto,precio_unitario,stock_producto) VALUES ('Champion dog','Comida para perro adulto',10000,100);
