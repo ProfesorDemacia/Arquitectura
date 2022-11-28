@@ -122,6 +122,7 @@ public class VistaDetalleVenta extends javax.swing.JFrame {
         this.txt_cantidad.setText("");
         this.txt_nombreProducto.setText("");
         this.txt_precioUnitario.setText("");
+        this.txt_precioFinal.setText("");
         
     }
     
@@ -223,6 +224,15 @@ public class VistaDetalleVenta extends javax.swing.JFrame {
         {
             JOptionPane.showMessageDialog(null,"No se ha podido agregar los productos" + ex.getMessage());
         }
+    }
+         
+         public void eliminarTabla(){
+        DefaultTableModel tb = (DefaultTableModel) table_DetalleVenta.getModel();
+        int a = table_DetalleVenta.getRowCount()-1;
+        for (int i = a; i >= 0; i--) {
+        tb.removeRow(tb.getRowCount()-1);
+        }
+        //cargaTicket();
     }
 
     /*
@@ -451,7 +461,7 @@ public class VistaDetalleVenta extends javax.swing.JFrame {
 
     private void txt_idProductoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_idProductoKeyTyped
         // TODO add your handling code here:
-        if (txt_idProducto.getText().length()>4)
+        if (txt_idProducto.getText().length()>2)
         {
             evt.consume();
         }
@@ -460,7 +470,7 @@ public class VistaDetalleVenta extends javax.swing.JFrame {
 
     private void txt_cantidadKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_cantidadKeyTyped
         // TODO add your handling code here:
-        if (txt_cantidad.getText().length()>4)
+        if (txt_cantidad.getText().length()>2)
         {
             evt.consume();
         }
@@ -468,6 +478,10 @@ public class VistaDetalleVenta extends javax.swing.JFrame {
 
     private void bto_cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bto_cancelarActionPerformed
         // TODO add your handling code here:
+        limpiarDatos();
+        eliminarTabla();
+        
+        
     }//GEN-LAST:event_bto_cancelarActionPerformed
 
     /**

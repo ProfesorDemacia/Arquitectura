@@ -95,6 +95,38 @@ public class VistaCancelarVenta extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,"No se encontro venta " + ex.getMessage());
         }
     }
+    public void buscarVentaEspecifica(int id_venta)
+    {
+        try
+        {
+            DefaultTableModel modelo = new DefaultTableModel();
+            modelo = (DefaultTableModel) this.table_cancelarVenta.getModel();
+            modelo.setNumRows(0);
+            NegocioVenta auxNegocioVenta = new NegocioVenta();
+            Iterator iter = auxNegocioVenta.consultaVentaEspecifica(id_venta).iterator();
+            int fila = 0;
+            while(iter.hasNext())
+            {
+                Venta auxVenta = new Venta();
+                auxVenta = (Venta) iter.next();
+                Object[] num = {};
+                modelo.addRow(num);
+                this.table_cancelarVenta.setValueAt(auxVenta.getId_venta(), fila, 0);
+                this.table_cancelarVenta.setValueAt(auxVenta.getFecha_venta(), fila, 1);
+                this.table_cancelarVenta.setValueAt(auxVenta.getNombre_empresa(), fila, 2);
+                this.table_cancelarVenta.setValueAt((auxVenta.getTotal_venta()), fila, 3);
+                this.table_cancelarVenta.setValueAt(auxVenta.getId_detalleVenta(), fila, 4);
+                this.table_cancelarVenta.setValueAt(auxVenta.getRut_empleado(), fila, 5);
+                this.table_cancelarVenta.setValueAt(auxVenta.getMedio_pago(), fila, 6);
+                fila++;
+
+            }
+        }
+        catch(Exception ex)
+        {
+            JOptionPane.showMessageDialog(null,"No se encontro venta " + ex.getMessage());
+        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -137,6 +169,11 @@ public class VistaCancelarVenta extends javax.swing.JFrame {
         txt_idVenta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_idVentaActionPerformed(evt);
+            }
+        });
+        txt_idVenta.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_idVentaKeyTyped(evt);
             }
         });
 
@@ -235,7 +272,16 @@ public class VistaCancelarVenta extends javax.swing.JFrame {
 
     private void bto_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bto_buscarActionPerformed
         // TODO add your handling code here:
+        buscarVentaEspecifica(Integer.parseInt(txt_idVenta.getText()));
     }//GEN-LAST:event_bto_buscarActionPerformed
+
+    private void txt_idVentaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_idVentaKeyTyped
+        // TODO add your handling code here:
+        if (txt_idVenta.getText().length()>3)
+        {
+          evt.consume();
+        }
+    }//GEN-LAST:event_txt_idVentaKeyTyped
 
     /**
      * @param args the command line arguments

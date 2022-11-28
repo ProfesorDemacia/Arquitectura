@@ -158,19 +158,16 @@ public class VistaVenta extends javax.swing.JFrame {
                 formWindowOpened(evt);
             }
         });
-        getContentPane().setLayout(null);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setText("Monto Total a Pagar");
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(60, 260, 116, 20);
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 260, -1, 20));
 
         jLabel2.setText("Modo de Pago");
-        getContentPane().add(jLabel2);
-        jLabel2.setBounds(90, 310, 81, 16);
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 310, -1, -1));
 
         box_metodoPAgo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione Metodo de Pago", "Credito", "Debido", "Efectivo" }));
-        getContentPane().add(box_metodoPAgo);
-        box_metodoPAgo.setBounds(190, 310, 184, 22);
+        getContentPane().add(box_metodoPAgo, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 310, -1, -1));
 
         bto_pagar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/pagar.png"))); // NOI18N
         bto_pagar.setText("Pagar");
@@ -179,8 +176,7 @@ public class VistaVenta extends javax.swing.JFrame {
                 bto_pagarActionPerformed(evt);
             }
         });
-        getContentPane().add(bto_pagar);
-        bto_pagar.setBounds(50, 390, 120, 60);
+        getContentPane().add(bto_pagar, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 390, 120, 60));
 
         bto_cancelarVenta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/eliminar.png"))); // NOI18N
         bto_cancelarVenta.setText("Cancelar Venta");
@@ -189,12 +185,10 @@ public class VistaVenta extends javax.swing.JFrame {
                 bto_cancelarVentaActionPerformed(evt);
             }
         });
-        getContentPane().add(bto_cancelarVenta);
-        bto_cancelarVenta.setBounds(200, 390, 147, 60);
+        getContentPane().add(bto_cancelarVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 390, -1, 60));
 
         lbl_montoFinal.setBorder(new javax.swing.border.MatteBorder(null));
-        getContentPane().add(lbl_montoFinal);
-        lbl_montoFinal.setBounds(190, 260, 156, 24);
+        getContentPane().add(lbl_montoFinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 260, 156, 24));
 
         table_venta.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -206,8 +200,7 @@ public class VistaVenta extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(table_venta);
 
-        getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(400, 200, 570, 350);
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 170, 570, 350));
 
         bto_salir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/salir.png"))); // NOI18N
         bto_salir.setText("Volver");
@@ -216,12 +209,10 @@ public class VistaVenta extends javax.swing.JFrame {
                 bto_salirActionPerformed(evt);
             }
         });
-        getContentPane().add(bto_salir);
-        bto_salir.setBounds(130, 490, 110, 50);
+        getContentPane().add(bto_salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 490, 110, 50));
 
         bto_cerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/banner.jpg"))); // NOI18N
-        getContentPane().add(bto_cerrar);
-        bto_cerrar.setBounds(0, 0, 1040, 130);
+        getContentPane().add(bto_cerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1040, 130));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
