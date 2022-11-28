@@ -54,7 +54,7 @@ public class VistaMenu extends javax.swing.JFrame {
         NegocioCargo control = new NegocioCargo();
         VistaTrabajador ventana1 = new VistaTrabajador();
         VistaAdministrador ventana2 = new VistaAdministrador();
-        int cargo = control.consultarCargo(txt_rut.getText());
+        int cargo = control.consultarCargo(rut_empleado);
 
         if (cargo == 1) {
             ventana1.setVisible(true);
@@ -152,6 +152,7 @@ public class VistaMenu extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(VistaMenu.class.getName()).log(Level.SEVERE, null, ex);
         }
+        this.dispose();
        
     }//GEN-LAST:event_bto_ingresarActionPerformed
 
