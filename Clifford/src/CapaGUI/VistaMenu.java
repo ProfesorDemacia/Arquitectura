@@ -152,7 +152,6 @@ public class VistaMenu extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(VistaMenu.class.getName()).log(Level.SEVERE, null, ex);
         }
-        this.dispose();
        
     }//GEN-LAST:event_bto_ingresarActionPerformed
 
