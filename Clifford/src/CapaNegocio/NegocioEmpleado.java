@@ -76,7 +76,7 @@ public class NegocioEmpleado {
     
     public ArrayList<DetalleVenta> buscarEmpleado(String rut_empleado)
     {
-       ArrayList<DetalleVenta> auxLisDetalleVenta = new ArrayList<>();
+       ArrayList<DetalleVenta> auxListEmpleado = new ArrayList<>();
        this.configurarConexion();
        this.getConect1().setCadenaSQL("SELECT * FROM empleado WHERE rut_empleado = "+rut_empleado+";)");
        this.getConect1().setEsSelect(true);
@@ -87,15 +87,15 @@ public class NegocioEmpleado {
            while(this.getConect1().getDbresultSet().next()) 
            {
               Empleado auxEmpleado = new Empleado();
-              auxDetalleVenta.setId_detalle_venta(this.getConect1().getDbresultSet().getInt("id_detalle_venta"));
-              auxDetalleVenta.setFolio_detalle_venta(this.getConect1().getDbresultSet().getInt("folio_detalle_venta"));
-              auxDetalleVenta.setCantidad_producto(this.getConect1().getDbresultSet().getInt("cantidad_producto"));
-              auxDetalleVenta.setNombre_producto(this.getConect1().getDbresultSet().getString("nombre_producto"));
-              auxDetalleVenta.setPrecio_unitario(this.getConect1().getDbresultSet().getInt("precio_unitario"));
-              auxDetalleVenta.setPrecio_total(this.getConect1().getDbresultSet().getInt("precio_total"));
-              auxDetalleVenta.setId_producto(this.getConect1().getDbresultSet().getInt("id_producto"));
+              auxEmpleado.setId_detalle_venta(this.getConect1().getDbresultSet().getInt("id_detalle_venta"));
+              auxEmpleado.setFolio_detalle_venta(this.getConect1().getDbresultSet().getInt("folio_detalle_venta"));
+              auxEmpleado.setCantidad_producto(this.getConect1().getDbresultSet().getInt("cantidad_producto"));
+              auxEmpleado.setNombre_producto(this.getConect1().getDbresultSet().getString("nombre_producto"));
+              auxEmpleado.setPrecio_unitario(this.getConect1().getDbresultSet().getInt("precio_unitario"));
+              auxEmpleado.setPrecio_total(this.getConect1().getDbresultSet().getInt("precio_total"));
+              auxEmpleado.setId_producto(this.getConect1().getDbresultSet().getInt("id_producto"));
            
-              auxLisDetalleVenta.add(auxDetalleVenta);
+              auxListEmpleado.add(auxEmpleado);
            
            }
        }
@@ -103,7 +103,7 @@ public class NegocioEmpleado {
        {
           JOptionPane.showMessageDialog(null, "Error SQL ..." + ex.getMessage());
        }
-       return auxLisDetalleVenta; 
+       return auxListEmpleado; 
     
     }
 
