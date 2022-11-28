@@ -149,6 +149,7 @@ public class VistaVenta extends javax.swing.JFrame {
         lbl_montoFinal = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         table_venta = new javax.swing.JTable();
+        jLabelBanner = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -156,28 +157,43 @@ public class VistaVenta extends javax.swing.JFrame {
                 formWindowOpened(evt);
             }
         });
+        getContentPane().setLayout(null);
 
         jLabel1.setText("Monto Total a Pagar");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(60, 260, 116, 20);
 
         jLabel2.setText("Modo de Pago");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(90, 310, 81, 16);
 
         box_metodoPAgo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione Metodo de Pago", "Credito", "Debido", "Efectivo" }));
+        getContentPane().add(box_metodoPAgo);
+        box_metodoPAgo.setBounds(190, 310, 184, 22);
 
+        bto_pagar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/pagar.png"))); // NOI18N
         bto_pagar.setText("Pagar");
         bto_pagar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bto_pagarActionPerformed(evt);
             }
         });
+        getContentPane().add(bto_pagar);
+        bto_pagar.setBounds(50, 390, 120, 60);
 
+        bto_cancelarVenta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/eliminar.png"))); // NOI18N
         bto_cancelarVenta.setText("Cancelar Venta");
         bto_cancelarVenta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bto_cancelarVentaActionPerformed(evt);
             }
         });
+        getContentPane().add(bto_cancelarVenta);
+        bto_cancelarVenta.setBounds(200, 390, 147, 60);
 
         lbl_montoFinal.setBorder(new javax.swing.border.MatteBorder(null));
+        getContentPane().add(lbl_montoFinal);
+        lbl_montoFinal.setBounds(190, 260, 156, 24);
 
         table_venta.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -189,53 +205,12 @@ public class VistaVenta extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(table_venta);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(74, 74, 74)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(bto_pagar)
-                            .addComponent(jLabel2))
-                        .addGap(20, 20, 20)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(51, 51, 51)
-                        .addComponent(bto_cancelarVenta)
-                        .addGap(59, 59, 59))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(box_metodoPAgo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbl_montoFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(27, 27, 27)))
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(108, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(124, 124, 124)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel1)
-                    .addComponent(lbl_montoFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(34, 34, 34)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(box_metodoPAgo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(79, 79, 79)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(bto_pagar)
-                    .addComponent(bto_cancelarVenta))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(95, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(215, 215, 215))
-        );
+        getContentPane().add(jScrollPane1);
+        jScrollPane1.setBounds(400, 200, 570, 350);
+
+        jLabelBanner.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/banner.jpg"))); // NOI18N
+        getContentPane().add(jLabelBanner);
+        jLabelBanner.setBounds(0, 0, 1040, 130);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -267,6 +242,7 @@ public class VistaVenta extends javax.swing.JFrame {
     private javax.swing.JButton bto_pagar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabelBanner;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbl_montoFinal;
     private javax.swing.JTable table_venta;

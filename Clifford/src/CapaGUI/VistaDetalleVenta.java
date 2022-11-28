@@ -276,7 +276,7 @@ public class VistaDetalleVenta extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txt_idProducto);
-        txt_idProducto.setBounds(170, 150, 178, 20);
+        txt_idProducto.setBounds(170, 150, 178, 22);
 
         txt_cantidad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -284,7 +284,7 @@ public class VistaDetalleVenta extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txt_cantidad);
-        txt_cantidad.setBounds(170, 180, 178, 20);
+        txt_cantidad.setBounds(170, 180, 178, 22);
 
         jLabel6.setText("Nombre Producto");
         getContentPane().add(jLabel6);
@@ -297,7 +297,7 @@ public class VistaDetalleVenta extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txt_nombreProducto);
-        txt_nombreProducto.setBounds(170, 210, 178, 20);
+        txt_nombreProducto.setBounds(170, 210, 178, 22);
 
         txt_precioUnitario.setEditable(false);
         txt_precioUnitario.addActionListener(new java.awt.event.ActionListener() {
@@ -306,7 +306,7 @@ public class VistaDetalleVenta extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txt_precioUnitario);
-        txt_precioUnitario.setBounds(170, 240, 178, 20);
+        txt_precioUnitario.setBounds(170, 240, 178, 22);
 
         table_DetalleVenta.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -321,6 +321,7 @@ public class VistaDetalleVenta extends javax.swing.JFrame {
         getContentPane().add(jScrollPane1);
         jScrollPane1.setBounds(430, 150, 450, 140);
 
+        bto_agregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/compras.png"))); // NOI18N
         bto_agregar.setText("Agregar");
         bto_agregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -328,8 +329,9 @@ public class VistaDetalleVenta extends javax.swing.JFrame {
             }
         });
         getContentPane().add(bto_agregar);
-        bto_agregar.setBounds(160, 310, 80, 30);
+        bto_agregar.setBounds(170, 320, 120, 60);
 
+        bto_continuar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/pagar.png"))); // NOI18N
         bto_continuar.setText("Pagar");
         bto_continuar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -337,8 +339,9 @@ public class VistaDetalleVenta extends javax.swing.JFrame {
             }
         });
         getContentPane().add(bto_continuar);
-        bto_continuar.setBounds(710, 450, 90, 40);
+        bto_continuar.setBounds(650, 440, 110, 60);
 
+        bto_salir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/salir.png"))); // NOI18N
         bto_salir.setText("Salir");
         bto_salir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -346,11 +349,12 @@ public class VistaDetalleVenta extends javax.swing.JFrame {
             }
         });
         getContentPane().add(bto_salir);
-        bto_salir.setBounds(830, 450, 80, 40);
+        bto_salir.setBounds(800, 440, 120, 60);
 
+        bto_cancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/eliminar.png"))); // NOI18N
         bto_cancelar.setText("Cancelar");
         getContentPane().add(bto_cancelar);
-        bto_cancelar.setBounds(270, 310, 90, 30);
+        bto_cancelar.setBounds(300, 320, 130, 60);
 
         jLabel4.setText("Precio Final");
         getContentPane().add(jLabel4);
@@ -358,6 +362,7 @@ public class VistaDetalleVenta extends javax.swing.JFrame {
         getContentPane().add(txt_precioFinal);
         txt_precioFinal.setBounds(730, 360, 160, 30);
 
+        bto_buscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/buscar.png"))); // NOI18N
         bto_buscar.setText("Buscar");
         bto_buscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -365,7 +370,7 @@ public class VistaDetalleVenta extends javax.swing.JFrame {
             }
         });
         getContentPane().add(bto_buscar);
-        bto_buscar.setBounds(40, 310, 80, 30);
+        bto_buscar.setBounds(40, 320, 120, 60);
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/banner.jpg"))); // NOI18N
         getContentPane().add(jLabel5);

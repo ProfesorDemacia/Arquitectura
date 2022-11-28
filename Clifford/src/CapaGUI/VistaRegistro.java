@@ -31,7 +31,7 @@ public class VistaRegistro extends javax.swing.JFrame {
             modelo = (DefaultTableModel) this.tabla_registro.getModel();
             modelo.setNumRows(0);
             NegocioRegistro auxNegocio = new NegocioRegistro();
-            Iterator iter = auxNegocio.consultaJugador().iterator();
+            Iterator iter = auxNegocio.listarRegistro().iterator();
             int fila = 0;
             while(iter.hasNext())
             {
@@ -39,10 +39,9 @@ public class VistaRegistro extends javax.swing.JFrame {
                 auxVent = (Venta) iter.next();
                 Object[] num = {};
                 modelo.addRow(num);
-                this.tabla_registro.setValueAt(auxVent.getRut_jugador(), fila, 0);
-                this.tabla_registro.setValueAt(auxJug.getNombre_equipo(), fila, 1);
-                this.tabla_registro.setValueAt(auxJug.getNom_jugador(), fila, 2);
-                this.tabla_registro.setValueAt(auxJug.getTitular(), fila, 3);
+                this.tabla_registro.setValueAt(auxVent.getFecha_venta(), fila, 0);
+                this.tabla_registro.setValueAt(auxVent.getNombre_producto(), fila, 1);
+                this.tabla_registro.setValueAt(auxVent.getTotal_venta(), fila, 2);
                 fila++;
             }
         }
@@ -86,7 +85,7 @@ public class VistaRegistro extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Producto", "Suma Venta"
+                "Fecha ", "Producto", "Suma Venta"
             }
         ));
         jScrollPane1.setViewportView(tabla_registro);
