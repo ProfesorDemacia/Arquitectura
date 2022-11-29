@@ -65,6 +65,8 @@ public class NegocioDetalleVenta {
         this.configurarConexion();
         this.getConect1().setCadenaSQL("DELETE FROM detalle_venta "
                                        + " WHERE folio_detalle_venta = "+id_folio+";" );
+        this.getConect1().setEsSelect(false);
+        this.getConect1().conectar();
     }
     
     public ArrayList<DetalleVenta> consultaDetalleVenta()

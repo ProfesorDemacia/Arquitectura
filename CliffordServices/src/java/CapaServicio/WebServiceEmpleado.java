@@ -26,35 +26,37 @@ public class WebServiceEmpleado {
      * @param empleado
      */
     
-    @WebMethod(operationName = "webInsertarDetalleVenta")
-    public void webInsertarDetalleVenta(@WebParam(name = "Empleado") Empleado empleado) {
+    @WebMethod(operationName = "webConfigurarConexion")
+    public void webConfigurarConexion() {
         NegocioEmpleado auxNegocio = new NegocioEmpleado();
-        auxNegocio.insertarDetalleVenta(empleado);
+        auxNegocio.configurarConexion();
     }
     
-    @WebMethod(operationName = "webActualizarDetalleVenta")
-    public void webActualizarDetalleVenta(@WebParam(name = "Empleado") Empleado empleado) {
+    @WebMethod(operationName = "webInsertarEmpleado")
+    public void webInsertarEmpleado(@WebParam(name = "Empleado") Empleado empleado) {
+        NegocioEmpleado auxNegocio = new NegocioEmpleado();
+        auxNegocio.insertarEmpleado(empleado);
+    }
+    
+    @WebMethod(operationName = "webActualizarEmpleado")
+    public void webActualizarEmpleado(@WebParam(name = "Empleado") Empleado empleado) {
     NegocioEmpleado auxNegocio = new NegocioEmpleado();
-        auxNegocio.actualizarDetalleVenta(empleado);
+        auxNegocio.actualizarEmpleado(empleado);
     }
     
-    @WebMethod(operationName = "webEliminarDetalleVenta")
-    public void webEliminarDetalleVenta(@WebParam(name = "Empleado") Empleado empleado) {
+    @WebMethod(operationName = "webEliminarEmpleado")
+    public void webEliminarEmpleado(@WebParam(name = "rut_empleado") String rut_empleado) {
         NegocioEmpleado auxNegocio = new NegocioEmpleado();
-        auxNegocio.eliminarDetalleVenta(0);
+        auxNegocio.eliminarEmpleado(rut_empleado);
     }
             
     
     @WebMethod(operationName = "webConsultarCargo")
-    public void webConsultarCargo(@WebParam(name = "Empleado") String rut_Empleado) throws SQLException {     
+    public int webConsultarCargo(@WebParam(name = "rut_empleado") String rut_Empleado) {     
         NegocioEmpleado auxNegocio = new NegocioEmpleado();
         auxNegocio.consultarCargo(rut_Empleado);
+        return auxNegocio.consultarCargo(rut_Empleado);
     }   
             
-    @WebMethod(operationName = "webBuscarEmpleado")
-    public ArrayList<DetalleVenta> buscarEmpleado(String rut_Empleado) {
-        NegocioEmpleado auxNegocio = new NegocioEmpleado();
-        return auxNegocio.buscarEmpleado(rut_Empleado);
-    
-    }
+   
 }

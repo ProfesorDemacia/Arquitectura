@@ -61,6 +61,8 @@ public class NegocioVenta {
         this.configurarConexion();
         this.getConect1().setCadenaSQL("DELETE FROM venta "
                                        + " WHERE id_venta = "+id_venta );
+        this.getConect1().setEsSelect(true);
+        this.getConect1().conectar();
     }
     
     

@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package CapaGUI;
+import capaservicio.WebServiceEmpleado_Service;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -26,10 +27,10 @@ public class VistaMenu extends javax.swing.JFrame {
     public static String rut_empleado = "";
     
     public void redireccionarVentana() throws SQLException{
-        NegocioCargo control = new NegocioCargo();
+        WebServiceEmpleado_Service auxNegocioEmpleado = new WebServiceEmpleado_Service();
         VistaTrabajador ventana1 = new VistaTrabajador();
         VistaAdministrador ventana2 = new VistaAdministrador();
-        int cargo = control.consultarCargo(rut_empleado);
+        int cargo = auxNegocioEmpleado.getWebServiceEmpleadoPort().webConsultarCargo(rut_empleado);
 
         if (cargo == 1) {
             ventana1.setVisible(true);

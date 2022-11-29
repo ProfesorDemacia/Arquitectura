@@ -49,6 +49,7 @@ public class VistaCancelarVenta extends javax.swing.JFrame {
             auxNegocioDetalleVenta.getWebServiceDetalleVentaPort().webConfigurarConexion();
             auxNegocioDetalleVenta.getWebServiceDetalleVentaPort().webEliminarDetalleVenta(folio);
             JOptionPane.showMessageDialog(null,"Se borro la tabla con exito");
+            initComponents();
             
             
         } catch (Exception ex) {
@@ -140,6 +141,11 @@ public class VistaCancelarVenta extends javax.swing.JFrame {
         bto_salir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         table_cancelarVenta.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -275,6 +281,11 @@ public class VistaCancelarVenta extends javax.swing.JFrame {
           evt.consume();
         }
     }//GEN-LAST:event_txt_idVentaKeyTyped
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        // TODO add your handling code here:
+        buscarVenta();
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments

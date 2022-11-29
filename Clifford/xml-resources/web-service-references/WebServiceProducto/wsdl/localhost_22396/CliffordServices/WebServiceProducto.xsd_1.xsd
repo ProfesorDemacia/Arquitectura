@@ -1,0 +1,96 @@
+<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI (http://jax-ws.java.net). RI's version is Metro/2.3.2-b608 (trunk-7979; 2015-01-21T12:50:19+0000) JAXWS-RI/2.2.11-b150120.1832 JAXWS-API/2.2.12 JAXB-RI/2.2.12-b141219.1637 JAXB-API/2.2.13-b141020.1521 svn-revision#unknown. --><xs:schema xmlns:tns="http://CapaServicio/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://CapaServicio/">
+
+<xs:element name="webActualizarProducto" type="tns:webActualizarProducto"/>
+
+<xs:element name="webActualizarProductoResponse" type="tns:webActualizarProductoResponse"/>
+
+<xs:element name="webBuscarProducto" type="tns:webBuscarProducto"/>
+
+<xs:element name="webBuscarProductoResponse" type="tns:webBuscarProductoResponse"/>
+
+<xs:element name="webConfigurarConexion" type="tns:webConfigurarConexion"/>
+
+<xs:element name="webConfigurarConexionResponse" type="tns:webConfigurarConexionResponse"/>
+
+<xs:element name="webConsultarProducto" type="tns:webConsultarProducto"/>
+
+<xs:element name="webConsultarProductoResponse" type="tns:webConsultarProductoResponse"/>
+
+<xs:element name="webEliminarProducto" type="tns:webEliminarProducto"/>
+
+<xs:element name="webEliminarProductoResponse" type="tns:webEliminarProductoResponse"/>
+
+<xs:element name="webInsertarProducto" type="tns:webInsertarProducto"/>
+
+<xs:element name="webInsertarProductoResponse" type="tns:webInsertarProductoResponse"/>
+
+<xs:complexType name="webInsertarProducto">
+<xs:sequence>
+<xs:element name="Producto" type="tns:producto" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="producto">
+<xs:sequence>
+<xs:element name="descripcionProducto" type="xs:string" minOccurs="0"/>
+<xs:element name="idProducto" type="xs:int"/>
+<xs:element name="nombreProducto" type="xs:string" minOccurs="0"/>
+<xs:element name="precioUnitario" type="xs:int"/>
+<xs:element name="stockProducto" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="webInsertarProductoResponse">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="webActualizarProducto">
+<xs:sequence>
+<xs:element name="Producto" type="tns:producto" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="webActualizarProductoResponse">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="webConfigurarConexion">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="webConfigurarConexionResponse">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="webConsultarProducto">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="webConsultarProductoResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:producto" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="webEliminarProducto">
+<xs:sequence>
+<xs:element name="id_producto" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="webEliminarProductoResponse">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="webBuscarProducto">
+<xs:sequence>
+<xs:element name="id_producto" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="webBuscarProductoResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:producto" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>

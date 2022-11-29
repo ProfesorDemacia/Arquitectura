@@ -59,10 +59,11 @@ public class VistaVenta extends javax.swing.JFrame {
     
     public void validarVenta()
     {
-        int id_detalle_venta = 0;
+        
         try
         {
-            if(box_metodoPAgo.getSelectedIndex() == 0)
+            int id_detalle_venta = 0;
+            if(box_metodoPago.getSelectedIndex() == 0)
             {
                 JOptionPane.showMessageDialog(null, "Seleccione un metodo de pago");
             }else{
@@ -74,11 +75,13 @@ public class VistaVenta extends javax.swing.JFrame {
                     //NegocioVenta auxNegocioVenta = new NegocioVenta();
                     WebServiceVenta_Service auxNegocioVenta = new WebServiceVenta_Service();
                     WebServiceDetalleVenta_Service auxNegocioDetalleVenta = new WebServiceDetalleVenta_Service();
-                    id_folio = auxNegocioDetalleVenta.getWebServiceDetalleVentaPort().webEncontrarFolio();
-                    id_detalle_venta =auxNegocioVenta.getWebServiceVentaPort().webBuscarIdDetalleVenta(id_folio);
                     auxNegocioVenta.getWebServiceVentaPort().webConfigurarConexion();
+                    
+                    id_folio = auxNegocioDetalleVenta.getWebServiceDetalleVentaPort().webEncontrarFolio();
+                    id_detalle_venta = auxNegocioVenta.getWebServiceVentaPort().webBuscarIdDetalleVenta(id_folio);
+                    
                     auxNegocioVenta.getWebServiceVentaPort().webInsertarVenta(nombre_empresa,lbl_montoFinal.getText(),
-                            +id_detalle_venta,rut_empleado,box_metodoPAgo.getSelectedIndex());
+                            +id_detalle_venta,rut_empleado,box_metodoPago.getSelectedIndex());
                     
                     JOptionPane.showMessageDialog(null, "La venta fue realizada...");
                     this.dispose();
@@ -142,7 +145,7 @@ public class VistaVenta extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        box_metodoPAgo = new javax.swing.JComboBox<>();
+        box_metodoPago = new javax.swing.JComboBox<>();
         bto_pagar = new javax.swing.JButton();
         bto_cancelarVenta = new javax.swing.JButton();
         lbl_montoFinal = new javax.swing.JLabel();
@@ -165,8 +168,8 @@ public class VistaVenta extends javax.swing.JFrame {
         jLabel2.setText("Modo de Pago");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 310, -1, -1));
 
-        box_metodoPAgo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione Metodo de Pago", "Credito", "Debido", "Efectivo" }));
-        getContentPane().add(box_metodoPAgo, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 310, -1, -1));
+        box_metodoPago.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione Metodo de Pago", "Credito", "Debito", "Efectivo" }));
+        getContentPane().add(box_metodoPago, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 310, -1, -1));
 
         bto_pagar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/pagar.png"))); // NOI18N
         bto_pagar.setText("Pagar");
@@ -245,7 +248,7 @@ public class VistaVenta extends javax.swing.JFrame {
  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> box_metodoPAgo;
+    private javax.swing.JComboBox<String> box_metodoPago;
     private javax.swing.JButton bto_cancelarVenta;
     private javax.swing.JLabel bto_cerrar;
     private javax.swing.JButton bto_pagar;

@@ -32,7 +32,7 @@ public class NegocioEmpleado {
 }
     
     
-     public void insertarDetalleVenta(Empleado empleado)
+     public void insertarEmpleado(Empleado empleado)
     {
         this.configurarConexion();
         this.getConect1().setCadenaSQL("INSERT INTO empleado "
@@ -50,7 +50,7 @@ public class NegocioEmpleado {
     }
     
     
-    public void actualizarDetalleVenta(Empleado empleado)
+    public void actualizarEmpleado(Empleado empleado)
     {
        this.configurarConexion();
        this.getConect1().setCadenaSQL("UPDATE empleado "
@@ -66,14 +66,14 @@ public class NegocioEmpleado {
        this.getConect1().conectar();
     }
     
-    public void eliminarDetalleVenta(int id_detalle_venta)
+    public void eliminarEmpleado(String rut_empleado)
     {
         this.configurarConexion();
         this.getConect1().setCadenaSQL("DELETE FROM empleado "
-                                       + " WHERE id_detalle_venta = "+id_detalle_venta );
+                                       + " WHERE rut_empleado = "+rut_empleado );
     }
     
-    public int consultarCargo (String rut_empleado) throws SQLException{
+    public int consultarCargo (String rut_empleado){
         int id_cargo = 0;
         this.configurarConexion();
         this.getConect1().setCadenaSQL("SELECT id_cargo FROM empleado WHERE rut_empleado = '" + rut_empleado + "';");
@@ -82,7 +82,7 @@ public class NegocioEmpleado {
 
         try {
             while (this.getConect1().getDbresultSet().next()){
-        id_cargo = this.getConect1().getDbresultSet().getInt("id_cargo");
+                id_cargo = this.getConect1().getDbresultSet().getInt("id_cargo");
                 return id_cargo;
             }
         } catch (SQLException ex) {
@@ -92,38 +92,9 @@ public class NegocioEmpleado {
     }
     
     
-    public ArrayList<DetalleVenta> buscarEmpleado(String rut_empleado)
-    {
-       ArrayList<DetalleVenta> auxListEmpleado = new ArrayList<>();
-       this.configurarConexion();
-       this.getConect1().setCadenaSQL("SELECT * FROM empleado WHERE rut_empleado = "+rut_empleado+";)");
-       this.getConect1().setEsSelect(true);
-       this.getConect1().conectar();
-       
-       try
-       {
-           while(this.getConect1().getDbresultSet().next()) 
-           {
-              Empleado auxEmpleado = new Empleado();
-              //auxEmpleado.setRut_empleado(this.getConect1().getDbresultSet().getInt("id_detalle_venta"));
-              //auxEmpleado.setNombre_empleado(this.getConect1().getDbresultSet().getInt("folio_detalle_venta"));
-              //auxEmpleado.setCantidad_producto(this.getConect1().getDbresultSet().getInt("cantidad_producto"));
-              //auxEmpleado.setNombre_producto(this.getConect1().getDbresultSet().getString("nombre_producto"));
-              //auxEmpleado.setPrecio_unitario(this.getConect1().getDbresultSet().getInt("precio_unitario"));
-              //auxEmpleado.setPrecio_total(this.getConect1().getDbresultSet().getInt("precio_total"));
-              //auxEmpleado.setId_producto(this.getConect1().getDbresultSet().getInt("id_producto"));
-           
-              //auxListEmpleado.add(auxEmpleado);
-           
-           }
-       }
-       catch(Exception ex)
-       {
-          JOptionPane.showMessageDialog(null, "Error SQL ..." + ex.getMessage());
-       }
-       return auxListEmpleado; 
+  
     
-    }
+    
 
     public ConexionMySQL getConect1() {
         return conect1;

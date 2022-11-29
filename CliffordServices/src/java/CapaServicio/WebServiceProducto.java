@@ -22,6 +22,13 @@ public class WebServiceProducto {
     /**
      * This is a sample web service operation
      */
+    
+    @WebMethod(operationName = "webConfigurarConexion")
+    public void webConfigurarConexion() {
+        NegocioProducto auxNegocio = new NegocioProducto();
+        auxNegocio.configurarConexion();
+    }
+    
     @WebMethod(operationName = "webInsertarProducto")
     public void webInsertarProducto(@WebParam(name = "Producto") Producto producto) {
         NegocioProducto auxNegocio = new NegocioProducto();
@@ -35,15 +42,15 @@ public class WebServiceProducto {
     }
     
     @WebMethod(operationName = "webEliminarProducto")
-    public void eliminarproducto(@WebParam(name = "Producto") Producto producto) {
+    public void eliminarproducto(@WebParam(name = "id_producto") int id_producto) {
         NegocioProducto auxNegocio = new NegocioProducto();
-        auxNegocio.eliminarproducto(0);
+        auxNegocio.eliminarproducto(id_producto);
     }
     
     @WebMethod(operationName = "webBuscarProducto")
-    public ArrayList<Producto> webBuscarProducto(){
+    public ArrayList<Producto> webBuscarProducto(@WebParam(name = "id_producto") int id_producto){
         NegocioProducto auxNegocio = new NegocioProducto();
-        return auxNegocio.buscarProducto(0);
+        return auxNegocio.buscarProducto(id_producto);
     }
     
     @WebMethod(operationName = "webConsultarProducto")

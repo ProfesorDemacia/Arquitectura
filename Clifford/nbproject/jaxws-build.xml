@@ -50,5 +50,39 @@
         <delete dir="${build.generated.dir}/jax-wsCache/WebServiceDetalleVenta"/>
         <delete dir="${build.generated.sources.dir}/jax-ws/capaservicio"/>
     </target>
-    <target name="wsimport-client-generate" depends="wsimport-client-WebServiceVenta, wsimport-client-WebServiceDetalleVenta"/>
+    <target name="wsimport-client-WebServiceProducto" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/WebServiceProducto"/>
+        <property name="wsdl-WebServiceProducto" location="xml-resources/web-service-references/WebServiceProducto/wsdl/localhost_22396/CliffordServices/WebServiceProducto.wsdl"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/WebServiceProducto" destdir="${build.generated.dir}/jax-wsCache/WebServiceProducto" wsdl="${wsdl-WebServiceProducto}" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:22396/CliffordServices/WebServiceProducto?WSDL" xnocompile="true" xendorsed="true">
+            <depends file="${wsdl-WebServiceProducto}"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/WebServiceProducto"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/WebServiceProducto">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-WebServiceProducto" depends="-init-project">
+        <delete dir="${build.generated.dir}/jax-wsCache/WebServiceProducto"/>
+        <delete dir="${build.generated.sources.dir}/jax-ws/capaservicio"/>
+    </target>
+    <target name="wsimport-client-WebServiceEmpleado" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/WebServiceEmpleado"/>
+        <property name="wsdl-WebServiceEmpleado" location="xml-resources/web-service-references/WebServiceEmpleado/wsdl/localhost_22396/CliffordServices/WebServiceEmpleado.wsdl"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/WebServiceEmpleado" destdir="${build.generated.dir}/jax-wsCache/WebServiceEmpleado" wsdl="${wsdl-WebServiceEmpleado}" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:22396/CliffordServices/WebServiceEmpleado?WSDL" xnocompile="true" xendorsed="true">
+            <depends file="${wsdl-WebServiceEmpleado}"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/WebServiceEmpleado"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/WebServiceEmpleado">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-WebServiceEmpleado" depends="-init-project">
+        <delete dir="${build.generated.dir}/jax-wsCache/WebServiceEmpleado"/>
+        <delete dir="${build.generated.sources.dir}/jax-ws/capaservicio"/>
+    </target>
+    <target name="wsimport-client-generate" depends="wsimport-client-WebServiceVenta, wsimport-client-WebServiceDetalleVenta, wsimport-client-WebServiceProducto, wsimport-client-WebServiceEmpleado"/>
 </project>

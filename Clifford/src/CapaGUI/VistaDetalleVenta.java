@@ -7,8 +7,10 @@ package CapaGUI;
 
 
 import capaservicio.DetalleVenta;
+import capaservicio.Producto;
 import capaservicio.WebServiceDetalleVenta_Service;
 import capaservicio.WebServiceVenta_Service;
+import capaservicio.WebServiceProducto_Service;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -140,7 +142,10 @@ public class VistaDetalleVenta extends javax.swing.JFrame {
   
         try{
             
-            NegocioProducto auxNegocioProducto = new NegocioProducto();
+            
+            
+            //NegocioProducto auxNegocioProducto = new NegocioProducto();
+            WebServiceProducto_Service auxNegocioProducto = new WebServiceProducto_Service();
             
             if (this.txt_idProducto.getText().length() == 0 || this.txt_cantidad.getText().length() == 0)
             {
@@ -149,7 +154,7 @@ public class VistaDetalleVenta extends javax.swing.JFrame {
             }else{
                 
                 
-                Iterator iter = auxNegocioProducto.buscarProducto(Integer.parseInt(id_producto)).iterator();
+                Iterator iter = auxNegocioProducto.getWebServiceProductoPort().webBuscarProducto(Integer.parseInt(id_producto)).iterator();
                 
                 while(iter.hasNext())
             {
@@ -289,7 +294,7 @@ public class VistaDetalleVenta extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txt_idProducto);
-        txt_idProducto.setBounds(170, 160, 178, 20);
+        txt_idProducto.setBounds(170, 160, 178, 22);
 
         txt_cantidad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -302,7 +307,7 @@ public class VistaDetalleVenta extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txt_cantidad);
-        txt_cantidad.setBounds(170, 200, 178, 20);
+        txt_cantidad.setBounds(170, 200, 178, 22);
 
         jLabel6.setText("Nombre Producto");
         getContentPane().add(jLabel6);
@@ -315,7 +320,7 @@ public class VistaDetalleVenta extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txt_nombreProducto);
-        txt_nombreProducto.setBounds(170, 240, 178, 20);
+        txt_nombreProducto.setBounds(170, 240, 178, 22);
 
         txt_precioUnitario.setEditable(false);
         txt_precioUnitario.addActionListener(new java.awt.event.ActionListener() {
@@ -324,7 +329,7 @@ public class VistaDetalleVenta extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txt_precioUnitario);
-        txt_precioUnitario.setBounds(170, 280, 178, 20);
+        txt_precioUnitario.setBounds(170, 280, 178, 22);
 
         table_DetalleVenta.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

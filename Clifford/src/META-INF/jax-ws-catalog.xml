@@ -4,4 +4,8 @@
     <system systemId="http://localhost:22396/CliffordServices/WebServiceVenta?xsd=1" uri="wsdl/localhost_22396/CliffordServices/WebServiceVenta.xsd_1.xsd"/>
     <system systemId="http://localhost:22396/CliffordServices/WebServiceDetalleVenta?WSDL" uri="wsdl/localhost_22396/CliffordServices/WebServiceDetalleVenta.wsdl"/>
     <system systemId="http://localhost:22396/CliffordServices/WebServiceDetalleVenta?xsd=1" uri="wsdl/localhost_22396/CliffordServices/WebServiceDetalleVenta.xsd_1.xsd"/>
+    <system systemId="http://localhost:22396/CliffordServices/WebServiceProducto?WSDL" uri="wsdl/localhost_22396/CliffordServices/WebServiceProducto.wsdl"/>
+    <system systemId="http://localhost:22396/CliffordServices/WebServiceProducto?xsd=1" uri="wsdl/localhost_22396/CliffordServices/WebServiceProducto.xsd_1.xsd"/>
+    <system systemId="http://localhost:22396/CliffordServices/WebServiceEmpleado?WSDL" uri="wsdl/localhost_22396/CliffordServices/WebServiceEmpleado.wsdl"/>
+    <system systemId="http://localhost:22396/CliffordServices/WebServiceEmpleado?xsd=1" uri="wsdl/localhost_22396/CliffordServices/WebServiceEmpleado.xsd_1.xsd"/>
 </catalog>

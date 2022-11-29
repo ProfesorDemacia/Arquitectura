@@ -81,7 +81,7 @@ public class WebServiceDetalleVenta {
     }
     
     @WebMethod(operationName = "webEncontrarFolioEspecifico")
-    public int WebEncontrar(@WebParam(name = "id_detalle_venta") int id_detalle_venta) {
+    public int WebEncontrarFolioEspecifico(@WebParam(name = "id_detalle_venta") int id_detalle_venta) {
         NegocioDetalleVenta auxNegocio = new NegocioDetalleVenta();
         auxNegocio.encontrarFolioEspecifico(id_detalle_venta);
         return auxNegocio.encontrarFolioEspecifico(id_detalle_venta);

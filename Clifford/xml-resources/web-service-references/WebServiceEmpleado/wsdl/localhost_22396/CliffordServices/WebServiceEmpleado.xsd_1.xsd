@@ -1,0 +1,84 @@
+<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI (http://jax-ws.java.net). RI's version is Metro/2.3.2-b608 (trunk-7979; 2015-01-21T12:50:19+0000) JAXWS-RI/2.2.11-b150120.1832 JAXWS-API/2.2.12 JAXB-RI/2.2.12-b141219.1637 JAXB-API/2.2.13-b141020.1521 svn-revision#unknown. --><xs:schema xmlns:tns="http://CapaServicio/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://CapaServicio/">
+
+<xs:element name="webActualizarEmpleado" type="tns:webActualizarEmpleado"/>
+
+<xs:element name="webActualizarEmpleadoResponse" type="tns:webActualizarEmpleadoResponse"/>
+
+<xs:element name="webConfigurarConexion" type="tns:webConfigurarConexion"/>
+
+<xs:element name="webConfigurarConexionResponse" type="tns:webConfigurarConexionResponse"/>
+
+<xs:element name="webConsultarCargo" type="tns:webConsultarCargo"/>
+
+<xs:element name="webConsultarCargoResponse" type="tns:webConsultarCargoResponse"/>
+
+<xs:element name="webEliminarEmpleado" type="tns:webEliminarEmpleado"/>
+
+<xs:element name="webEliminarEmpleadoResponse" type="tns:webEliminarEmpleadoResponse"/>
+
+<xs:element name="webInsertarEmpleado" type="tns:webInsertarEmpleado"/>
+
+<xs:element name="webInsertarEmpleadoResponse" type="tns:webInsertarEmpleadoResponse"/>
+
+<xs:complexType name="webActualizarEmpleado">
+<xs:sequence>
+<xs:element name="Empleado" type="tns:empleado" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="empleado">
+<xs:sequence>
+<xs:element name="apellido_empleado" type="xs:string" minOccurs="0"/>
+<xs:element name="correo_empleado" type="xs:string" minOccurs="0"/>
+<xs:element name="direccion_empleado" type="xs:string" minOccurs="0"/>
+<xs:element name="id_cargo" type="xs:int"/>
+<xs:element name="id_comuna" type="xs:int"/>
+<xs:element name="nombre_empleado" type="xs:string" minOccurs="0"/>
+<xs:element name="rut_empleado" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="webActualizarEmpleadoResponse">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="webInsertarEmpleado">
+<xs:sequence>
+<xs:element name="Empleado" type="tns:empleado" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="webInsertarEmpleadoResponse">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="webEliminarEmpleado">
+<xs:sequence>
+<xs:element name="rut_empleado" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="webEliminarEmpleadoResponse">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="webConfigurarConexion">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="webConfigurarConexionResponse">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="webConsultarCargo">
+<xs:sequence>
+<xs:element name="rut_empleado" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="webConsultarCargoResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
