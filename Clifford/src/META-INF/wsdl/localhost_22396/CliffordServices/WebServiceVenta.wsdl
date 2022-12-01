@@ -4,17 +4,17 @@
 <xsd:import namespace="http://CapaServicio/" schemaLocation="http://localhost:22396/CliffordServices/WebServiceVenta?xsd=1"/>
 </xsd:schema>
 </types>
-<message name="webBuscarIdDetalleVenta">
-<part name="parameters" element="tns:webBuscarIdDetalleVenta"/>
-</message>
-<message name="webBuscarIdDetalleVentaResponse">
-<part name="parameters" element="tns:webBuscarIdDetalleVentaResponse"/>
-</message>
 <message name="webActualizarVenta">
 <part name="parameters" element="tns:webActualizarVenta"/>
 </message>
 <message name="webActualizarVentaResponse">
 <part name="parameters" element="tns:webActualizarVentaResponse"/>
+</message>
+<message name="webBuscarIdDetalleVenta">
+<part name="parameters" element="tns:webBuscarIdDetalleVenta"/>
+</message>
+<message name="webBuscarIdDetalleVentaResponse">
+<part name="parameters" element="tns:webBuscarIdDetalleVentaResponse"/>
 </message>
 <message name="webConsultarVentaEspecifica">
 <part name="parameters" element="tns:webConsultarVentaEspecifica"/>
@@ -28,11 +28,11 @@
 <message name="webConfigurarConexionResponse">
 <part name="parameters" element="tns:webConfigurarConexionResponse"/>
 </message>
-<message name="webInsertarVenta">
-<part name="parameters" element="tns:webInsertarVenta"/>
+<message name="webEliminarVenta">
+<part name="parameters" element="tns:webEliminarVenta"/>
 </message>
-<message name="webInsertarVentaResponse">
-<part name="parameters" element="tns:webInsertarVentaResponse"/>
+<message name="webEliminarVentaResponse">
+<part name="parameters" element="tns:webEliminarVentaResponse"/>
 </message>
 <message name="webConsultaVenta">
 <part name="parameters" element="tns:webConsultaVenta"/>
@@ -40,20 +40,20 @@
 <message name="webConsultaVentaResponse">
 <part name="parameters" element="tns:webConsultaVentaResponse"/>
 </message>
-<message name="webEliminarVenta">
-<part name="parameters" element="tns:webEliminarVenta"/>
+<message name="webInsertarVenta">
+<part name="parameters" element="tns:webInsertarVenta"/>
 </message>
-<message name="webEliminarVentaResponse">
-<part name="parameters" element="tns:webEliminarVentaResponse"/>
+<message name="webInsertarVentaResponse">
+<part name="parameters" element="tns:webInsertarVentaResponse"/>
 </message>
 <portType name="WebServiceVenta">
-<operation name="webBuscarIdDetalleVenta">
-<input wsam:Action="http://CapaServicio/WebServiceVenta/webBuscarIdDetalleVentaRequest" message="tns:webBuscarIdDetalleVenta"/>
-<output wsam:Action="http://CapaServicio/WebServiceVenta/webBuscarIdDetalleVentaResponse" message="tns:webBuscarIdDetalleVentaResponse"/>
-</operation>
 <operation name="webActualizarVenta">
 <input wsam:Action="http://CapaServicio/WebServiceVenta/webActualizarVentaRequest" message="tns:webActualizarVenta"/>
 <output wsam:Action="http://CapaServicio/WebServiceVenta/webActualizarVentaResponse" message="tns:webActualizarVentaResponse"/>
+</operation>
+<operation name="webBuscarIdDetalleVenta">
+<input wsam:Action="http://CapaServicio/WebServiceVenta/webBuscarIdDetalleVentaRequest" message="tns:webBuscarIdDetalleVenta"/>
+<output wsam:Action="http://CapaServicio/WebServiceVenta/webBuscarIdDetalleVentaResponse" message="tns:webBuscarIdDetalleVentaResponse"/>
 </operation>
 <operation name="webConsultarVentaEspecifica">
 <input wsam:Action="http://CapaServicio/WebServiceVenta/webConsultarVentaEspecificaRequest" message="tns:webConsultarVentaEspecifica"/>
@@ -63,22 +63,22 @@
 <input wsam:Action="http://CapaServicio/WebServiceVenta/webConfigurarConexionRequest" message="tns:webConfigurarConexion"/>
 <output wsam:Action="http://CapaServicio/WebServiceVenta/webConfigurarConexionResponse" message="tns:webConfigurarConexionResponse"/>
 </operation>
-<operation name="webInsertarVenta">
-<input wsam:Action="http://CapaServicio/WebServiceVenta/webInsertarVentaRequest" message="tns:webInsertarVenta"/>
-<output wsam:Action="http://CapaServicio/WebServiceVenta/webInsertarVentaResponse" message="tns:webInsertarVentaResponse"/>
+<operation name="webEliminarVenta">
+<input wsam:Action="http://CapaServicio/WebServiceVenta/webEliminarVentaRequest" message="tns:webEliminarVenta"/>
+<output wsam:Action="http://CapaServicio/WebServiceVenta/webEliminarVentaResponse" message="tns:webEliminarVentaResponse"/>
 </operation>
 <operation name="webConsultaVenta">
 <input wsam:Action="http://CapaServicio/WebServiceVenta/webConsultaVentaRequest" message="tns:webConsultaVenta"/>
 <output wsam:Action="http://CapaServicio/WebServiceVenta/webConsultaVentaResponse" message="tns:webConsultaVentaResponse"/>
 </operation>
-<operation name="webEliminarVenta">
-<input wsam:Action="http://CapaServicio/WebServiceVenta/webEliminarVentaRequest" message="tns:webEliminarVenta"/>
-<output wsam:Action="http://CapaServicio/WebServiceVenta/webEliminarVentaResponse" message="tns:webEliminarVentaResponse"/>
+<operation name="webInsertarVenta">
+<input wsam:Action="http://CapaServicio/WebServiceVenta/webInsertarVentaRequest" message="tns:webInsertarVenta"/>
+<output wsam:Action="http://CapaServicio/WebServiceVenta/webInsertarVentaResponse" message="tns:webInsertarVentaResponse"/>
 </operation>
 </portType>
 <binding name="WebServiceVentaPortBinding" type="tns:WebServiceVenta">
 <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
-<operation name="webBuscarIdDetalleVenta">
+<operation name="webActualizarVenta">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
@@ -87,7 +87,7 @@
 <soap:body use="literal"/>
 </output>
 </operation>
-<operation name="webActualizarVenta">
+<operation name="webBuscarIdDetalleVenta">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
@@ -114,7 +114,7 @@
 <soap:body use="literal"/>
 </output>
 </operation>
-<operation name="webInsertarVenta">
+<operation name="webEliminarVenta">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
@@ -132,7 +132,7 @@
 <soap:body use="literal"/>
 </output>
 </operation>
-<operation name="webEliminarVenta">
+<operation name="webInsertarVenta">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>

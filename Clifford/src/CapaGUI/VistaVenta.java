@@ -28,9 +28,11 @@ public class VistaVenta extends javax.swing.JFrame {
     public VistaVenta() {
         initComponents();
         VistaDetalleVenta pVenta = new VistaDetalleVenta();
-       
+        int id_folio = pVenta.folio;
         lbl_montoFinal.setText(pVenta.montofinal);
         this.setLocationRelativeTo(null);
+        buscarVenta(id_folio);
+        
         
         
     }
@@ -109,7 +111,8 @@ public class VistaVenta extends javax.swing.JFrame {
             modelo.setNumRows(0);
             WebServiceDetalleVenta_Service auxNegocioDetalleVenta = new WebServiceDetalleVenta_Service();
             id_folio = auxNegocioDetalleVenta.getWebServiceDetalleVentaPort().webEncontrarFolio();
-            Iterator iter = auxNegocioDetalleVenta.getWebServiceDetalleVentaPort().webBuscarDetalleVenta(id_folio).iterator();
+            
+            Iterator iter = auxNegocioDetalleVenta.getWebServiceDetalleVentaPort().webBuscarDetalleVentaPorFolio(id_folio).iterator();
             int fila = 0;
             while(iter.hasNext())
             {
@@ -128,7 +131,7 @@ public class VistaVenta extends javax.swing.JFrame {
         }
         catch(Exception ex)
         {
-            JOptionPane.showMessageDialog(null,"No se ha podido listar a los jugadores " + ex.getMessage());
+            JOptionPane.showMessageDialog(null,"No se ha podido listar a las ventas ");
         }
     }
     

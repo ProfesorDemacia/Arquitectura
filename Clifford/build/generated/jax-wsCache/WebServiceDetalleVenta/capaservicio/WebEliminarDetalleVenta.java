@@ -17,7 +17,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="id_detalle_venta" type="{http://www.w3.org/2001/XMLSchema}int"/>
+ *         &lt;element name="id_folio" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -28,27 +28,27 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "webEliminarDetalleVenta", propOrder = {
-    "idDetalleVenta"
+    "idFolio"
 })
 public class WebEliminarDetalleVenta {
 
-    @XmlElement(name = "id_detalle_venta")
-    protected int idDetalleVenta;
+    @XmlElement(name = "id_folio")
+    protected int idFolio;
 
     /**
-     * Obtiene el valor de la propiedad idDetalleVenta.
+     * Obtiene el valor de la propiedad idFolio.
      * 
      */
-    public int getIdDetalleVenta() {
-        return idDetalleVenta;
+    public int getIdFolio() {
+        return idFolio;
     }
 
     /**
-     * Define el valor de la propiedad idDetalleVenta.
+     * Define el valor de la propiedad idFolio.
      * 
      */
-    public void setIdDetalleVenta(int value) {
-        this.idDetalleVenta = value;
+    public void setIdFolio(int value) {
+        this.idFolio = value;
     }
 
 }

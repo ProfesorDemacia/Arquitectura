@@ -26,9 +26,11 @@ public class ObjectFactory {
 
     private final static QName _WebActualizarDetalleVentaResponse_QNAME = new QName("http://CapaServicio/", "webActualizarDetalleVentaResponse");
     private final static QName _WebInsertarDetalleVentaResponse_QNAME = new QName("http://CapaServicio/", "webInsertarDetalleVentaResponse");
+    private final static QName _WebBuscarDetalleVentaPorFolio_QNAME = new QName("http://CapaServicio/", "webBuscarDetalleVentaPorFolio");
     private final static QName _WebEncontrarFolioEspecifico_QNAME = new QName("http://CapaServicio/", "webEncontrarFolioEspecifico");
     private final static QName _WebEliminarDetalleVentaResponse_QNAME = new QName("http://CapaServicio/", "webEliminarDetalleVentaResponse");
     private final static QName _WebEncontrarFolioEspecificoResponse_QNAME = new QName("http://CapaServicio/", "webEncontrarFolioEspecificoResponse");
+    private final static QName _WebBuscarDetalleVentaPorFolioResponse_QNAME = new QName("http://CapaServicio/", "webBuscarDetalleVentaPorFolioResponse");
     private final static QName _WebSumarFolio_QNAME = new QName("http://CapaServicio/", "webSumarFolio");
     private final static QName _WebSumarFolioResponse_QNAME = new QName("http://CapaServicio/", "webSumarFolioResponse");
     private final static QName _WebBuscarDetalleVenta_QNAME = new QName("http://CapaServicio/", "webBuscarDetalleVenta");
@@ -155,6 +157,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link WebBuscarDetalleVentaPorFolioResponse }
+     * 
+     */
+    public WebBuscarDetalleVentaPorFolioResponse createWebBuscarDetalleVentaPorFolioResponse() {
+        return new WebBuscarDetalleVentaPorFolioResponse();
+    }
+
+    /**
      * Create an instance of {@link WebEliminarDetalleVentaResponse }
      * 
      */
@@ -176,6 +186,14 @@ public class ObjectFactory {
      */
     public WebEncontrarFolioEspecifico createWebEncontrarFolioEspecifico() {
         return new WebEncontrarFolioEspecifico();
+    }
+
+    /**
+     * Create an instance of {@link WebBuscarDetalleVentaPorFolio }
+     * 
+     */
+    public WebBuscarDetalleVentaPorFolio createWebBuscarDetalleVentaPorFolio() {
+        return new WebBuscarDetalleVentaPorFolio();
     }
 
     /**
@@ -221,6 +239,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link WebBuscarDetalleVentaPorFolio }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://CapaServicio/", name = "webBuscarDetalleVentaPorFolio")
+    public JAXBElement<WebBuscarDetalleVentaPorFolio> createWebBuscarDetalleVentaPorFolio(WebBuscarDetalleVentaPorFolio value) {
+        return new JAXBElement<WebBuscarDetalleVentaPorFolio>(_WebBuscarDetalleVentaPorFolio_QNAME, WebBuscarDetalleVentaPorFolio.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link WebEncontrarFolioEspecifico }{@code >}}
      * 
      */
@@ -245,6 +272,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://CapaServicio/", name = "webEncontrarFolioEspecificoResponse")
     public JAXBElement<WebEncontrarFolioEspecificoResponse> createWebEncontrarFolioEspecificoResponse(WebEncontrarFolioEspecificoResponse value) {
         return new JAXBElement<WebEncontrarFolioEspecificoResponse>(_WebEncontrarFolioEspecificoResponse_QNAME, WebEncontrarFolioEspecificoResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link WebBuscarDetalleVentaPorFolioResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://CapaServicio/", name = "webBuscarDetalleVentaPorFolioResponse")
+    public JAXBElement<WebBuscarDetalleVentaPorFolioResponse> createWebBuscarDetalleVentaPorFolioResponse(WebBuscarDetalleVentaPorFolioResponse value) {
+        return new JAXBElement<WebBuscarDetalleVentaPorFolioResponse>(_WebBuscarDetalleVentaPorFolioResponse_QNAME, WebBuscarDetalleVentaPorFolioResponse.class, null, value);
     }
 
     /**

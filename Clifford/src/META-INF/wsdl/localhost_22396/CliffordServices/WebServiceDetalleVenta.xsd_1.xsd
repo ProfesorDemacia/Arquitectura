@@ -6,6 +6,10 @@
 
 <xs:element name="webBuscarDetalleVenta" type="tns:webBuscarDetalleVenta"/>
 
+<xs:element name="webBuscarDetalleVentaPorFolio" type="tns:webBuscarDetalleVentaPorFolio"/>
+
+<xs:element name="webBuscarDetalleVentaPorFolioResponse" type="tns:webBuscarDetalleVentaPorFolioResponse"/>
+
 <xs:element name="webBuscarDetalleVentaResponse" type="tns:webBuscarDetalleVentaResponse"/>
 
 <xs:element name="webConfigurarConexion" type="tns:webConfigurarConexion"/>
@@ -35,18 +39,6 @@
 <xs:element name="webSumarFolio" type="tns:webSumarFolio"/>
 
 <xs:element name="webSumarFolioResponse" type="tns:webSumarFolioResponse"/>
-
-<xs:complexType name="webEncontrarFolioEspecifico">
-<xs:sequence>
-<xs:element name="id_detalle_venta" type="xs:int"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="webEncontrarFolioEspecificoResponse">
-<xs:sequence>
-<xs:element name="return" type="xs:int"/>
-</xs:sequence>
-</xs:complexType>
 
 <xs:complexType name="webEncontrarFolio">
 <xs:sequence/>
@@ -98,6 +90,18 @@
 <xs:sequence/>
 </xs:complexType>
 
+<xs:complexType name="webBuscarDetalleVentaPorFolio">
+<xs:sequence>
+<xs:element name="id_folio" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="webBuscarDetalleVentaPorFolioResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:detalleVenta" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
 <xs:complexType name="webSumarFolio">
 <xs:sequence/>
 </xs:complexType>
@@ -110,7 +114,7 @@
 
 <xs:complexType name="webEliminarDetalleVenta">
 <xs:sequence>
-<xs:element name="id_detalle_venta" type="xs:int"/>
+<xs:element name="id_folio" type="xs:int"/>
 </xs:sequence>
 </xs:complexType>
 
@@ -142,6 +146,18 @@
 <xs:complexType name="webBuscarDetalleVentaResponse">
 <xs:sequence>
 <xs:element name="return" type="tns:detalleVenta" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="webEncontrarFolioEspecifico">
+<xs:sequence>
+<xs:element name="id_detalle_venta" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="webEncontrarFolioEspecificoResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:int"/>
 </xs:sequence>
 </xs:complexType>
 </xs:schema>

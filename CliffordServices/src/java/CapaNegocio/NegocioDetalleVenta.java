@@ -106,7 +106,7 @@ public class NegocioDetalleVenta {
     {
        ArrayList<DetalleVenta> auxLisDetalleVenta = new ArrayList<>();
        this.configurarConexion();
-       this.getConect1().setCadenaSQL("SELECT * FROM detalle_venta WHERE id_detalle_venta = "+id_detalle_venta+";)");
+       this.getConect1().setCadenaSQL("SELECT * FROM detalle_venta WHERE id_detalle_venta = "+id_detalle_venta+";");
        this.getConect1().setEsSelect(true);
        this.getConect1().conectar();
        
@@ -211,6 +211,41 @@ public class NegocioDetalleVenta {
         } catch (Exception e) {
         }
         return folio_detalle_venta;
+    }
+    
+        public ArrayList<DetalleVenta> buscarDetalleVentaPorFolio(int id_folio)
+    {
+       ArrayList<DetalleVenta> auxLisVenta = new ArrayList<>();
+       this.configurarConexion();
+       this.getConect1().setCadenaSQL("SELECT *  FROM detalle_venta WHERE folio_detalle_venta = "+id_folio+";");
+       this.getConect1().setEsSelect(true);
+       this.getConect1().conectar();
+       
+       try
+       {
+           while(this.getConect1().getDbresultSet().next()) 
+           {
+              DetalleVenta auxVenta = new DetalleVenta();
+              
+              
+              auxVenta.setId_detalle_venta(this.getConect1().getDbresultSet().getInt("id_detalle_venta"));
+              auxVenta.setFolio_detalle_venta(this.getConect1().getDbresultSet().getInt("folio_detalle_venta"));
+              auxVenta.setCantidad_producto(this.getConect1().getDbresultSet().getInt("cantidad_producto"));
+              auxVenta.setNombre_producto(this.getConect1().getDbresultSet().getString("nombre_producto"));
+              auxVenta.setPrecio_unitario(this.getConect1().getDbresultSet().getInt("precio_unitario"));
+              auxVenta.setPrecio_total(this.getConect1().getDbresultSet().getInt("precio_total"));
+              auxVenta.setId_producto(this.getConect1().getDbresultSet().getInt("id_producto"));
+           
+              auxLisVenta.add(auxVenta);
+           
+           }
+       }
+       catch(Exception ex)
+       {
+          JOptionPane.showMessageDialog(null, "Error SQL ..." + ex.getMessage());
+       }
+       return auxLisVenta; 
+    
     }
     
     

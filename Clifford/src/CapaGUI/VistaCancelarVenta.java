@@ -8,6 +8,7 @@ package CapaGUI;
 import capaservicio.Venta;
 import capaservicio.WebServiceDetalleVenta_Service;
 import capaservicio.WebServiceVenta_Service;
+import java.awt.HeadlessException;
 import java.util.Iterator;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -39,21 +40,17 @@ public class VistaCancelarVenta extends javax.swing.JFrame {
             WebServiceDetalleVenta_Service auxNegocioDetalleVenta = new WebServiceDetalleVenta_Service();
             
          
-            auxNegocioDetalleVenta.getWebServiceDetalleVentaPort().webConfigurarConexion();
             folio = auxNegocioDetalleVenta.getWebServiceDetalleVentaPort().webEncontrarFolioEspecifico(id_detalle);
+            
             auxNegocioVenta.getWebServiceVentaPort().webEliminarVenta(id_venta);  
-            
-            
-            
-            
-            auxNegocioDetalleVenta.getWebServiceDetalleVentaPort().webConfigurarConexion();
             auxNegocioDetalleVenta.getWebServiceDetalleVentaPort().webEliminarDetalleVenta(folio);
+            
+            
             JOptionPane.showMessageDialog(null,"Se borro la tabla con exito");
-            initComponents();
             
             
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null,"No se pudo borrar la venta " + ex.getMessage());
+            JOptionPane.showMessageDialog(null,"No se pudo borrar la venta "+ex.getMessage());
         }
     }
     

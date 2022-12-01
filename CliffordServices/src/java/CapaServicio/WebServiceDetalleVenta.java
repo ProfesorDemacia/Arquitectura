@@ -88,6 +88,14 @@ public class WebServiceDetalleVenta {
     }
     
     
+    @WebMethod(operationName = "webBuscarDetalleVentaPorFolio")
+    public ArrayList<DetalleVenta> WebBuscarDetalleVentaPorFolio(@WebParam(name = "id_folio") int id_folio) {
+        NegocioDetalleVenta auxNegocio = new NegocioDetalleVenta();
+        auxNegocio.buscarDetalleVentaPorFolio(id_folio);
+        return auxNegocio.buscarDetalleVentaPorFolio(id_folio);
+    }
+    
+    
     
     
     
