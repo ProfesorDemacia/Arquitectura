@@ -247,6 +247,26 @@ public class NegocioDetalleVenta {
        return auxLisVenta; 
     
     }
+        
+        
+    public boolean existeDetalleVenta(int id_detalle_venta) 
+     {
+        this.configurarConexion();
+        this.getConect1().setCadenaSQL("SELECT * FROM detalle_venta WHERE sku = "+id_detalle_venta+";");
+        this.getConect1().setEsSelect(true);
+        this.getConect1().conectar();
+        boolean existe = false;
+         try
+        {
+            
+           existe = this.getConect1().getDbresultSet().next() ;
+        }
+        catch(Exception ex)
+        {
+            JOptionPane.showMessageDialog(null, "Error SQL ..." + ex.getMessage());
+        }
+        return(existe);
+     }
     
     
     

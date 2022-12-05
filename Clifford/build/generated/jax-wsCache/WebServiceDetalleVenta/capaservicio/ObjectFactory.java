@@ -27,6 +27,7 @@ public class ObjectFactory {
     private final static QName _WebActualizarDetalleVentaResponse_QNAME = new QName("http://CapaServicio/", "webActualizarDetalleVentaResponse");
     private final static QName _WebInsertarDetalleVentaResponse_QNAME = new QName("http://CapaServicio/", "webInsertarDetalleVentaResponse");
     private final static QName _WebBuscarDetalleVentaPorFolio_QNAME = new QName("http://CapaServicio/", "webBuscarDetalleVentaPorFolio");
+    private final static QName _WebExisteDetalleVentaResponse_QNAME = new QName("http://CapaServicio/", "webExisteDetalleVentaResponse");
     private final static QName _WebEncontrarFolioEspecifico_QNAME = new QName("http://CapaServicio/", "webEncontrarFolioEspecifico");
     private final static QName _WebEliminarDetalleVentaResponse_QNAME = new QName("http://CapaServicio/", "webEliminarDetalleVentaResponse");
     private final static QName _WebEncontrarFolioEspecificoResponse_QNAME = new QName("http://CapaServicio/", "webEncontrarFolioEspecificoResponse");
@@ -34,6 +35,7 @@ public class ObjectFactory {
     private final static QName _WebSumarFolio_QNAME = new QName("http://CapaServicio/", "webSumarFolio");
     private final static QName _WebSumarFolioResponse_QNAME = new QName("http://CapaServicio/", "webSumarFolioResponse");
     private final static QName _WebBuscarDetalleVenta_QNAME = new QName("http://CapaServicio/", "webBuscarDetalleVenta");
+    private final static QName _WebExisteDetalleVenta_QNAME = new QName("http://CapaServicio/", "webExisteDetalleVenta");
     private final static QName _WebEncontrarFolio_QNAME = new QName("http://CapaServicio/", "webEncontrarFolio");
     private final static QName _WebEncontrarFolioResponse_QNAME = new QName("http://CapaServicio/", "webEncontrarFolioResponse");
     private final static QName _WebBuscarDetalleVentaResponse_QNAME = new QName("http://CapaServicio/", "webBuscarDetalleVentaResponse");
@@ -141,6 +143,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link WebExisteDetalleVenta }
+     * 
+     */
+    public WebExisteDetalleVenta createWebExisteDetalleVenta() {
+        return new WebExisteDetalleVenta();
+    }
+
+    /**
      * Create an instance of {@link WebSumarFolioResponse }
      * 
      */
@@ -186,6 +196,14 @@ public class ObjectFactory {
      */
     public WebEncontrarFolioEspecifico createWebEncontrarFolioEspecifico() {
         return new WebEncontrarFolioEspecifico();
+    }
+
+    /**
+     * Create an instance of {@link WebExisteDetalleVentaResponse }
+     * 
+     */
+    public WebExisteDetalleVentaResponse createWebExisteDetalleVentaResponse() {
+        return new WebExisteDetalleVentaResponse();
     }
 
     /**
@@ -245,6 +263,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://CapaServicio/", name = "webBuscarDetalleVentaPorFolio")
     public JAXBElement<WebBuscarDetalleVentaPorFolio> createWebBuscarDetalleVentaPorFolio(WebBuscarDetalleVentaPorFolio value) {
         return new JAXBElement<WebBuscarDetalleVentaPorFolio>(_WebBuscarDetalleVentaPorFolio_QNAME, WebBuscarDetalleVentaPorFolio.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link WebExisteDetalleVentaResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://CapaServicio/", name = "webExisteDetalleVentaResponse")
+    public JAXBElement<WebExisteDetalleVentaResponse> createWebExisteDetalleVentaResponse(WebExisteDetalleVentaResponse value) {
+        return new JAXBElement<WebExisteDetalleVentaResponse>(_WebExisteDetalleVentaResponse_QNAME, WebExisteDetalleVentaResponse.class, null, value);
     }
 
     /**
@@ -308,6 +335,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://CapaServicio/", name = "webBuscarDetalleVenta")
     public JAXBElement<WebBuscarDetalleVenta> createWebBuscarDetalleVenta(WebBuscarDetalleVenta value) {
         return new JAXBElement<WebBuscarDetalleVenta>(_WebBuscarDetalleVenta_QNAME, WebBuscarDetalleVenta.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link WebExisteDetalleVenta }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://CapaServicio/", name = "webExisteDetalleVenta")
+    public JAXBElement<WebExisteDetalleVenta> createWebExisteDetalleVenta(WebExisteDetalleVenta value) {
+        return new JAXBElement<WebExisteDetalleVenta>(_WebExisteDetalleVenta_QNAME, WebExisteDetalleVenta.class, null, value);
     }
 
     /**

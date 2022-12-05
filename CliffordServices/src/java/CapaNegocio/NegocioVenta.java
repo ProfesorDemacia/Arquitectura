@@ -139,7 +139,7 @@ public class NegocioVenta {
     public int buscarIdDetalleVenta(int id_folio)
     {
         this.configurarConexion();
-        this.getConect1().setCadenaSQL("SELECT MAX(`id_detalle_venta`) FROM detalle_venta WHERE folio_detalle_venta = "+id_folio+";" );
+        this.getConect1().setCadenaSQL("SELECT MAX(id_detalle_venta) FROM detalle_venta WHERE folio_detalle_venta = "+id_folio+";" );
         this.getConect1().setEsSelect(true);
         this.getConect1().conectar();
         try
@@ -158,6 +158,25 @@ public class NegocioVenta {
        return id_folio;
         
     }
+    
+    public boolean existeVenta(int id_venta) 
+     {
+        this.configurarConexion();
+        this.getConect1().setCadenaSQL("SELECT * FROM venta WHERE id_venta = "+id_venta+";");
+        this.getConect1().setEsSelect(true);
+        this.getConect1().conectar();
+        boolean existe = false;
+         try
+        {
+            
+           existe = this.getConect1().getDbresultSet().next() ;
+        }
+        catch(Exception ex)
+        {
+            JOptionPane.showMessageDialog(null, "Error SQL ..." + ex.getMessage());
+        }
+        return(existe);
+     }
 
     public ConexionMySQL getConect1() {
         return conect1;

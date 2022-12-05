@@ -27,6 +27,84 @@ public interface WebServiceVenta {
 
     /**
      * 
+     * @param idVenta
+     * @return
+     *     returns boolean
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "webExisteVenta", targetNamespace = "http://CapaServicio/", className = "capaservicio.WebExisteVenta")
+    @ResponseWrapper(localName = "webExisteVentaResponse", targetNamespace = "http://CapaServicio/", className = "capaservicio.WebExisteVentaResponse")
+    @Action(input = "http://CapaServicio/WebServiceVenta/webExisteVentaRequest", output = "http://CapaServicio/WebServiceVenta/webExisteVentaResponse")
+    public boolean webExisteVenta(
+        @WebParam(name = "id_venta", targetNamespace = "")
+        int idVenta);
+
+    /**
+     * 
+     * @param arg3
+     * @param arg2
+     * @param venta
+     * @param arg4
+     * @param arg1
+     */
+    @WebMethod
+    @RequestWrapper(localName = "webInsertarVenta", targetNamespace = "http://CapaServicio/", className = "capaservicio.WebInsertarVenta")
+    @ResponseWrapper(localName = "webInsertarVentaResponse", targetNamespace = "http://CapaServicio/", className = "capaservicio.WebInsertarVentaResponse")
+    @Action(input = "http://CapaServicio/WebServiceVenta/webInsertarVentaRequest", output = "http://CapaServicio/WebServiceVenta/webInsertarVentaResponse")
+    public void webInsertarVenta(
+        @WebParam(name = "Venta", targetNamespace = "")
+        String venta,
+        @WebParam(name = "arg1", targetNamespace = "")
+        String arg1,
+        @WebParam(name = "arg2", targetNamespace = "")
+        int arg2,
+        @WebParam(name = "arg3", targetNamespace = "")
+        String arg3,
+        @WebParam(name = "arg4", targetNamespace = "")
+        int arg4);
+
+    /**
+     * 
+     * @return
+     *     returns java.util.List<capaservicio.Venta>
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "webConsultaVenta", targetNamespace = "http://CapaServicio/", className = "capaservicio.WebConsultaVenta")
+    @ResponseWrapper(localName = "webConsultaVentaResponse", targetNamespace = "http://CapaServicio/", className = "capaservicio.WebConsultaVentaResponse")
+    @Action(input = "http://CapaServicio/WebServiceVenta/webConsultaVentaRequest", output = "http://CapaServicio/WebServiceVenta/webConsultaVentaResponse")
+    public List<Venta> webConsultaVenta();
+
+    /**
+     * 
+     * @param idVenta
+     */
+    @WebMethod
+    @RequestWrapper(localName = "webEliminarVenta", targetNamespace = "http://CapaServicio/", className = "capaservicio.WebEliminarVenta")
+    @ResponseWrapper(localName = "webEliminarVentaResponse", targetNamespace = "http://CapaServicio/", className = "capaservicio.WebEliminarVentaResponse")
+    @Action(input = "http://CapaServicio/WebServiceVenta/webEliminarVentaRequest", output = "http://CapaServicio/WebServiceVenta/webEliminarVentaResponse")
+    public void webEliminarVenta(
+        @WebParam(name = "id_venta", targetNamespace = "")
+        int idVenta);
+
+    /**
+     * 
+     * @param idVenta
+     * @return
+     *     returns java.util.List<capaservicio.Venta>
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "webConsultarVentaEspecifica", targetNamespace = "http://CapaServicio/", className = "capaservicio.WebConsultarVentaEspecifica")
+    @ResponseWrapper(localName = "webConsultarVentaEspecificaResponse", targetNamespace = "http://CapaServicio/", className = "capaservicio.WebConsultarVentaEspecificaResponse")
+    @Action(input = "http://CapaServicio/WebServiceVenta/webConsultarVentaEspecificaRequest", output = "http://CapaServicio/WebServiceVenta/webConsultarVentaEspecificaResponse")
+    public List<Venta> webConsultarVentaEspecifica(
+        @WebParam(name = "id_venta", targetNamespace = "")
+        int idVenta);
+
+    /**
+     * 
      * @param venta
      */
     @WebMethod
@@ -54,74 +132,11 @@ public interface WebServiceVenta {
 
     /**
      * 
-     * @param idVenta
-     * @return
-     *     returns java.util.List<capaservicio.Venta>
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "webConsultarVentaEspecifica", targetNamespace = "http://CapaServicio/", className = "capaservicio.WebConsultarVentaEspecifica")
-    @ResponseWrapper(localName = "webConsultarVentaEspecificaResponse", targetNamespace = "http://CapaServicio/", className = "capaservicio.WebConsultarVentaEspecificaResponse")
-    @Action(input = "http://CapaServicio/WebServiceVenta/webConsultarVentaEspecificaRequest", output = "http://CapaServicio/WebServiceVenta/webConsultarVentaEspecificaResponse")
-    public List<Venta> webConsultarVentaEspecifica(
-        @WebParam(name = "id_venta", targetNamespace = "")
-        int idVenta);
-
-    /**
-     * 
      */
     @WebMethod
     @RequestWrapper(localName = "webConfigurarConexion", targetNamespace = "http://CapaServicio/", className = "capaservicio.WebConfigurarConexion")
     @ResponseWrapper(localName = "webConfigurarConexionResponse", targetNamespace = "http://CapaServicio/", className = "capaservicio.WebConfigurarConexionResponse")
     @Action(input = "http://CapaServicio/WebServiceVenta/webConfigurarConexionRequest", output = "http://CapaServicio/WebServiceVenta/webConfigurarConexionResponse")
     public void webConfigurarConexion();
-
-    /**
-     * 
-     * @param idVenta
-     */
-    @WebMethod
-    @RequestWrapper(localName = "webEliminarVenta", targetNamespace = "http://CapaServicio/", className = "capaservicio.WebEliminarVenta")
-    @ResponseWrapper(localName = "webEliminarVentaResponse", targetNamespace = "http://CapaServicio/", className = "capaservicio.WebEliminarVentaResponse")
-    @Action(input = "http://CapaServicio/WebServiceVenta/webEliminarVentaRequest", output = "http://CapaServicio/WebServiceVenta/webEliminarVentaResponse")
-    public void webEliminarVenta(
-        @WebParam(name = "id_venta", targetNamespace = "")
-        int idVenta);
-
-    /**
-     * 
-     * @return
-     *     returns java.util.List<capaservicio.Venta>
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "webConsultaVenta", targetNamespace = "http://CapaServicio/", className = "capaservicio.WebConsultaVenta")
-    @ResponseWrapper(localName = "webConsultaVentaResponse", targetNamespace = "http://CapaServicio/", className = "capaservicio.WebConsultaVentaResponse")
-    @Action(input = "http://CapaServicio/WebServiceVenta/webConsultaVentaRequest", output = "http://CapaServicio/WebServiceVenta/webConsultaVentaResponse")
-    public List<Venta> webConsultaVenta();
-
-    /**
-     * 
-     * @param arg3
-     * @param arg2
-     * @param venta
-     * @param arg4
-     * @param arg1
-     */
-    @WebMethod
-    @RequestWrapper(localName = "webInsertarVenta", targetNamespace = "http://CapaServicio/", className = "capaservicio.WebInsertarVenta")
-    @ResponseWrapper(localName = "webInsertarVentaResponse", targetNamespace = "http://CapaServicio/", className = "capaservicio.WebInsertarVentaResponse")
-    @Action(input = "http://CapaServicio/WebServiceVenta/webInsertarVentaRequest", output = "http://CapaServicio/WebServiceVenta/webInsertarVentaResponse")
-    public void webInsertarVenta(
-        @WebParam(name = "Venta", targetNamespace = "")
-        String venta,
-        @WebParam(name = "arg1", targetNamespace = "")
-        String arg1,
-        @WebParam(name = "arg2", targetNamespace = "")
-        int arg2,
-        @WebParam(name = "arg3", targetNamespace = "")
-        String arg3,
-        @WebParam(name = "arg4", targetNamespace = "")
-        int arg4);
 
 }

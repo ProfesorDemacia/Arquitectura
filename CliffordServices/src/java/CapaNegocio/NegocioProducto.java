@@ -133,6 +133,26 @@ public class NegocioProducto {
     }
     
     
+    public boolean existeProducto(int id_producto) 
+     {
+        this.configurarConexion();
+        this.getConect1().setCadenaSQL("SELECT * FROM producto WHERE id_producto = "+id_producto+";");
+        this.getConect1().setEsSelect(true);
+        this.getConect1().conectar();
+        boolean existe = false;
+         try
+        {
+            
+           existe = this.getConect1().getDbresultSet().next() ;
+        }
+        catch(Exception ex)
+        {
+            JOptionPane.showMessageDialog(null, "Error SQL ..." + ex.getMessage());
+        }
+        return(existe);
+     }
+    
+    
     
     
     

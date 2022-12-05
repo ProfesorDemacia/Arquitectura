@@ -32,6 +32,10 @@
 
 <xs:element name="webEncontrarFolioResponse" type="tns:webEncontrarFolioResponse"/>
 
+<xs:element name="webExisteDetalleVenta" type="tns:webExisteDetalleVenta"/>
+
+<xs:element name="webExisteDetalleVentaResponse" type="tns:webExisteDetalleVentaResponse"/>
+
 <xs:element name="webInsertarDetalleVenta" type="tns:webInsertarDetalleVenta"/>
 
 <xs:element name="webInsertarDetalleVentaResponse" type="tns:webInsertarDetalleVentaResponse"/>
@@ -72,6 +76,14 @@
 </xs:sequence>
 </xs:complexType>
 
+<xs:complexType name="webConfigurarConexion">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="webConfigurarConexionResponse">
+<xs:sequence/>
+</xs:complexType>
+
 <xs:complexType name="webActualizarDetalleVenta">
 <xs:sequence>
 <xs:element name="DetalleVenta" type="tns:detalleVenta" minOccurs="0"/>
@@ -82,12 +94,14 @@
 <xs:sequence/>
 </xs:complexType>
 
-<xs:complexType name="webConfigurarConexion">
+<xs:complexType name="webSumarFolio">
 <xs:sequence/>
 </xs:complexType>
 
-<xs:complexType name="webConfigurarConexionResponse">
-<xs:sequence/>
+<xs:complexType name="webSumarFolioResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:int"/>
+</xs:sequence>
 </xs:complexType>
 
 <xs:complexType name="webBuscarDetalleVentaPorFolio">
@@ -102,13 +116,15 @@
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="webSumarFolio">
-<xs:sequence/>
+<xs:complexType name="webExisteDetalleVenta">
+<xs:sequence>
+<xs:element name="id_detalle_venta" type="xs:int"/>
+</xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="webSumarFolioResponse">
+<xs:complexType name="webExisteDetalleVentaResponse">
 <xs:sequence>
-<xs:element name="return" type="xs:int"/>
+<xs:element name="return" type="xs:boolean"/>
 </xs:sequence>
 </xs:complexType>
 

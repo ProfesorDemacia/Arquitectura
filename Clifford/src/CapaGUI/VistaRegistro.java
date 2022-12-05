@@ -27,6 +27,10 @@ public class VistaRegistro extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
     }
     
+    
+    VistaMenu pMenu = new VistaMenu();
+    private String rut_empleado = pMenu.rut_empleado;
+    
     private void ValorFinal()
     {
         int a = 0;
@@ -93,6 +97,11 @@ public class VistaRegistro extends javax.swing.JFrame {
         bto_volver = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         bto_mostrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/registro.png"))); // NOI18N
@@ -150,6 +159,12 @@ public class VistaRegistro extends javax.swing.JFrame {
         VistaAdministrador pMenu = new VistaAdministrador();
         pMenu.setVisible(true);
     }//GEN-LAST:event_bto_volverActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        // TODO add your handling code here:
+        registroVentaTable();
+        ValorFinal();
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments

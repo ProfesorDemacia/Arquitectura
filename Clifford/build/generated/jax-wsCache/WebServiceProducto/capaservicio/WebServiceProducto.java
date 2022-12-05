@@ -27,6 +27,42 @@ public interface WebServiceProducto {
 
     /**
      * 
+     * @param idProducto
+     */
+    @WebMethod
+    @RequestWrapper(localName = "webEliminarProducto", targetNamespace = "http://CapaServicio/", className = "capaservicio.WebEliminarProducto")
+    @ResponseWrapper(localName = "webEliminarProductoResponse", targetNamespace = "http://CapaServicio/", className = "capaservicio.WebEliminarProductoResponse")
+    @Action(input = "http://CapaServicio/WebServiceProducto/webEliminarProductoRequest", output = "http://CapaServicio/WebServiceProducto/webEliminarProductoResponse")
+    public void webEliminarProducto(
+        @WebParam(name = "id_producto", targetNamespace = "")
+        int idProducto);
+
+    /**
+     * 
+     * @param idProducto
+     * @return
+     *     returns boolean
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "webExisteProducto", targetNamespace = "http://CapaServicio/", className = "capaservicio.WebExisteProducto")
+    @ResponseWrapper(localName = "webExisteProductoResponse", targetNamespace = "http://CapaServicio/", className = "capaservicio.WebExisteProductoResponse")
+    @Action(input = "http://CapaServicio/WebServiceProducto/webExisteProductoRequest", output = "http://CapaServicio/WebServiceProducto/webExisteProductoResponse")
+    public boolean webExisteProducto(
+        @WebParam(name = "id_producto", targetNamespace = "")
+        int idProducto);
+
+    /**
+     * 
+     */
+    @WebMethod
+    @RequestWrapper(localName = "webConfigurarConexion", targetNamespace = "http://CapaServicio/", className = "capaservicio.WebConfigurarConexion")
+    @ResponseWrapper(localName = "webConfigurarConexionResponse", targetNamespace = "http://CapaServicio/", className = "capaservicio.WebConfigurarConexionResponse")
+    @Action(input = "http://CapaServicio/WebServiceProducto/webConfigurarConexionRequest", output = "http://CapaServicio/WebServiceProducto/webConfigurarConexionResponse")
+    public void webConfigurarConexion();
+
+    /**
+     * 
      * @param producto
      */
     @WebMethod
@@ -48,15 +84,6 @@ public interface WebServiceProducto {
     public void webActualizarProducto(
         @WebParam(name = "Producto", targetNamespace = "")
         Producto producto);
-
-    /**
-     * 
-     */
-    @WebMethod
-    @RequestWrapper(localName = "webConfigurarConexion", targetNamespace = "http://CapaServicio/", className = "capaservicio.WebConfigurarConexion")
-    @ResponseWrapper(localName = "webConfigurarConexionResponse", targetNamespace = "http://CapaServicio/", className = "capaservicio.WebConfigurarConexionResponse")
-    @Action(input = "http://CapaServicio/WebServiceProducto/webConfigurarConexionRequest", output = "http://CapaServicio/WebServiceProducto/webConfigurarConexionResponse")
-    public void webConfigurarConexion();
 
     /**
      * 
@@ -82,18 +109,6 @@ public interface WebServiceProducto {
     @ResponseWrapper(localName = "webBuscarProductoResponse", targetNamespace = "http://CapaServicio/", className = "capaservicio.WebBuscarProductoResponse")
     @Action(input = "http://CapaServicio/WebServiceProducto/webBuscarProductoRequest", output = "http://CapaServicio/WebServiceProducto/webBuscarProductoResponse")
     public List<Producto> webBuscarProducto(
-        @WebParam(name = "id_producto", targetNamespace = "")
-        int idProducto);
-
-    /**
-     * 
-     * @param idProducto
-     */
-    @WebMethod
-    @RequestWrapper(localName = "webEliminarProducto", targetNamespace = "http://CapaServicio/", className = "capaservicio.WebEliminarProducto")
-    @ResponseWrapper(localName = "webEliminarProductoResponse", targetNamespace = "http://CapaServicio/", className = "capaservicio.WebEliminarProductoResponse")
-    @Action(input = "http://CapaServicio/WebServiceProducto/webEliminarProductoRequest", output = "http://CapaServicio/WebServiceProducto/webEliminarProductoResponse")
-    public void webEliminarProducto(
         @WebParam(name = "id_producto", targetNamespace = "")
         int idProducto);
 

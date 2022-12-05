@@ -95,6 +95,13 @@ public class WebServiceDetalleVenta {
         return auxNegocio.buscarDetalleVentaPorFolio(id_folio);
     }
     
+    @WebMethod(operationName = "webExisteDetalleVenta")
+    public boolean WebExisteDetalleVenta(@WebParam(name = "id_detalle_venta") int id_detalle_venta) {
+        NegocioDetalleVenta auxNegocio = new NegocioDetalleVenta();
+        auxNegocio.existeDetalleVenta(id_detalle_venta);
+        return auxNegocio.existeDetalleVenta(id_detalle_venta);
+    }
+    
     
     
     

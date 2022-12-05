@@ -21,6 +21,7 @@ public class VistaTrabajador extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
     }
     
+    
 
 
     /**
@@ -96,12 +97,14 @@ public class VistaTrabajador extends javax.swing.JFrame {
         // TODO add your handling code here:
         VistaDetalleVenta pMenu = new VistaDetalleVenta();
         pMenu.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_bto_ventaActionPerformed
 
     private void bto_cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bto_cancelarActionPerformed
         // TODO add your handling code here:
         VistaCancelarVenta pMenu = new VistaCancelarVenta();
         pMenu.setVisible(true);
+        this.setVisible(false);
         
     }//GEN-LAST:event_bto_cancelarActionPerformed
 

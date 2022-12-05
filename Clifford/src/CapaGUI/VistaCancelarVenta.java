@@ -10,6 +10,8 @@ import capaservicio.WebServiceDetalleVenta_Service;
 import capaservicio.WebServiceVenta_Service;
 import java.awt.HeadlessException;
 import java.util.Iterator;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -28,29 +30,49 @@ public class VistaCancelarVenta extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
     }
     
+    VistaMenu pMenu = new VistaMenu();
+    private String rut_empleado = pMenu.rut_empleado;
+    
     public void eliminarVenta()
     {
+     
+        
         int fila = table_cancelarVenta.getSelectedRow();
-        int id_venta = Integer.parseInt(table_cancelarVenta.getValueAt(fila, 0).toString());
-        int id_detalle = Integer.parseInt(table_cancelarVenta.getValueAt(fila,4).toString());
-        int folio = 0;
+        if (fila == -1)
+        {
+            JOptionPane.showMessageDialog(null,"Seleccione una venta primero");
+        }else{
         try {
+            
+            int id_venta = Integer.parseInt(table_cancelarVenta.getValueAt(fila, 0).toString());
+            int id_detalle = Integer.parseInt(table_cancelarVenta.getValueAt(fila,4).toString());
+            int folio = 0;
             
             WebServiceVenta_Service auxNegocioVenta = new WebServiceVenta_Service();
             WebServiceDetalleVenta_Service auxNegocioDetalleVenta = new WebServiceDetalleVenta_Service();
             
-         
-            folio = auxNegocioDetalleVenta.getWebServiceDetalleVentaPort().webEncontrarFolioEspecifico(id_detalle);
+            if(JOptionPane.showConfirmDialog(null, "Se elimina un venta, ¿Desea Continuar?", "Eliminar Venta"
+                    ,JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION)
+            {
+                folio = auxNegocioDetalleVenta.getWebServiceDetalleVentaPort().webEncontrarFolioEspecifico(id_detalle);
             
-            auxNegocioVenta.getWebServiceVentaPort().webEliminarVenta(id_venta);  
-            auxNegocioDetalleVenta.getWebServiceDetalleVentaPort().webEliminarDetalleVenta(folio);
+                auxNegocioVenta.getWebServiceVentaPort().webEliminarVenta(id_venta);  
+                auxNegocioDetalleVenta.getWebServiceDetalleVentaPort().webEliminarDetalleVenta(folio);
+
+                JOptionPane.showMessageDialog(null,"Se borro la tabla con exito");
+
+                buscarVenta();
+            }
+
+            
+
             
             
-            JOptionPane.showMessageDialog(null,"Se borro la tabla con exito");
             
             
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null,"No se pudo borrar la venta "+ex.getMessage());
+        }
         }
     }
     
@@ -64,6 +86,7 @@ public class VistaCancelarVenta extends javax.swing.JFrame {
             WebServiceVenta_Service auxNegocioVenta = new WebServiceVenta_Service();
             Iterator iter = auxNegocioVenta.getWebServiceVentaPort().webConsultaVenta().iterator();
             int fila = 0;
+            modelo.fireTableDataChanged();
             while(iter.hasNext())
             {
                 Venta auxVenta = new Venta();
@@ -115,7 +138,7 @@ public class VistaCancelarVenta extends javax.swing.JFrame {
         }
         catch(Exception ex)
         {
-            JOptionPane.showMessageDialog(null,"No se encontro venta " + ex.getMessage());
+            JOptionPane.showMessageDialog(null,"No se encontro venta con el id => "+id_venta);
         }
     }
 
@@ -254,11 +277,17 @@ public class VistaCancelarVenta extends javax.swing.JFrame {
     private void bto_borrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bto_borrarActionPerformed
         // TODO add your handling code here:
         eliminarVenta();
+
     }//GEN-LAST:event_bto_borrarActionPerformed
 
     private void bto_salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bto_salirActionPerformed
         // TODO add your handling code here:
         VistaMenu auxMenu = new VistaMenu();
+        try {
+            auxMenu.redireccionarVentana();
+        } catch (Exception ex) {
+            Logger.getLogger(VistaDetalleVenta.class.getName()).log(Level.SEVERE, null, ex);
+        }
         this.dispose();
     }//GEN-LAST:event_bto_salirActionPerformed
 
@@ -273,6 +302,14 @@ public class VistaCancelarVenta extends javax.swing.JFrame {
 
     private void txt_idVentaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_idVentaKeyTyped
         // TODO add your handling code here:
+        char c=evt.getKeyChar();
+ 
+ 
+	if(Character.isLetter(c)) {
+		getToolkit().beep();
+ 
+		evt.consume();
+        }
         if (txt_idVenta.getText().length()>3)
         {
           evt.consume();

@@ -78,4 +78,12 @@ public class WebServiceVenta {
     }
     
     
+    @WebMethod(operationName = "webExisteVenta")
+    public boolean WebExisteVenta(@WebParam(name = "id_venta") int id_venta) {
+        NegocioVenta auxNegocio = new NegocioVenta();
+        auxNegocio.existeVenta(id_venta);
+        return auxNegocio.existeVenta(id_venta);
+    }
+    
+    
 }

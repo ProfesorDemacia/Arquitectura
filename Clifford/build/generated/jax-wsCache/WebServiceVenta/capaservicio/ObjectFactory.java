@@ -35,15 +35,25 @@ public class ObjectFactory {
     private final static QName _WebConfigurarConexion_QNAME = new QName("http://CapaServicio/", "webConfigurarConexion");
     private final static QName _WebInsertarVentaResponse_QNAME = new QName("http://CapaServicio/", "webInsertarVentaResponse");
     private final static QName _WebConsultaVenta_QNAME = new QName("http://CapaServicio/", "webConsultaVenta");
+    private final static QName _WebExisteVenta_QNAME = new QName("http://CapaServicio/", "webExisteVenta");
     private final static QName _WebBuscarIdDetalleVenta_QNAME = new QName("http://CapaServicio/", "webBuscarIdDetalleVenta");
     private final static QName _WebConfigurarConexionResponse_QNAME = new QName("http://CapaServicio/", "webConfigurarConexionResponse");
     private final static QName _WebActualizarVenta_QNAME = new QName("http://CapaServicio/", "webActualizarVenta");
+    private final static QName _WebExisteVentaResponse_QNAME = new QName("http://CapaServicio/", "webExisteVentaResponse");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: capaservicio
      * 
      */
     public ObjectFactory() {
+    }
+
+    /**
+     * Create an instance of {@link WebExisteVentaResponse }
+     * 
+     */
+    public WebExisteVentaResponse createWebExisteVentaResponse() {
+        return new WebExisteVentaResponse();
     }
 
     /**
@@ -76,6 +86,14 @@ public class ObjectFactory {
      */
     public WebConsultaVenta createWebConsultaVenta() {
         return new WebConsultaVenta();
+    }
+
+    /**
+     * Create an instance of {@link WebExisteVenta }
+     * 
+     */
+    public WebExisteVenta createWebExisteVenta() {
+        return new WebExisteVenta();
     }
 
     /**
@@ -266,6 +284,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link WebExisteVenta }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://CapaServicio/", name = "webExisteVenta")
+    public JAXBElement<WebExisteVenta> createWebExisteVenta(WebExisteVenta value) {
+        return new JAXBElement<WebExisteVenta>(_WebExisteVenta_QNAME, WebExisteVenta.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link WebBuscarIdDetalleVenta }{@code >}}
      * 
      */
@@ -290,6 +317,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://CapaServicio/", name = "webActualizarVenta")
     public JAXBElement<WebActualizarVenta> createWebActualizarVenta(WebActualizarVenta value) {
         return new JAXBElement<WebActualizarVenta>(_WebActualizarVenta_QNAME, WebActualizarVenta.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link WebExisteVentaResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://CapaServicio/", name = "webExisteVentaResponse")
+    public JAXBElement<WebExisteVentaResponse> createWebExisteVentaResponse(WebExisteVentaResponse value) {
+        return new JAXBElement<WebExisteVentaResponse>(_WebExisteVentaResponse_QNAME, WebExisteVentaResponse.class, null, value);
     }
 
 }

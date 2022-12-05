@@ -26,15 +26,27 @@ public interface WebServiceEmpleado {
 
     /**
      * 
-     * @param empleado
      */
     @WebMethod
-    @RequestWrapper(localName = "webActualizarEmpleado", targetNamespace = "http://CapaServicio/", className = "capaservicio.WebActualizarEmpleado")
-    @ResponseWrapper(localName = "webActualizarEmpleadoResponse", targetNamespace = "http://CapaServicio/", className = "capaservicio.WebActualizarEmpleadoResponse")
-    @Action(input = "http://CapaServicio/WebServiceEmpleado/webActualizarEmpleadoRequest", output = "http://CapaServicio/WebServiceEmpleado/webActualizarEmpleadoResponse")
-    public void webActualizarEmpleado(
-        @WebParam(name = "Empleado", targetNamespace = "")
-        Empleado empleado);
+    @RequestWrapper(localName = "webConfigurarConexion", targetNamespace = "http://CapaServicio/", className = "capaservicio.WebConfigurarConexion")
+    @ResponseWrapper(localName = "webConfigurarConexionResponse", targetNamespace = "http://CapaServicio/", className = "capaservicio.WebConfigurarConexionResponse")
+    @Action(input = "http://CapaServicio/WebServiceEmpleado/webConfigurarConexionRequest", output = "http://CapaServicio/WebServiceEmpleado/webConfigurarConexionResponse")
+    public void webConfigurarConexion();
+
+    /**
+     * 
+     * @param rutEmpleado
+     * @return
+     *     returns int
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "webConsultarCargo", targetNamespace = "http://CapaServicio/", className = "capaservicio.WebConsultarCargo")
+    @ResponseWrapper(localName = "webConsultarCargoResponse", targetNamespace = "http://CapaServicio/", className = "capaservicio.WebConsultarCargoResponse")
+    @Action(input = "http://CapaServicio/WebServiceEmpleado/webConsultarCargoRequest", output = "http://CapaServicio/WebServiceEmpleado/webConsultarCargoResponse")
+    public int webConsultarCargo(
+        @WebParam(name = "rut_empleado", targetNamespace = "")
+        String rutEmpleado);
 
     /**
      * 
@@ -62,26 +74,14 @@ public interface WebServiceEmpleado {
 
     /**
      * 
-     * @param rutEmpleado
-     * @return
-     *     returns int
+     * @param empleado
      */
     @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "webConsultarCargo", targetNamespace = "http://CapaServicio/", className = "capaservicio.WebConsultarCargo")
-    @ResponseWrapper(localName = "webConsultarCargoResponse", targetNamespace = "http://CapaServicio/", className = "capaservicio.WebConsultarCargoResponse")
-    @Action(input = "http://CapaServicio/WebServiceEmpleado/webConsultarCargoRequest", output = "http://CapaServicio/WebServiceEmpleado/webConsultarCargoResponse")
-    public int webConsultarCargo(
-        @WebParam(name = "rut_empleado", targetNamespace = "")
-        String rutEmpleado);
-
-    /**
-     * 
-     */
-    @WebMethod
-    @RequestWrapper(localName = "webConfigurarConexion", targetNamespace = "http://CapaServicio/", className = "capaservicio.WebConfigurarConexion")
-    @ResponseWrapper(localName = "webConfigurarConexionResponse", targetNamespace = "http://CapaServicio/", className = "capaservicio.WebConfigurarConexionResponse")
-    @Action(input = "http://CapaServicio/WebServiceEmpleado/webConfigurarConexionRequest", output = "http://CapaServicio/WebServiceEmpleado/webConfigurarConexionResponse")
-    public void webConfigurarConexion();
+    @RequestWrapper(localName = "webActualizarEmpleado", targetNamespace = "http://CapaServicio/", className = "capaservicio.WebActualizarEmpleado")
+    @ResponseWrapper(localName = "webActualizarEmpleadoResponse", targetNamespace = "http://CapaServicio/", className = "capaservicio.WebActualizarEmpleadoResponse")
+    @Action(input = "http://CapaServicio/WebServiceEmpleado/webActualizarEmpleadoRequest", output = "http://CapaServicio/WebServiceEmpleado/webActualizarEmpleadoResponse")
+    public void webActualizarEmpleado(
+        @WebParam(name = "Empleado", targetNamespace = "")
+        Empleado empleado);
 
 }

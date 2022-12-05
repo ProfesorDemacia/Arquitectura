@@ -41,16 +41,22 @@ public class VistaDetalleVenta extends javax.swing.JFrame {
     }
     public static String montofinal = "";
     public static int folio = 0; 
-    
+    VistaMenu pMenu = new VistaMenu();
+    private String rut_empleado = pMenu.rut_empleado;
     
     private void grabarDetalleVenta()
     {
       if(table_DetalleVenta.getRowCount()>0)
       {
           
-        try
-        {
             //NegocioDetalleVenta auxNegocioDetalleVenta = new NegocioDetalleVenta();
+
+            if(JOptionPane.showConfirmDialog(null, "¿Termino de agregar Productos?, ¿Desea Continuar?", "Generar Venta"
+                    ,JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION)
+            {
+                
+            try
+            {
             WebServiceDetalleVenta_Service auxNegocioDetalleVenta = new WebServiceDetalleVenta_Service();
             folio = auxNegocioDetalleVenta.getWebServiceDetalleVentaPort().webSumarFolio();
             for(int i = 0;i<table_DetalleVenta.getRowCount();i++)
@@ -67,7 +73,6 @@ public class VistaDetalleVenta extends javax.swing.JFrame {
               DetalleVenta auxDetalleVenta = new DetalleVenta();
               
               
-              auxNegocioDetalleVenta.getWebServiceDetalleVentaPort().webConfigurarConexion();
               auxNegocioDetalleVenta.getWebServiceDetalleVentaPort().webInsertarDetalleVenta(folio,Integer.parseInt(cantidad_producto.toString())
                       , nombre_producto.toString(),Integer.parseInt(precio_unitario.toString()), Integer.parseInt(precio_total.toString()),
                       Integer.parseInt(id_producto.toString()));
@@ -81,14 +86,12 @@ public class VistaDetalleVenta extends javax.swing.JFrame {
               VistaVenta pMenu = new VistaVenta();
               pMenu.setVisible(true);
               this.setVisible(false);
-           
-           
-            
-              
-          }catch(Exception ex){
+            }catch(Exception ex){
                   JOptionPane.showMessageDialog(null,"No se pudo registrar"+ex); 
               }
-          
+            
+            }
+  
           
       }else
       {
@@ -121,6 +124,8 @@ public class VistaDetalleVenta extends javax.swing.JFrame {
         this.txt_nombreProducto.setText("");
         this.txt_precioUnitario.setText("");
         this.txt_precioFinal.setText("");
+        txt_idProducto.setEditable(true);
+        txt_cantidad.setEditable(false);
         
     }
     
@@ -148,12 +153,14 @@ public class VistaDetalleVenta extends javax.swing.JFrame {
             //NegocioProducto auxNegocioProducto = new NegocioProducto();
             WebServiceProducto_Service auxNegocioProducto = new WebServiceProducto_Service();
             
-            if (this.txt_idProducto.getText().length() == 0 || this.txt_cantidad.getText().length() == 0)
+            if (this.txt_idProducto.getText().length() == 0 )
             {
-                JOptionPane.showMessageDialog(null, "Ingrese el codigo del producto");
+                JOptionPane.showMessageDialog(null, "Rellene el campo ID producto");
                 
             }else{
                 
+                if (auxNegocioProducto.getWebServiceProductoPort().webExisteProducto(Integer.parseInt(id_producto)))
+                {    
                 
                 Iterator iter = auxNegocioProducto.getWebServiceProductoPort().webBuscarProducto(Integer.parseInt(id_producto)).iterator();
                 
@@ -163,9 +170,13 @@ public class VistaDetalleVenta extends javax.swing.JFrame {
                 auxProducto = (Producto) iter.next();
                 this.txt_nombreProducto.setText(auxProducto.getNombreProducto());
                 this.txt_precioUnitario.setText(String.valueOf(auxProducto.getPrecioUnitario()));
+                txt_idProducto.setEditable(false);
+                txt_cantidad.setEditable(true);
                 
             }
-                
+                }else{
+                    JOptionPane.showMessageDialog(null, "El id del producto no existe");
+                }
             }
             
             
@@ -178,47 +189,46 @@ public class VistaDetalleVenta extends javax.swing.JFrame {
          public void agregarTablaProducto (JTable jtable, String id_producto) {
         try{
             
-            
+            WebServiceProducto_Service auxNegocioProducto = new WebServiceProducto_Service();
             if (this.txt_idProducto.getText().length() == 0 || this.txt_cantidad.getText().length() == 0 
                     || this.txt_precioUnitario.getText().length() == 0 || this.txt_nombreProducto.getText().length() == 0)
             {
-                JOptionPane.showMessageDialog(null, "Primero busque el producto");
+                JOptionPane.showMessageDialog(null,"Indique la cantidad del producto");
                 
             }else
             {
-                
-                
-            
-            DefaultTableModel modelo = new DefaultTableModel();
-            modelo = (DefaultTableModel) table_DetalleVenta.getModel();
-                
-            
-                if (!existeIdProducto(jtable, id_producto, 0))
+                if(auxNegocioProducto.getWebServiceProductoPort().webExisteProducto(Integer.parseInt(id_producto)))
                 {
-                     Object[] num = new Object[5];
-                
-                
-                    num [0] =(txt_idProducto.getText());
-                    num [1] =(txt_nombreProducto.getText());
-                    num [2] =(Integer.parseInt(txt_cantidad.getText()));
-                    num [3] =(txt_precioUnitario.getText());
-                    num [4] =(Integer.parseInt(txt_cantidad.getText())*Integer.parseInt(txt_precioUnitario.getText())) ;
+                    DefaultTableModel modelo = new DefaultTableModel();
+                    modelo = (DefaultTableModel) table_DetalleVenta.getModel();
 
-                    modelo.addRow(num);
 
-                    this.table_DetalleVenta.setModel(modelo);
+                    if (!existeIdProducto(jtable, id_producto, 0))
+                    {
+                         Object[] num = new Object[5];
 
-                    limpiarDatos();
-                }else
-                {
-                  JOptionPane.showMessageDialog(null,"El producto ya fue registrado");  
+
+                        num [0] =(txt_idProducto.getText());
+                        num [1] =(txt_nombreProducto.getText());
+                        num [2] =(Integer.parseInt(txt_cantidad.getText()));
+                        num [3] =(txt_precioUnitario.getText());
+                        num [4] =(Integer.parseInt(txt_cantidad.getText())*Integer.parseInt(txt_precioUnitario.getText())) ;
+
+                        modelo.addRow(num);
+
+                        this.table_DetalleVenta.setModel(modelo);
+                        txt_idProducto.setEditable(true);
+                        txt_cantidad.setEditable(false);
+
+                        limpiarDatos();
+                    }else
+                    {
+                      JOptionPane.showMessageDialog(null,"El producto ya fue registrado");  
+                    }
+                }else{
+                    JOptionPane.showMessageDialog(null, "El id del producto no existe");
                 }
-            
-            
-         
-
-               
-            
+          
             }
         }
         catch(Exception ex)
@@ -227,12 +237,14 @@ public class VistaDetalleVenta extends javax.swing.JFrame {
         }
     }
          
-         public void eliminarTabla(){
+    public void eliminarTabla(){
         DefaultTableModel tb = (DefaultTableModel) table_DetalleVenta.getModel();
         int a = table_DetalleVenta.getRowCount()-1;
         for (int i = a; i >= 0; i--) {
         tb.removeRow(tb.getRowCount()-1);
-        }
+        txt_idProducto.setEditable(true);
+        txt_cantidad.setEditable(false);
+   }
         //cargaTicket();
     }
 
@@ -263,6 +275,7 @@ public class VistaDetalleVenta extends javax.swing.JFrame {
         txt_precioFinal = new javax.swing.JTextField();
         bto_buscar = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
+        bto_reiniciarVenta = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(983, 570));
@@ -297,6 +310,7 @@ public class VistaDetalleVenta extends javax.swing.JFrame {
         getContentPane().add(txt_idProducto);
         txt_idProducto.setBounds(170, 160, 178, 20);
 
+        txt_cantidad.setEditable(false);
         txt_cantidad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_cantidadActionPerformed(evt);
@@ -363,7 +377,7 @@ public class VistaDetalleVenta extends javax.swing.JFrame {
             }
         });
         getContentPane().add(bto_continuar);
-        bto_continuar.setBounds(650, 440, 110, 60);
+        bto_continuar.setBounds(490, 440, 110, 60);
 
         bto_salir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/salir.png"))); // NOI18N
         bto_salir.setText("Volver");
@@ -373,7 +387,7 @@ public class VistaDetalleVenta extends javax.swing.JFrame {
             }
         });
         getContentPane().add(bto_salir);
-        bto_salir.setBounds(800, 440, 120, 60);
+        bto_salir.setBounds(740, 440, 120, 60);
 
         bto_cancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/eliminar.png"))); // NOI18N
         bto_cancelar.setText("Cancelar");
@@ -383,13 +397,20 @@ public class VistaDetalleVenta extends javax.swing.JFrame {
             }
         });
         getContentPane().add(bto_cancelar);
-        bto_cancelar.setBounds(300, 360, 130, 60);
+        bto_cancelar.setBounds(310, 360, 130, 60);
 
         jLabel4.setText("Precio Final");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(650, 360, 80, 30);
+        jLabel4.setBounds(620, 360, 80, 30);
+
+        txt_precioFinal.setEditable(false);
+        txt_precioFinal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_precioFinalActionPerformed(evt);
+            }
+        });
         getContentPane().add(txt_precioFinal);
-        txt_precioFinal.setBounds(730, 360, 160, 30);
+        txt_precioFinal.setBounds(710, 360, 160, 30);
 
         bto_buscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/buscar.png"))); // NOI18N
         bto_buscar.setText("Buscar");
@@ -404,6 +425,16 @@ public class VistaDetalleVenta extends javax.swing.JFrame {
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/banner.jpg"))); // NOI18N
         getContentPane().add(jLabel5);
         jLabel5.setBounds(0, 0, 990, 130);
+
+        bto_reiniciarVenta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/eliminar.png"))); // NOI18N
+        bto_reiniciarVenta.setText("Reiniciar");
+        bto_reiniciarVenta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bto_reiniciarVentaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(bto_reiniciarVenta);
+        bto_reiniciarVenta.setBounds(610, 440, 120, 60);
 
         pack();
         setLocationRelativeTo(null);
@@ -439,7 +470,7 @@ public class VistaDetalleVenta extends javax.swing.JFrame {
         VistaMenu auxMenu = new VistaMenu();
         try {
             auxMenu.redireccionarVentana();
-        } catch (SQLException ex) {
+        } catch (Exception ex) {
             Logger.getLogger(VistaDetalleVenta.class.getName()).log(Level.SEVERE, null, ex);
         }
         this.dispose();
@@ -456,12 +487,22 @@ public class VistaDetalleVenta extends javax.swing.JFrame {
     private void bto_continuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bto_continuarActionPerformed
         // TODO add your handling code here:
         montofinal = txt_precioFinal.getText();
+        
         grabarDetalleVenta();
         
     }//GEN-LAST:event_bto_continuarActionPerformed
 
     private void txt_idProductoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_idProductoKeyTyped
         // TODO add your handling code here:
+        
+        char c=evt.getKeyChar();
+ 
+ 
+	if(Character.isLetter(c)) {
+		getToolkit().beep();
+ 
+		evt.consume();
+        }
         if (txt_idProducto.getText().length()>2)
         {
             evt.consume();
@@ -471,6 +512,15 @@ public class VistaDetalleVenta extends javax.swing.JFrame {
 
     private void txt_cantidadKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_cantidadKeyTyped
         // TODO add your handling code here:
+        
+        char c=evt.getKeyChar();
+ 
+ 
+	if(Character.isLetter(c)) {
+		getToolkit().beep();
+ 
+		evt.consume();
+        }
         if (txt_cantidad.getText().length()>2)
         {
             evt.consume();
@@ -480,10 +530,19 @@ public class VistaDetalleVenta extends javax.swing.JFrame {
     private void bto_cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bto_cancelarActionPerformed
         // TODO add your handling code here:
         limpiarDatos();
-        eliminarTabla();
         
         
     }//GEN-LAST:event_bto_cancelarActionPerformed
+
+    private void txt_precioFinalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_precioFinalActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_precioFinalActionPerformed
+
+    private void bto_reiniciarVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bto_reiniciarVentaActionPerformed
+        // TODO add your handling code here:
+        limpiarDatos();
+        eliminarTabla();
+    }//GEN-LAST:event_bto_reiniciarVentaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -495,6 +554,7 @@ public class VistaDetalleVenta extends javax.swing.JFrame {
     private javax.swing.JButton bto_buscar;
     private javax.swing.JButton bto_cancelar;
     private javax.swing.JButton bto_continuar;
+    private javax.swing.JButton bto_reiniciarVenta;
     private javax.swing.JButton bto_salir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

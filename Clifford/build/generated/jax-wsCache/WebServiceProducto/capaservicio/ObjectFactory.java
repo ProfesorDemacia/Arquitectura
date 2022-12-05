@@ -25,16 +25,18 @@ import javax.xml.namespace.QName;
 public class ObjectFactory {
 
     private final static QName _WebActualizarProductoResponse_QNAME = new QName("http://CapaServicio/", "webActualizarProductoResponse");
-    private final static QName _WebConsultarProductoResponse_QNAME = new QName("http://CapaServicio/", "webConsultarProductoResponse");
     private final static QName _WebEliminarProductoResponse_QNAME = new QName("http://CapaServicio/", "webEliminarProductoResponse");
-    private final static QName _WebInsertarProductoResponse_QNAME = new QName("http://CapaServicio/", "webInsertarProductoResponse");
-    private final static QName _WebBuscarProducto_QNAME = new QName("http://CapaServicio/", "webBuscarProducto");
-    private final static QName _WebConfigurarConexion_QNAME = new QName("http://CapaServicio/", "webConfigurarConexion");
     private final static QName _WebConsultarProducto_QNAME = new QName("http://CapaServicio/", "webConsultarProducto");
+    private final static QName _WebExisteProducto_QNAME = new QName("http://CapaServicio/", "webExisteProducto");
     private final static QName _WebBuscarProductoResponse_QNAME = new QName("http://CapaServicio/", "webBuscarProductoResponse");
     private final static QName _WebEliminarProducto_QNAME = new QName("http://CapaServicio/", "webEliminarProducto");
     private final static QName _WebInsertarProducto_QNAME = new QName("http://CapaServicio/", "webInsertarProducto");
+    private final static QName _WebConsultarProductoResponse_QNAME = new QName("http://CapaServicio/", "webConsultarProductoResponse");
+    private final static QName _WebInsertarProductoResponse_QNAME = new QName("http://CapaServicio/", "webInsertarProductoResponse");
+    private final static QName _WebBuscarProducto_QNAME = new QName("http://CapaServicio/", "webBuscarProducto");
+    private final static QName _WebConfigurarConexion_QNAME = new QName("http://CapaServicio/", "webConfigurarConexion");
     private final static QName _WebConfigurarConexionResponse_QNAME = new QName("http://CapaServicio/", "webConfigurarConexionResponse");
+    private final static QName _WebExisteProductoResponse_QNAME = new QName("http://CapaServicio/", "webExisteProductoResponse");
     private final static QName _WebActualizarProducto_QNAME = new QName("http://CapaServicio/", "webActualizarProducto");
 
     /**
@@ -53,11 +55,51 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link WebExisteProductoResponse }
+     * 
+     */
+    public WebExisteProductoResponse createWebExisteProductoResponse() {
+        return new WebExisteProductoResponse();
+    }
+
+    /**
      * Create an instance of {@link WebConfigurarConexionResponse }
      * 
      */
     public WebConfigurarConexionResponse createWebConfigurarConexionResponse() {
         return new WebConfigurarConexionResponse();
+    }
+
+    /**
+     * Create an instance of {@link WebConfigurarConexion }
+     * 
+     */
+    public WebConfigurarConexion createWebConfigurarConexion() {
+        return new WebConfigurarConexion();
+    }
+
+    /**
+     * Create an instance of {@link WebBuscarProducto }
+     * 
+     */
+    public WebBuscarProducto createWebBuscarProducto() {
+        return new WebBuscarProducto();
+    }
+
+    /**
+     * Create an instance of {@link WebInsertarProductoResponse }
+     * 
+     */
+    public WebInsertarProductoResponse createWebInsertarProductoResponse() {
+        return new WebInsertarProductoResponse();
+    }
+
+    /**
+     * Create an instance of {@link WebConsultarProductoResponse }
+     * 
+     */
+    public WebConsultarProductoResponse createWebConsultarProductoResponse() {
+        return new WebConsultarProductoResponse();
     }
 
     /**
@@ -85,14 +127,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link WebConfigurarConexion }
-     * 
-     */
-    public WebConfigurarConexion createWebConfigurarConexion() {
-        return new WebConfigurarConexion();
-    }
-
-    /**
      * Create an instance of {@link WebConsultarProducto }
      * 
      */
@@ -101,19 +135,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link WebBuscarProducto }
+     * Create an instance of {@link WebExisteProducto }
      * 
      */
-    public WebBuscarProducto createWebBuscarProducto() {
-        return new WebBuscarProducto();
-    }
-
-    /**
-     * Create an instance of {@link WebInsertarProductoResponse }
-     * 
-     */
-    public WebInsertarProductoResponse createWebInsertarProductoResponse() {
-        return new WebInsertarProductoResponse();
+    public WebExisteProducto createWebExisteProducto() {
+        return new WebExisteProducto();
     }
 
     /**
@@ -122,14 +148,6 @@ public class ObjectFactory {
      */
     public WebActualizarProductoResponse createWebActualizarProductoResponse() {
         return new WebActualizarProductoResponse();
-    }
-
-    /**
-     * Create an instance of {@link WebConsultarProductoResponse }
-     * 
-     */
-    public WebConsultarProductoResponse createWebConsultarProductoResponse() {
-        return new WebConsultarProductoResponse();
     }
 
     /**
@@ -158,15 +176,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link WebConsultarProductoResponse }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://CapaServicio/", name = "webConsultarProductoResponse")
-    public JAXBElement<WebConsultarProductoResponse> createWebConsultarProductoResponse(WebConsultarProductoResponse value) {
-        return new JAXBElement<WebConsultarProductoResponse>(_WebConsultarProductoResponse_QNAME, WebConsultarProductoResponse.class, null, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link WebEliminarProductoResponse }{@code >}}
      * 
      */
@@ -176,39 +185,21 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link WebInsertarProductoResponse }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://CapaServicio/", name = "webInsertarProductoResponse")
-    public JAXBElement<WebInsertarProductoResponse> createWebInsertarProductoResponse(WebInsertarProductoResponse value) {
-        return new JAXBElement<WebInsertarProductoResponse>(_WebInsertarProductoResponse_QNAME, WebInsertarProductoResponse.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link WebBuscarProducto }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://CapaServicio/", name = "webBuscarProducto")
-    public JAXBElement<WebBuscarProducto> createWebBuscarProducto(WebBuscarProducto value) {
-        return new JAXBElement<WebBuscarProducto>(_WebBuscarProducto_QNAME, WebBuscarProducto.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link WebConfigurarConexion }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://CapaServicio/", name = "webConfigurarConexion")
-    public JAXBElement<WebConfigurarConexion> createWebConfigurarConexion(WebConfigurarConexion value) {
-        return new JAXBElement<WebConfigurarConexion>(_WebConfigurarConexion_QNAME, WebConfigurarConexion.class, null, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link WebConsultarProducto }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://CapaServicio/", name = "webConsultarProducto")
     public JAXBElement<WebConsultarProducto> createWebConsultarProducto(WebConsultarProducto value) {
         return new JAXBElement<WebConsultarProducto>(_WebConsultarProducto_QNAME, WebConsultarProducto.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link WebExisteProducto }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://CapaServicio/", name = "webExisteProducto")
+    public JAXBElement<WebExisteProducto> createWebExisteProducto(WebExisteProducto value) {
+        return new JAXBElement<WebExisteProducto>(_WebExisteProducto_QNAME, WebExisteProducto.class, null, value);
     }
 
     /**
@@ -239,12 +230,57 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link WebConsultarProductoResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://CapaServicio/", name = "webConsultarProductoResponse")
+    public JAXBElement<WebConsultarProductoResponse> createWebConsultarProductoResponse(WebConsultarProductoResponse value) {
+        return new JAXBElement<WebConsultarProductoResponse>(_WebConsultarProductoResponse_QNAME, WebConsultarProductoResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link WebInsertarProductoResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://CapaServicio/", name = "webInsertarProductoResponse")
+    public JAXBElement<WebInsertarProductoResponse> createWebInsertarProductoResponse(WebInsertarProductoResponse value) {
+        return new JAXBElement<WebInsertarProductoResponse>(_WebInsertarProductoResponse_QNAME, WebInsertarProductoResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link WebBuscarProducto }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://CapaServicio/", name = "webBuscarProducto")
+    public JAXBElement<WebBuscarProducto> createWebBuscarProducto(WebBuscarProducto value) {
+        return new JAXBElement<WebBuscarProducto>(_WebBuscarProducto_QNAME, WebBuscarProducto.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link WebConfigurarConexion }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://CapaServicio/", name = "webConfigurarConexion")
+    public JAXBElement<WebConfigurarConexion> createWebConfigurarConexion(WebConfigurarConexion value) {
+        return new JAXBElement<WebConfigurarConexion>(_WebConfigurarConexion_QNAME, WebConfigurarConexion.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link WebConfigurarConexionResponse }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://CapaServicio/", name = "webConfigurarConexionResponse")
     public JAXBElement<WebConfigurarConexionResponse> createWebConfigurarConexionResponse(WebConfigurarConexionResponse value) {
         return new JAXBElement<WebConfigurarConexionResponse>(_WebConfigurarConexionResponse_QNAME, WebConfigurarConexionResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link WebExisteProductoResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://CapaServicio/", name = "webExisteProductoResponse")
+    public JAXBElement<WebExisteProductoResponse> createWebExisteProductoResponse(WebExisteProductoResponse value) {
+        return new JAXBElement<WebExisteProductoResponse>(_WebExisteProductoResponse_QNAME, WebExisteProductoResponse.class, null, value);
     }
 
     /**

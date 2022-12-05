@@ -27,66 +27,6 @@ public interface WebServiceDetalleVenta {
 
     /**
      * 
-     * @param idFolio
-     * @return
-     *     returns java.util.List<capaservicio.DetalleVenta>
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "webBuscarDetalleVentaPorFolio", targetNamespace = "http://CapaServicio/", className = "capaservicio.WebBuscarDetalleVentaPorFolio")
-    @ResponseWrapper(localName = "webBuscarDetalleVentaPorFolioResponse", targetNamespace = "http://CapaServicio/", className = "capaservicio.WebBuscarDetalleVentaPorFolioResponse")
-    @Action(input = "http://CapaServicio/WebServiceDetalleVenta/webBuscarDetalleVentaPorFolioRequest", output = "http://CapaServicio/WebServiceDetalleVenta/webBuscarDetalleVentaPorFolioResponse")
-    public List<DetalleVenta> webBuscarDetalleVentaPorFolio(
-        @WebParam(name = "id_folio", targetNamespace = "")
-        int idFolio);
-
-    /**
-     * 
-     * @param detalleVenta
-     */
-    @WebMethod
-    @RequestWrapper(localName = "webActualizarDetalleVenta", targetNamespace = "http://CapaServicio/", className = "capaservicio.WebActualizarDetalleVenta")
-    @ResponseWrapper(localName = "webActualizarDetalleVentaResponse", targetNamespace = "http://CapaServicio/", className = "capaservicio.WebActualizarDetalleVentaResponse")
-    @Action(input = "http://CapaServicio/WebServiceDetalleVenta/webActualizarDetalleVentaRequest", output = "http://CapaServicio/WebServiceDetalleVenta/webActualizarDetalleVentaResponse")
-    public void webActualizarDetalleVenta(
-        @WebParam(name = "DetalleVenta", targetNamespace = "")
-        DetalleVenta detalleVenta);
-
-    /**
-     * 
-     * @param idFolio
-     */
-    @WebMethod
-    @RequestWrapper(localName = "webEliminarDetalleVenta", targetNamespace = "http://CapaServicio/", className = "capaservicio.WebEliminarDetalleVenta")
-    @ResponseWrapper(localName = "webEliminarDetalleVentaResponse", targetNamespace = "http://CapaServicio/", className = "capaservicio.WebEliminarDetalleVentaResponse")
-    @Action(input = "http://CapaServicio/WebServiceDetalleVenta/webEliminarDetalleVentaRequest", output = "http://CapaServicio/WebServiceDetalleVenta/webEliminarDetalleVentaResponse")
-    public void webEliminarDetalleVenta(
-        @WebParam(name = "id_folio", targetNamespace = "")
-        int idFolio);
-
-    /**
-     * 
-     * @return
-     *     returns java.util.List<capaservicio.DetalleVenta>
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "webConsultaDetalleVenta", targetNamespace = "http://CapaServicio/", className = "capaservicio.WebConsultaDetalleVenta")
-    @ResponseWrapper(localName = "webConsultaDetalleVentaResponse", targetNamespace = "http://CapaServicio/", className = "capaservicio.WebConsultaDetalleVentaResponse")
-    @Action(input = "http://CapaServicio/WebServiceDetalleVenta/webConsultaDetalleVentaRequest", output = "http://CapaServicio/WebServiceDetalleVenta/webConsultaDetalleVentaResponse")
-    public List<DetalleVenta> webConsultaDetalleVenta();
-
-    /**
-     * 
-     */
-    @WebMethod
-    @RequestWrapper(localName = "webConfigurarConexion", targetNamespace = "http://CapaServicio/", className = "capaservicio.WebConfigurarConexion")
-    @ResponseWrapper(localName = "webConfigurarConexionResponse", targetNamespace = "http://CapaServicio/", className = "capaservicio.WebConfigurarConexionResponse")
-    @Action(input = "http://CapaServicio/WebServiceDetalleVenta/webConfigurarConexionRequest", output = "http://CapaServicio/WebServiceDetalleVenta/webConfigurarConexionResponse")
-    public void webConfigurarConexion();
-
-    /**
-     * 
      * @param idDetalleVenta
      * @return
      *     returns java.util.List<capaservicio.DetalleVenta>
@@ -102,15 +42,30 @@ public interface WebServiceDetalleVenta {
 
     /**
      * 
+     * @param idDetalleVenta
+     * @return
+     *     returns boolean
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "webExisteDetalleVenta", targetNamespace = "http://CapaServicio/", className = "capaservicio.WebExisteDetalleVenta")
+    @ResponseWrapper(localName = "webExisteDetalleVentaResponse", targetNamespace = "http://CapaServicio/", className = "capaservicio.WebExisteDetalleVentaResponse")
+    @Action(input = "http://CapaServicio/WebServiceDetalleVenta/webExisteDetalleVentaRequest", output = "http://CapaServicio/WebServiceDetalleVenta/webExisteDetalleVentaResponse")
+    public boolean webExisteDetalleVenta(
+        @WebParam(name = "id_detalle_venta", targetNamespace = "")
+        int idDetalleVenta);
+
+    /**
+     * 
      * @return
      *     returns int
      */
     @WebMethod
     @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "webEncontrarFolio", targetNamespace = "http://CapaServicio/", className = "capaservicio.WebEncontrarFolio")
-    @ResponseWrapper(localName = "webEncontrarFolioResponse", targetNamespace = "http://CapaServicio/", className = "capaservicio.WebEncontrarFolioResponse")
-    @Action(input = "http://CapaServicio/WebServiceDetalleVenta/webEncontrarFolioRequest", output = "http://CapaServicio/WebServiceDetalleVenta/webEncontrarFolioResponse")
-    public int webEncontrarFolio();
+    @RequestWrapper(localName = "webSumarFolio", targetNamespace = "http://CapaServicio/", className = "capaservicio.WebSumarFolio")
+    @ResponseWrapper(localName = "webSumarFolioResponse", targetNamespace = "http://CapaServicio/", className = "capaservicio.WebSumarFolioResponse")
+    @Action(input = "http://CapaServicio/WebServiceDetalleVenta/webSumarFolioRequest", output = "http://CapaServicio/WebServiceDetalleVenta/webSumarFolioResponse")
+    public int webSumarFolio();
 
     /**
      * 
@@ -126,6 +81,54 @@ public interface WebServiceDetalleVenta {
     public int webEncontrarFolioEspecifico(
         @WebParam(name = "id_detalle_venta", targetNamespace = "")
         int idDetalleVenta);
+
+    /**
+     * 
+     * @param idFolio
+     * @return
+     *     returns java.util.List<capaservicio.DetalleVenta>
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "webBuscarDetalleVentaPorFolio", targetNamespace = "http://CapaServicio/", className = "capaservicio.WebBuscarDetalleVentaPorFolio")
+    @ResponseWrapper(localName = "webBuscarDetalleVentaPorFolioResponse", targetNamespace = "http://CapaServicio/", className = "capaservicio.WebBuscarDetalleVentaPorFolioResponse")
+    @Action(input = "http://CapaServicio/WebServiceDetalleVenta/webBuscarDetalleVentaPorFolioRequest", output = "http://CapaServicio/WebServiceDetalleVenta/webBuscarDetalleVentaPorFolioResponse")
+    public List<DetalleVenta> webBuscarDetalleVentaPorFolio(
+        @WebParam(name = "id_folio", targetNamespace = "")
+        int idFolio);
+
+    /**
+     * 
+     * @return
+     *     returns int
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "webEncontrarFolio", targetNamespace = "http://CapaServicio/", className = "capaservicio.WebEncontrarFolio")
+    @ResponseWrapper(localName = "webEncontrarFolioResponse", targetNamespace = "http://CapaServicio/", className = "capaservicio.WebEncontrarFolioResponse")
+    @Action(input = "http://CapaServicio/WebServiceDetalleVenta/webEncontrarFolioRequest", output = "http://CapaServicio/WebServiceDetalleVenta/webEncontrarFolioResponse")
+    public int webEncontrarFolio();
+
+    /**
+     * 
+     */
+    @WebMethod
+    @RequestWrapper(localName = "webConfigurarConexion", targetNamespace = "http://CapaServicio/", className = "capaservicio.WebConfigurarConexion")
+    @ResponseWrapper(localName = "webConfigurarConexionResponse", targetNamespace = "http://CapaServicio/", className = "capaservicio.WebConfigurarConexionResponse")
+    @Action(input = "http://CapaServicio/WebServiceDetalleVenta/webConfigurarConexionRequest", output = "http://CapaServicio/WebServiceDetalleVenta/webConfigurarConexionResponse")
+    public void webConfigurarConexion();
+
+    /**
+     * 
+     * @param detalleVenta
+     */
+    @WebMethod
+    @RequestWrapper(localName = "webActualizarDetalleVenta", targetNamespace = "http://CapaServicio/", className = "capaservicio.WebActualizarDetalleVenta")
+    @ResponseWrapper(localName = "webActualizarDetalleVentaResponse", targetNamespace = "http://CapaServicio/", className = "capaservicio.WebActualizarDetalleVentaResponse")
+    @Action(input = "http://CapaServicio/WebServiceDetalleVenta/webActualizarDetalleVentaRequest", output = "http://CapaServicio/WebServiceDetalleVenta/webActualizarDetalleVentaResponse")
+    public void webActualizarDetalleVenta(
+        @WebParam(name = "DetalleVenta", targetNamespace = "")
+        DetalleVenta detalleVenta);
 
     /**
      * 
@@ -156,14 +159,26 @@ public interface WebServiceDetalleVenta {
 
     /**
      * 
+     * @param idFolio
+     */
+    @WebMethod
+    @RequestWrapper(localName = "webEliminarDetalleVenta", targetNamespace = "http://CapaServicio/", className = "capaservicio.WebEliminarDetalleVenta")
+    @ResponseWrapper(localName = "webEliminarDetalleVentaResponse", targetNamespace = "http://CapaServicio/", className = "capaservicio.WebEliminarDetalleVentaResponse")
+    @Action(input = "http://CapaServicio/WebServiceDetalleVenta/webEliminarDetalleVentaRequest", output = "http://CapaServicio/WebServiceDetalleVenta/webEliminarDetalleVentaResponse")
+    public void webEliminarDetalleVenta(
+        @WebParam(name = "id_folio", targetNamespace = "")
+        int idFolio);
+
+    /**
+     * 
      * @return
-     *     returns int
+     *     returns java.util.List<capaservicio.DetalleVenta>
      */
     @WebMethod
     @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "webSumarFolio", targetNamespace = "http://CapaServicio/", className = "capaservicio.WebSumarFolio")
-    @ResponseWrapper(localName = "webSumarFolioResponse", targetNamespace = "http://CapaServicio/", className = "capaservicio.WebSumarFolioResponse")
-    @Action(input = "http://CapaServicio/WebServiceDetalleVenta/webSumarFolioRequest", output = "http://CapaServicio/WebServiceDetalleVenta/webSumarFolioResponse")
-    public int webSumarFolio();
+    @RequestWrapper(localName = "webConsultaDetalleVenta", targetNamespace = "http://CapaServicio/", className = "capaservicio.WebConsultaDetalleVenta")
+    @ResponseWrapper(localName = "webConsultaDetalleVentaResponse", targetNamespace = "http://CapaServicio/", className = "capaservicio.WebConsultaDetalleVentaResponse")
+    @Action(input = "http://CapaServicio/WebServiceDetalleVenta/webConsultaDetalleVentaRequest", output = "http://CapaServicio/WebServiceDetalleVenta/webConsultaDetalleVentaResponse")
+    public List<DetalleVenta> webConsultaDetalleVenta();
 
 }

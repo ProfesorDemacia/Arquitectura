@@ -36,6 +36,8 @@ public class VistaVenta extends javax.swing.JFrame {
         
         
     }
+    VistaMenu pMenu = new VistaMenu();
+    private String rut_empleado = pMenu.rut_empleado;
    
     
     
@@ -73,7 +75,6 @@ public class VistaVenta extends javax.swing.JFrame {
                 {
                     
                     VistaMenu pMenu = new VistaMenu();
-                    String rut_empleado = pMenu.rut_empleado;
                     //NegocioVenta auxNegocioVenta = new NegocioVenta();
                     WebServiceVenta_Service auxNegocioVenta = new WebServiceVenta_Service();
                     WebServiceDetalleVenta_Service auxNegocioDetalleVenta = new WebServiceDetalleVenta_Service();
@@ -82,12 +83,15 @@ public class VistaVenta extends javax.swing.JFrame {
                     id_folio = auxNegocioDetalleVenta.getWebServiceDetalleVentaPort().webEncontrarFolio();
                     id_detalle_venta = auxNegocioVenta.getWebServiceVentaPort().webBuscarIdDetalleVenta(id_folio);
                     
+                    if(JOptionPane.showConfirmDialog(null, "Se realizara la venta, ¿Desea Continuar?", "Confirmacion de Venta"
+                    ,JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION)
+                    {
                     auxNegocioVenta.getWebServiceVentaPort().webInsertarVenta(nombre_empresa,lbl_montoFinal.getText(),
                             +id_detalle_venta,rut_empleado,box_metodoPago.getSelectedIndex());
                     
                     JOptionPane.showMessageDialog(null, "La venta fue realizada...");
                     this.dispose();
-                
+                    }
                 }catch(Exception ex){
                     JOptionPane.showMessageDialog(null, "No se ha podido realizar el pago"+ex.getMessage());
                 }
@@ -154,7 +158,6 @@ public class VistaVenta extends javax.swing.JFrame {
         lbl_montoFinal = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         table_venta = new javax.swing.JTable();
-        bto_salir = new javax.swing.JButton();
         bto_cerrar = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -207,15 +210,6 @@ public class VistaVenta extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 170, 570, 350));
 
-        bto_salir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/salir.png"))); // NOI18N
-        bto_salir.setText("Volver");
-        bto_salir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bto_salirActionPerformed(evt);
-            }
-        });
-        getContentPane().add(bto_salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 490, 110, 50));
-
         bto_cerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/banner.jpg"))); // NOI18N
         getContentPane().add(bto_cerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1040, 130));
 
@@ -225,6 +219,9 @@ public class VistaVenta extends javax.swing.JFrame {
     private void bto_cancelarVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bto_cancelarVentaActionPerformed
         // TODO add your handling code here:
         cancelarVenta();
+        VistaDetalleVenta pMenu = new VistaDetalleVenta();
+                pMenu.setVisible(true);
+                this.dispose();
        
     }//GEN-LAST:event_bto_cancelarVentaActionPerformed
 
@@ -238,13 +235,6 @@ public class VistaVenta extends javax.swing.JFrame {
         validarVenta();
     }//GEN-LAST:event_bto_pagarActionPerformed
 
-    private void bto_salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bto_salirActionPerformed
-        // TODO add your handling code here:
-        VistaMenu auxMenu = new VistaMenu();
-        this.dispose();
-        
-    }//GEN-LAST:event_bto_salirActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -255,7 +245,6 @@ public class VistaVenta extends javax.swing.JFrame {
     private javax.swing.JButton bto_cancelarVenta;
     private javax.swing.JLabel bto_cerrar;
     private javax.swing.JButton bto_pagar;
-    private javax.swing.JButton bto_salir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;

@@ -7,6 +7,7 @@ package CapaServicio;
 
 import CapaDTO.Producto;
 import CapaNegocio.NegocioProducto;
+import CapaNegocio.NegocioVenta;
 import java.util.ArrayList;
 import javax.jws.WebService;
 import javax.jws.WebMethod;
@@ -57,5 +58,12 @@ public class WebServiceProducto {
     public ArrayList<Producto> webConsultarProducto(){
         NegocioProducto auxNegocio = new NegocioProducto();
         return auxNegocio.consultarProducto();
+    }
+    
+    @WebMethod(operationName = "webExisteProducto")
+    public boolean WebExisteProducto(@WebParam(name = "id_producto") int id_producto) {
+        NegocioProducto auxNegocio = new NegocioProducto();
+        auxNegocio.existeProducto(id_producto);
+        return auxNegocio.existeProducto(id_producto);
     }
 }

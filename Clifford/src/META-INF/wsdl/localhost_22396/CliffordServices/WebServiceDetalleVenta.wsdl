@@ -4,17 +4,59 @@
 <xsd:import namespace="http://CapaServicio/" schemaLocation="http://localhost:22396/CliffordServices/WebServiceDetalleVenta?xsd=1"/>
 </xsd:schema>
 </types>
+<message name="webBuscarDetalleVenta">
+<part name="parameters" element="tns:webBuscarDetalleVenta"/>
+</message>
+<message name="webBuscarDetalleVentaResponse">
+<part name="parameters" element="tns:webBuscarDetalleVentaResponse"/>
+</message>
+<message name="webExisteDetalleVenta">
+<part name="parameters" element="tns:webExisteDetalleVenta"/>
+</message>
+<message name="webExisteDetalleVentaResponse">
+<part name="parameters" element="tns:webExisteDetalleVentaResponse"/>
+</message>
+<message name="webSumarFolio">
+<part name="parameters" element="tns:webSumarFolio"/>
+</message>
+<message name="webSumarFolioResponse">
+<part name="parameters" element="tns:webSumarFolioResponse"/>
+</message>
+<message name="webEncontrarFolioEspecifico">
+<part name="parameters" element="tns:webEncontrarFolioEspecifico"/>
+</message>
+<message name="webEncontrarFolioEspecificoResponse">
+<part name="parameters" element="tns:webEncontrarFolioEspecificoResponse"/>
+</message>
 <message name="webBuscarDetalleVentaPorFolio">
 <part name="parameters" element="tns:webBuscarDetalleVentaPorFolio"/>
 </message>
 <message name="webBuscarDetalleVentaPorFolioResponse">
 <part name="parameters" element="tns:webBuscarDetalleVentaPorFolioResponse"/>
 </message>
+<message name="webEncontrarFolio">
+<part name="parameters" element="tns:webEncontrarFolio"/>
+</message>
+<message name="webEncontrarFolioResponse">
+<part name="parameters" element="tns:webEncontrarFolioResponse"/>
+</message>
+<message name="webConfigurarConexion">
+<part name="parameters" element="tns:webConfigurarConexion"/>
+</message>
+<message name="webConfigurarConexionResponse">
+<part name="parameters" element="tns:webConfigurarConexionResponse"/>
+</message>
 <message name="webActualizarDetalleVenta">
 <part name="parameters" element="tns:webActualizarDetalleVenta"/>
 </message>
 <message name="webActualizarDetalleVentaResponse">
 <part name="parameters" element="tns:webActualizarDetalleVentaResponse"/>
+</message>
+<message name="webInsertarDetalleVenta">
+<part name="parameters" element="tns:webInsertarDetalleVenta"/>
+</message>
+<message name="webInsertarDetalleVentaResponse">
+<part name="parameters" element="tns:webInsertarDetalleVentaResponse"/>
 </message>
 <message name="webEliminarDetalleVenta">
 <part name="parameters" element="tns:webEliminarDetalleVenta"/>
@@ -28,50 +70,42 @@
 <message name="webConsultaDetalleVentaResponse">
 <part name="parameters" element="tns:webConsultaDetalleVentaResponse"/>
 </message>
-<message name="webConfigurarConexion">
-<part name="parameters" element="tns:webConfigurarConexion"/>
-</message>
-<message name="webConfigurarConexionResponse">
-<part name="parameters" element="tns:webConfigurarConexionResponse"/>
-</message>
-<message name="webBuscarDetalleVenta">
-<part name="parameters" element="tns:webBuscarDetalleVenta"/>
-</message>
-<message name="webBuscarDetalleVentaResponse">
-<part name="parameters" element="tns:webBuscarDetalleVentaResponse"/>
-</message>
-<message name="webEncontrarFolio">
-<part name="parameters" element="tns:webEncontrarFolio"/>
-</message>
-<message name="webEncontrarFolioResponse">
-<part name="parameters" element="tns:webEncontrarFolioResponse"/>
-</message>
-<message name="webEncontrarFolioEspecifico">
-<part name="parameters" element="tns:webEncontrarFolioEspecifico"/>
-</message>
-<message name="webEncontrarFolioEspecificoResponse">
-<part name="parameters" element="tns:webEncontrarFolioEspecificoResponse"/>
-</message>
-<message name="webInsertarDetalleVenta">
-<part name="parameters" element="tns:webInsertarDetalleVenta"/>
-</message>
-<message name="webInsertarDetalleVentaResponse">
-<part name="parameters" element="tns:webInsertarDetalleVentaResponse"/>
-</message>
-<message name="webSumarFolio">
-<part name="parameters" element="tns:webSumarFolio"/>
-</message>
-<message name="webSumarFolioResponse">
-<part name="parameters" element="tns:webSumarFolioResponse"/>
-</message>
 <portType name="WebServiceDetalleVenta">
+<operation name="webBuscarDetalleVenta">
+<input wsam:Action="http://CapaServicio/WebServiceDetalleVenta/webBuscarDetalleVentaRequest" message="tns:webBuscarDetalleVenta"/>
+<output wsam:Action="http://CapaServicio/WebServiceDetalleVenta/webBuscarDetalleVentaResponse" message="tns:webBuscarDetalleVentaResponse"/>
+</operation>
+<operation name="webExisteDetalleVenta">
+<input wsam:Action="http://CapaServicio/WebServiceDetalleVenta/webExisteDetalleVentaRequest" message="tns:webExisteDetalleVenta"/>
+<output wsam:Action="http://CapaServicio/WebServiceDetalleVenta/webExisteDetalleVentaResponse" message="tns:webExisteDetalleVentaResponse"/>
+</operation>
+<operation name="webSumarFolio">
+<input wsam:Action="http://CapaServicio/WebServiceDetalleVenta/webSumarFolioRequest" message="tns:webSumarFolio"/>
+<output wsam:Action="http://CapaServicio/WebServiceDetalleVenta/webSumarFolioResponse" message="tns:webSumarFolioResponse"/>
+</operation>
+<operation name="webEncontrarFolioEspecifico">
+<input wsam:Action="http://CapaServicio/WebServiceDetalleVenta/webEncontrarFolioEspecificoRequest" message="tns:webEncontrarFolioEspecifico"/>
+<output wsam:Action="http://CapaServicio/WebServiceDetalleVenta/webEncontrarFolioEspecificoResponse" message="tns:webEncontrarFolioEspecificoResponse"/>
+</operation>
 <operation name="webBuscarDetalleVentaPorFolio">
 <input wsam:Action="http://CapaServicio/WebServiceDetalleVenta/webBuscarDetalleVentaPorFolioRequest" message="tns:webBuscarDetalleVentaPorFolio"/>
 <output wsam:Action="http://CapaServicio/WebServiceDetalleVenta/webBuscarDetalleVentaPorFolioResponse" message="tns:webBuscarDetalleVentaPorFolioResponse"/>
 </operation>
+<operation name="webEncontrarFolio">
+<input wsam:Action="http://CapaServicio/WebServiceDetalleVenta/webEncontrarFolioRequest" message="tns:webEncontrarFolio"/>
+<output wsam:Action="http://CapaServicio/WebServiceDetalleVenta/webEncontrarFolioResponse" message="tns:webEncontrarFolioResponse"/>
+</operation>
+<operation name="webConfigurarConexion">
+<input wsam:Action="http://CapaServicio/WebServiceDetalleVenta/webConfigurarConexionRequest" message="tns:webConfigurarConexion"/>
+<output wsam:Action="http://CapaServicio/WebServiceDetalleVenta/webConfigurarConexionResponse" message="tns:webConfigurarConexionResponse"/>
+</operation>
 <operation name="webActualizarDetalleVenta">
 <input wsam:Action="http://CapaServicio/WebServiceDetalleVenta/webActualizarDetalleVentaRequest" message="tns:webActualizarDetalleVenta"/>
 <output wsam:Action="http://CapaServicio/WebServiceDetalleVenta/webActualizarDetalleVentaResponse" message="tns:webActualizarDetalleVentaResponse"/>
+</operation>
+<operation name="webInsertarDetalleVenta">
+<input wsam:Action="http://CapaServicio/WebServiceDetalleVenta/webInsertarDetalleVentaRequest" message="tns:webInsertarDetalleVenta"/>
+<output wsam:Action="http://CapaServicio/WebServiceDetalleVenta/webInsertarDetalleVentaResponse" message="tns:webInsertarDetalleVentaResponse"/>
 </operation>
 <operation name="webEliminarDetalleVenta">
 <input wsam:Action="http://CapaServicio/WebServiceDetalleVenta/webEliminarDetalleVentaRequest" message="tns:webEliminarDetalleVenta"/>
@@ -81,33 +115,45 @@
 <input wsam:Action="http://CapaServicio/WebServiceDetalleVenta/webConsultaDetalleVentaRequest" message="tns:webConsultaDetalleVenta"/>
 <output wsam:Action="http://CapaServicio/WebServiceDetalleVenta/webConsultaDetalleVentaResponse" message="tns:webConsultaDetalleVentaResponse"/>
 </operation>
-<operation name="webConfigurarConexion">
-<input wsam:Action="http://CapaServicio/WebServiceDetalleVenta/webConfigurarConexionRequest" message="tns:webConfigurarConexion"/>
-<output wsam:Action="http://CapaServicio/WebServiceDetalleVenta/webConfigurarConexionResponse" message="tns:webConfigurarConexionResponse"/>
-</operation>
-<operation name="webBuscarDetalleVenta">
-<input wsam:Action="http://CapaServicio/WebServiceDetalleVenta/webBuscarDetalleVentaRequest" message="tns:webBuscarDetalleVenta"/>
-<output wsam:Action="http://CapaServicio/WebServiceDetalleVenta/webBuscarDetalleVentaResponse" message="tns:webBuscarDetalleVentaResponse"/>
-</operation>
-<operation name="webEncontrarFolio">
-<input wsam:Action="http://CapaServicio/WebServiceDetalleVenta/webEncontrarFolioRequest" message="tns:webEncontrarFolio"/>
-<output wsam:Action="http://CapaServicio/WebServiceDetalleVenta/webEncontrarFolioResponse" message="tns:webEncontrarFolioResponse"/>
-</operation>
-<operation name="webEncontrarFolioEspecifico">
-<input wsam:Action="http://CapaServicio/WebServiceDetalleVenta/webEncontrarFolioEspecificoRequest" message="tns:webEncontrarFolioEspecifico"/>
-<output wsam:Action="http://CapaServicio/WebServiceDetalleVenta/webEncontrarFolioEspecificoResponse" message="tns:webEncontrarFolioEspecificoResponse"/>
-</operation>
-<operation name="webInsertarDetalleVenta">
-<input wsam:Action="http://CapaServicio/WebServiceDetalleVenta/webInsertarDetalleVentaRequest" message="tns:webInsertarDetalleVenta"/>
-<output wsam:Action="http://CapaServicio/WebServiceDetalleVenta/webInsertarDetalleVentaResponse" message="tns:webInsertarDetalleVentaResponse"/>
-</operation>
-<operation name="webSumarFolio">
-<input wsam:Action="http://CapaServicio/WebServiceDetalleVenta/webSumarFolioRequest" message="tns:webSumarFolio"/>
-<output wsam:Action="http://CapaServicio/WebServiceDetalleVenta/webSumarFolioResponse" message="tns:webSumarFolioResponse"/>
-</operation>
 </portType>
 <binding name="WebServiceDetalleVentaPortBinding" type="tns:WebServiceDetalleVenta">
 <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+<operation name="webBuscarDetalleVenta">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="webExisteDetalleVenta">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="webSumarFolio">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="webEncontrarFolioEspecifico">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
 <operation name="webBuscarDetalleVentaPorFolio">
 <soap:operation soapAction=""/>
 <input>
@@ -117,7 +163,34 @@
 <soap:body use="literal"/>
 </output>
 </operation>
+<operation name="webEncontrarFolio">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="webConfigurarConexion">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
 <operation name="webActualizarDetalleVenta">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="webInsertarDetalleVenta">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
@@ -136,60 +209,6 @@
 </output>
 </operation>
 <operation name="webConsultaDetalleVenta">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-<output>
-<soap:body use="literal"/>
-</output>
-</operation>
-<operation name="webConfigurarConexion">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-<output>
-<soap:body use="literal"/>
-</output>
-</operation>
-<operation name="webBuscarDetalleVenta">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-<output>
-<soap:body use="literal"/>
-</output>
-</operation>
-<operation name="webEncontrarFolio">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-<output>
-<soap:body use="literal"/>
-</output>
-</operation>
-<operation name="webEncontrarFolioEspecifico">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-<output>
-<soap:body use="literal"/>
-</output>
-</operation>
-<operation name="webInsertarDetalleVenta">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-<output>
-<soap:body use="literal"/>
-</output>
-</operation>
-<operation name="webSumarFolio">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>

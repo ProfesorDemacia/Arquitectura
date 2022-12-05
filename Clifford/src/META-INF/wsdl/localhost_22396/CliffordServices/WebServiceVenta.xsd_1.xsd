@@ -24,9 +24,25 @@
 
 <xs:element name="webEliminarVentaResponse" type="tns:webEliminarVentaResponse"/>
 
+<xs:element name="webExisteVenta" type="tns:webExisteVenta"/>
+
+<xs:element name="webExisteVentaResponse" type="tns:webExisteVentaResponse"/>
+
 <xs:element name="webInsertarVenta" type="tns:webInsertarVenta"/>
 
 <xs:element name="webInsertarVentaResponse" type="tns:webInsertarVentaResponse"/>
+
+<xs:complexType name="webExisteVenta">
+<xs:sequence>
+<xs:element name="id_venta" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="webExisteVentaResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
 
 <xs:complexType name="webConsultarVentaEspecifica">
 <xs:sequence>

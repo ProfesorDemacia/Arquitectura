@@ -26,7 +26,7 @@ public class VistaMenu extends javax.swing.JFrame {
     
     public static String rut_empleado = "";
     
-    public void redireccionarVentana() throws SQLException{
+    public void redireccionarVentana() {
         WebServiceEmpleado_Service auxNegocioEmpleado = new WebServiceEmpleado_Service();
         VistaTrabajador ventana1 = new VistaTrabajador();
         VistaAdministrador ventana2 = new VistaAdministrador();
@@ -125,7 +125,7 @@ public class VistaMenu extends javax.swing.JFrame {
        rut_empleado = txt_rut.getText();
         try {
             redireccionarVentana();
-        } catch (SQLException ex) {
+        } catch (Exception ex) {
             Logger.getLogger(VistaMenu.class.getName()).log(Level.SEVERE, null, ex);
         }
        

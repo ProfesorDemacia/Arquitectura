@@ -20,6 +20,8 @@ public class VistaAdministrador extends javax.swing.JFrame {
         lbl_rut.setText(pMenu.rut_empleado);
         this.setLocationRelativeTo(null);
     }
+    VistaMenu pMenu = new VistaMenu();
+    private String rut_empleado = pMenu.rut_empleado;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -93,18 +95,21 @@ public class VistaAdministrador extends javax.swing.JFrame {
         // TODO add your handling code here:
         VistaDetalleVenta pMenu = new VistaDetalleVenta();
         pMenu.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_bto_ventaActionPerformed
 
     private void bto_cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bto_cancelarActionPerformed
         // TODO add your handling code here:
         VistaCancelarVenta pMenu = new VistaCancelarVenta();
         pMenu.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_bto_cancelarActionPerformed
 
     private void bto_reporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bto_reporteActionPerformed
         // TODO add your handling code here:
         VistaRegistro pMenu = new VistaRegistro();
         pMenu.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_bto_reporteActionPerformed
 
     private void bto_cerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bto_cerrarActionPerformed
@@ -113,6 +118,7 @@ public class VistaAdministrador extends javax.swing.JFrame {
         System.gc();
         VistaMenu pMenu = new VistaMenu();
         pMenu.setVisible(true);
+
         
     }//GEN-LAST:event_bto_cerrarActionPerformed
 
