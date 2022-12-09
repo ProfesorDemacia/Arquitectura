@@ -37,9 +37,9 @@ public class WebServiceProducto {
     }
     
     @WebMethod(operationName = "webActualizarProducto")
-    public void actualizarProducto(@WebParam(name = "Producto") Producto producto) {
+    public void actualizarProducto(@WebParam(name = "id_producto")int id_producto, int cantidad) {
         NegocioProducto auxNegocio = new NegocioProducto();
-        auxNegocio.actualizarProducto(producto);
+        auxNegocio.actualizarProducto(id_producto, cantidad);
     }
     
     @WebMethod(operationName = "webEliminarProducto")

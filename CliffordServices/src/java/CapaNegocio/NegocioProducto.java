@@ -50,16 +50,13 @@ public class NegocioProducto {
     }
     
     
-    public void actualizarProducto(Producto producto)
+    public void actualizarProducto(int id_producto, int cantidad)
     {
        this.configurarConexion();
        this.getConect1().setCadenaSQL("UPDATE producto "
                                      + " SET "
-                                     + ", nombre_producto = " + producto.getNombreProducto()
-                                     + ", descripcion_producto = " + producto.getDescripcionProducto()
-                                     + ", precio_unitario = " + producto.getPrecioUnitario()
-                                     + ", stock_producto = " + producto.getStockProducto()
-                                     + " WHERE id_producto = " + producto.getIdProducto()+ ";");
+                                     + " stock_producto = stock_producto -"+cantidad
+                                     + " WHERE id_producto = " + id_producto+ ";");
        this.getConect1().setEsSelect(false);
        this.getConect1().conectar();
     }

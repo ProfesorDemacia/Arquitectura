@@ -50,7 +50,8 @@
 
 <xs:complexType name="webActualizarProducto">
 <xs:sequence>
-<xs:element name="Producto" type="tns:producto" minOccurs="0"/>
+<xs:element name="id_producto" type="xs:int"/>
+<xs:element name="arg1" type="xs:int"/>
 </xs:sequence>
 </xs:complexType>
 
@@ -70,14 +71,14 @@
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="webEliminarProducto">
-<xs:sequence>
-<xs:element name="id_producto" type="xs:int"/>
-</xs:sequence>
+<xs:complexType name="webConsultarProducto">
+<xs:sequence/>
 </xs:complexType>
 
-<xs:complexType name="webEliminarProductoResponse">
-<xs:sequence/>
+<xs:complexType name="webConsultarProductoResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:producto" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
 </xs:complexType>
 
 <xs:complexType name="webConfigurarConexion">
@@ -88,14 +89,14 @@
 <xs:sequence/>
 </xs:complexType>
 
-<xs:complexType name="webConsultarProducto">
-<xs:sequence/>
+<xs:complexType name="webEliminarProducto">
+<xs:sequence>
+<xs:element name="id_producto" type="xs:int"/>
+</xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="webConsultarProductoResponse">
-<xs:sequence>
-<xs:element name="return" type="tns:producto" minOccurs="0" maxOccurs="unbounded"/>
-</xs:sequence>
+<xs:complexType name="webEliminarProductoResponse">
+<xs:sequence/>
 </xs:complexType>
 
 <xs:complexType name="webBuscarProducto">

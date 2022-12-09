@@ -8,8 +8,11 @@ package CapaGUI;
 
 import capaservicio.DetalleVenta;
 import capaservicio.WebServiceDetalleVenta_Service;
+import capaservicio.WebServiceProducto_Service;
 import capaservicio.WebServiceVenta_Service;
 import java.util.Iterator;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -50,11 +53,34 @@ public class VistaVenta extends javax.swing.JFrame {
             //NegocioVenta auxNegocioVenta = new NegocioVenta();
             WebServiceVenta_Service auxNegocioVenta = new WebServiceVenta_Service();
             WebServiceDetalleVenta_Service auxNegocioDetalleVenta = new WebServiceDetalleVenta_Service();
+            WebServiceProducto_Service auxNegocioProducto = new WebServiceProducto_Service();
+            
             id_folio = auxNegocioDetalleVenta.getWebServiceDetalleVentaPort().webEncontrarFolio();
             auxNegocioDetalleVenta.getWebServiceDetalleVentaPort().webConfigurarConexion();
             auxNegocioDetalleVenta.getWebServiceDetalleVentaPort().webEliminarDetalleVenta(id_detalle_venta);
+            for(int i = 0;i<table_venta.getRowCount();i++)
+            {
+                try {
+                    
+                    Object id_producto = table_venta.getValueAt(i, 1);
+                    Object cantidad_producto = table_venta.getValueAt(i, 3);                    
+                    
+                    auxNegocioProducto.getWebServiceProductoPort().webActualizarProducto(Integer.parseInt(id_producto.toString()),-1*Integer.parseInt(cantidad_producto.toString()));
+                } catch (Exception e) {
+                }
+   
+            }
+            
             JOptionPane.showMessageDialog(null, "La venta fue cancelada...");
+            
+            VistaMenu auxMenu = new VistaMenu();
+            try {
+                auxMenu.redireccionarVentana();
+            } catch (Exception ex) {
+                Logger.getLogger(VistaDetalleVenta.class.getName()).log(Level.SEVERE, null, ex);
+            }
             this.dispose();
+            
             
         }catch(Exception ex){
             JOptionPane.showMessageDialog(null, "No se pudo cancelar la venta"+ex.getMessage());
@@ -90,6 +116,12 @@ public class VistaVenta extends javax.swing.JFrame {
                             +id_detalle_venta,rut_empleado,box_metodoPago.getSelectedIndex());
                     
                     JOptionPane.showMessageDialog(null, "La venta fue realizada...");
+                    VistaMenu auxMenu = new VistaMenu();
+                    try {
+                        auxMenu.redireccionarVentana();
+                    } catch (Exception ex) {
+                        Logger.getLogger(VistaDetalleVenta.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                     this.dispose();
                     }
                 }catch(Exception ex){

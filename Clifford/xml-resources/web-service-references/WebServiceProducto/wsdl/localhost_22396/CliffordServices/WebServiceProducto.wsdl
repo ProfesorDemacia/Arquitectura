@@ -4,24 +4,6 @@
 <xsd:import namespace="http://CapaServicio/" schemaLocation="http://localhost:22396/CliffordServices/WebServiceProducto?xsd=1"/>
 </xsd:schema>
 </types>
-<message name="webEliminarProducto">
-<part name="parameters" element="tns:webEliminarProducto"/>
-</message>
-<message name="webEliminarProductoResponse">
-<part name="parameters" element="tns:webEliminarProductoResponse"/>
-</message>
-<message name="webExisteProducto">
-<part name="parameters" element="tns:webExisteProducto"/>
-</message>
-<message name="webExisteProductoResponse">
-<part name="parameters" element="tns:webExisteProductoResponse"/>
-</message>
-<message name="webConfigurarConexion">
-<part name="parameters" element="tns:webConfigurarConexion"/>
-</message>
-<message name="webConfigurarConexionResponse">
-<part name="parameters" element="tns:webConfigurarConexionResponse"/>
-</message>
 <message name="webInsertarProducto">
 <part name="parameters" element="tns:webInsertarProducto"/>
 </message>
@@ -40,25 +22,31 @@
 <message name="webConsultarProductoResponse">
 <part name="parameters" element="tns:webConsultarProductoResponse"/>
 </message>
+<message name="webExisteProducto">
+<part name="parameters" element="tns:webExisteProducto"/>
+</message>
+<message name="webExisteProductoResponse">
+<part name="parameters" element="tns:webExisteProductoResponse"/>
+</message>
+<message name="webConfigurarConexion">
+<part name="parameters" element="tns:webConfigurarConexion"/>
+</message>
+<message name="webConfigurarConexionResponse">
+<part name="parameters" element="tns:webConfigurarConexionResponse"/>
+</message>
 <message name="webBuscarProducto">
 <part name="parameters" element="tns:webBuscarProducto"/>
 </message>
 <message name="webBuscarProductoResponse">
 <part name="parameters" element="tns:webBuscarProductoResponse"/>
 </message>
+<message name="webEliminarProducto">
+<part name="parameters" element="tns:webEliminarProducto"/>
+</message>
+<message name="webEliminarProductoResponse">
+<part name="parameters" element="tns:webEliminarProductoResponse"/>
+</message>
 <portType name="WebServiceProducto">
-<operation name="webEliminarProducto">
-<input wsam:Action="http://CapaServicio/WebServiceProducto/webEliminarProductoRequest" message="tns:webEliminarProducto"/>
-<output wsam:Action="http://CapaServicio/WebServiceProducto/webEliminarProductoResponse" message="tns:webEliminarProductoResponse"/>
-</operation>
-<operation name="webExisteProducto">
-<input wsam:Action="http://CapaServicio/WebServiceProducto/webExisteProductoRequest" message="tns:webExisteProducto"/>
-<output wsam:Action="http://CapaServicio/WebServiceProducto/webExisteProductoResponse" message="tns:webExisteProductoResponse"/>
-</operation>
-<operation name="webConfigurarConexion">
-<input wsam:Action="http://CapaServicio/WebServiceProducto/webConfigurarConexionRequest" message="tns:webConfigurarConexion"/>
-<output wsam:Action="http://CapaServicio/WebServiceProducto/webConfigurarConexionResponse" message="tns:webConfigurarConexionResponse"/>
-</operation>
 <operation name="webInsertarProducto">
 <input wsam:Action="http://CapaServicio/WebServiceProducto/webInsertarProductoRequest" message="tns:webInsertarProducto"/>
 <output wsam:Action="http://CapaServicio/WebServiceProducto/webInsertarProductoResponse" message="tns:webInsertarProductoResponse"/>
@@ -71,40 +59,25 @@
 <input wsam:Action="http://CapaServicio/WebServiceProducto/webConsultarProductoRequest" message="tns:webConsultarProducto"/>
 <output wsam:Action="http://CapaServicio/WebServiceProducto/webConsultarProductoResponse" message="tns:webConsultarProductoResponse"/>
 </operation>
+<operation name="webExisteProducto">
+<input wsam:Action="http://CapaServicio/WebServiceProducto/webExisteProductoRequest" message="tns:webExisteProducto"/>
+<output wsam:Action="http://CapaServicio/WebServiceProducto/webExisteProductoResponse" message="tns:webExisteProductoResponse"/>
+</operation>
+<operation name="webConfigurarConexion">
+<input wsam:Action="http://CapaServicio/WebServiceProducto/webConfigurarConexionRequest" message="tns:webConfigurarConexion"/>
+<output wsam:Action="http://CapaServicio/WebServiceProducto/webConfigurarConexionResponse" message="tns:webConfigurarConexionResponse"/>
+</operation>
 <operation name="webBuscarProducto">
 <input wsam:Action="http://CapaServicio/WebServiceProducto/webBuscarProductoRequest" message="tns:webBuscarProducto"/>
 <output wsam:Action="http://CapaServicio/WebServiceProducto/webBuscarProductoResponse" message="tns:webBuscarProductoResponse"/>
 </operation>
+<operation name="webEliminarProducto">
+<input wsam:Action="http://CapaServicio/WebServiceProducto/webEliminarProductoRequest" message="tns:webEliminarProducto"/>
+<output wsam:Action="http://CapaServicio/WebServiceProducto/webEliminarProductoResponse" message="tns:webEliminarProductoResponse"/>
+</operation>
 </portType>
 <binding name="WebServiceProductoPortBinding" type="tns:WebServiceProducto">
 <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
-<operation name="webEliminarProducto">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-<output>
-<soap:body use="literal"/>
-</output>
-</operation>
-<operation name="webExisteProducto">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-<output>
-<soap:body use="literal"/>
-</output>
-</operation>
-<operation name="webConfigurarConexion">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-<output>
-<soap:body use="literal"/>
-</output>
-</operation>
 <operation name="webInsertarProducto">
 <soap:operation soapAction=""/>
 <input>
@@ -132,7 +105,34 @@
 <soap:body use="literal"/>
 </output>
 </operation>
+<operation name="webExisteProducto">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="webConfigurarConexion">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
 <operation name="webBuscarProducto">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="webEliminarProducto">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>

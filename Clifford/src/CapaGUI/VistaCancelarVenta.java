@@ -5,8 +5,10 @@
  */
 package CapaGUI;
 
+import capaservicio.DetalleVenta;
 import capaservicio.Venta;
 import capaservicio.WebServiceDetalleVenta_Service;
+import capaservicio.WebServiceProducto_Service;
 import capaservicio.WebServiceVenta_Service;
 import java.awt.HeadlessException;
 import java.util.Iterator;
@@ -46,16 +48,26 @@ public class VistaCancelarVenta extends javax.swing.JFrame {
             
             int id_venta = Integer.parseInt(table_cancelarVenta.getValueAt(fila, 0).toString());
             int id_detalle = Integer.parseInt(table_cancelarVenta.getValueAt(fila,4).toString());
+            
             int folio = 0;
             
             WebServiceVenta_Service auxNegocioVenta = new WebServiceVenta_Service();
             WebServiceDetalleVenta_Service auxNegocioDetalleVenta = new WebServiceDetalleVenta_Service();
+            WebServiceProducto_Service auxNegocioProducto = new WebServiceProducto_Service();
             
             if(JOptionPane.showConfirmDialog(null, "Se elimina un venta, ¿Desea Continuar?", "Eliminar Venta"
                     ,JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION)
             {
                 folio = auxNegocioDetalleVenta.getWebServiceDetalleVentaPort().webEncontrarFolioEspecifico(id_detalle);
-            
+                Iterator iter = auxNegocioDetalleVenta.getWebServiceDetalleVentaPort().webBuscarDetalleVentaPorFolio(folio).iterator();
+                int fila2 = 0;
+                while(iter.hasNext())
+                {
+                    DetalleVenta auxDetalleVenta = new DetalleVenta();
+                    auxDetalleVenta = (DetalleVenta) iter.next();
+                    auxNegocioProducto.getWebServiceProductoPort().webActualizarProducto(auxDetalleVenta.getIdProducto(),-1*auxDetalleVenta.getCantidadProducto());
+                    fila2++;
+                }
                 auxNegocioVenta.getWebServiceVentaPort().webEliminarVenta(id_venta);  
                 auxNegocioDetalleVenta.getWebServiceDetalleVentaPort().webEliminarDetalleVenta(folio);
 

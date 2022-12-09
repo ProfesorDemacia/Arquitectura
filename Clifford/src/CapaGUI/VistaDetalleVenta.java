@@ -48,9 +48,6 @@ public class VistaDetalleVenta extends javax.swing.JFrame {
     {
       if(table_DetalleVenta.getRowCount()>0)
       {
-          
-            //NegocioDetalleVenta auxNegocioDetalleVenta = new NegocioDetalleVenta();
-
             if(JOptionPane.showConfirmDialog(null, "¿Termino de agregar Productos?, ¿Desea Continuar?", "Generar Venta"
                     ,JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION)
             {
@@ -76,6 +73,8 @@ public class VistaDetalleVenta extends javax.swing.JFrame {
               auxNegocioDetalleVenta.getWebServiceDetalleVentaPort().webInsertarDetalleVenta(folio,Integer.parseInt(cantidad_producto.toString())
                       , nombre_producto.toString(),Integer.parseInt(precio_unitario.toString()), Integer.parseInt(precio_total.toString()),
                       Integer.parseInt(id_producto.toString()));
+              WebServiceProducto_Service auxNegocioProducto = new WebServiceProducto_Service();
+              auxNegocioProducto.getWebServiceProductoPort().webActualizarProducto(Integer.parseInt(id_producto.toString()), Integer.parseInt(cantidad_producto.toString()));
 
    
                 } catch(Exception ex){

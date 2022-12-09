@@ -17,7 +17,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="Producto" type="{http://CapaServicio/}producto" minOccurs="0"/>
+ *         &lt;element name="id_producto" type="{http://www.w3.org/2001/XMLSchema}int"/>
+ *         &lt;element name="arg1" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -28,35 +29,45 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "webActualizarProducto", propOrder = {
-    "producto"
+    "idProducto",
+    "arg1"
 })
 public class WebActualizarProducto {
 
-    @XmlElement(name = "Producto")
-    protected Producto producto;
+    @XmlElement(name = "id_producto")
+    protected int idProducto;
+    protected int arg1;
 
     /**
-     * Obtiene el valor de la propiedad producto.
+     * Obtiene el valor de la propiedad idProducto.
      * 
-     * @return
-     *     possible object is
-     *     {@link Producto }
-     *     
      */
-    public Producto getProducto() {
-        return producto;
+    public int getIdProducto() {
+        return idProducto;
     }
 
     /**
-     * Define el valor de la propiedad producto.
+     * Define el valor de la propiedad idProducto.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Producto }
-     *     
      */
-    public void setProducto(Producto value) {
-        this.producto = value;
+    public void setIdProducto(int value) {
+        this.idProducto = value;
+    }
+
+    /**
+     * Obtiene el valor de la propiedad arg1.
+     * 
+     */
+    public int getArg1() {
+        return arg1;
+    }
+
+    /**
+     * Define el valor de la propiedad arg1.
+     * 
+     */
+    public void setArg1(int value) {
+        this.arg1 = value;
     }
 
 }

@@ -27,15 +27,42 @@ public interface WebServiceProducto {
 
     /**
      * 
+     * @param producto
+     */
+    @WebMethod
+    @RequestWrapper(localName = "webInsertarProducto", targetNamespace = "http://CapaServicio/", className = "capaservicio.WebInsertarProducto")
+    @ResponseWrapper(localName = "webInsertarProductoResponse", targetNamespace = "http://CapaServicio/", className = "capaservicio.WebInsertarProductoResponse")
+    @Action(input = "http://CapaServicio/WebServiceProducto/webInsertarProductoRequest", output = "http://CapaServicio/WebServiceProducto/webInsertarProductoResponse")
+    public void webInsertarProducto(
+        @WebParam(name = "Producto", targetNamespace = "")
+        Producto producto);
+
+    /**
+     * 
+     * @param arg1
      * @param idProducto
      */
     @WebMethod
-    @RequestWrapper(localName = "webEliminarProducto", targetNamespace = "http://CapaServicio/", className = "capaservicio.WebEliminarProducto")
-    @ResponseWrapper(localName = "webEliminarProductoResponse", targetNamespace = "http://CapaServicio/", className = "capaservicio.WebEliminarProductoResponse")
-    @Action(input = "http://CapaServicio/WebServiceProducto/webEliminarProductoRequest", output = "http://CapaServicio/WebServiceProducto/webEliminarProductoResponse")
-    public void webEliminarProducto(
+    @RequestWrapper(localName = "webActualizarProducto", targetNamespace = "http://CapaServicio/", className = "capaservicio.WebActualizarProducto")
+    @ResponseWrapper(localName = "webActualizarProductoResponse", targetNamespace = "http://CapaServicio/", className = "capaservicio.WebActualizarProductoResponse")
+    @Action(input = "http://CapaServicio/WebServiceProducto/webActualizarProductoRequest", output = "http://CapaServicio/WebServiceProducto/webActualizarProductoResponse")
+    public void webActualizarProducto(
         @WebParam(name = "id_producto", targetNamespace = "")
-        int idProducto);
+        int idProducto,
+        @WebParam(name = "arg1", targetNamespace = "")
+        int arg1);
+
+    /**
+     * 
+     * @return
+     *     returns java.util.List<capaservicio.Producto>
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "webConsultarProducto", targetNamespace = "http://CapaServicio/", className = "capaservicio.WebConsultarProducto")
+    @ResponseWrapper(localName = "webConsultarProductoResponse", targetNamespace = "http://CapaServicio/", className = "capaservicio.WebConsultarProductoResponse")
+    @Action(input = "http://CapaServicio/WebServiceProducto/webConsultarProductoRequest", output = "http://CapaServicio/WebServiceProducto/webConsultarProductoResponse")
+    public List<Producto> webConsultarProducto();
 
     /**
      * 
@@ -63,42 +90,6 @@ public interface WebServiceProducto {
 
     /**
      * 
-     * @param producto
-     */
-    @WebMethod
-    @RequestWrapper(localName = "webInsertarProducto", targetNamespace = "http://CapaServicio/", className = "capaservicio.WebInsertarProducto")
-    @ResponseWrapper(localName = "webInsertarProductoResponse", targetNamespace = "http://CapaServicio/", className = "capaservicio.WebInsertarProductoResponse")
-    @Action(input = "http://CapaServicio/WebServiceProducto/webInsertarProductoRequest", output = "http://CapaServicio/WebServiceProducto/webInsertarProductoResponse")
-    public void webInsertarProducto(
-        @WebParam(name = "Producto", targetNamespace = "")
-        Producto producto);
-
-    /**
-     * 
-     * @param producto
-     */
-    @WebMethod
-    @RequestWrapper(localName = "webActualizarProducto", targetNamespace = "http://CapaServicio/", className = "capaservicio.WebActualizarProducto")
-    @ResponseWrapper(localName = "webActualizarProductoResponse", targetNamespace = "http://CapaServicio/", className = "capaservicio.WebActualizarProductoResponse")
-    @Action(input = "http://CapaServicio/WebServiceProducto/webActualizarProductoRequest", output = "http://CapaServicio/WebServiceProducto/webActualizarProductoResponse")
-    public void webActualizarProducto(
-        @WebParam(name = "Producto", targetNamespace = "")
-        Producto producto);
-
-    /**
-     * 
-     * @return
-     *     returns java.util.List<capaservicio.Producto>
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "webConsultarProducto", targetNamespace = "http://CapaServicio/", className = "capaservicio.WebConsultarProducto")
-    @ResponseWrapper(localName = "webConsultarProductoResponse", targetNamespace = "http://CapaServicio/", className = "capaservicio.WebConsultarProductoResponse")
-    @Action(input = "http://CapaServicio/WebServiceProducto/webConsultarProductoRequest", output = "http://CapaServicio/WebServiceProducto/webConsultarProductoResponse")
-    public List<Producto> webConsultarProducto();
-
-    /**
-     * 
      * @param idProducto
      * @return
      *     returns java.util.List<capaservicio.Producto>
@@ -109,6 +100,18 @@ public interface WebServiceProducto {
     @ResponseWrapper(localName = "webBuscarProductoResponse", targetNamespace = "http://CapaServicio/", className = "capaservicio.WebBuscarProductoResponse")
     @Action(input = "http://CapaServicio/WebServiceProducto/webBuscarProductoRequest", output = "http://CapaServicio/WebServiceProducto/webBuscarProductoResponse")
     public List<Producto> webBuscarProducto(
+        @WebParam(name = "id_producto", targetNamespace = "")
+        int idProducto);
+
+    /**
+     * 
+     * @param idProducto
+     */
+    @WebMethod
+    @RequestWrapper(localName = "webEliminarProducto", targetNamespace = "http://CapaServicio/", className = "capaservicio.WebEliminarProducto")
+    @ResponseWrapper(localName = "webEliminarProductoResponse", targetNamespace = "http://CapaServicio/", className = "capaservicio.WebEliminarProductoResponse")
+    @Action(input = "http://CapaServicio/WebServiceProducto/webEliminarProductoRequest", output = "http://CapaServicio/WebServiceProducto/webEliminarProductoResponse")
+    public void webEliminarProducto(
         @WebParam(name = "id_producto", targetNamespace = "")
         int idProducto);
 
