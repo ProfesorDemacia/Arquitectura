@@ -137,6 +137,8 @@ INSERT INTO empleado(rut_empleado,nombre_empleado,apellido_empleado,direccion_em
 			,correo_empleado,id_cargo,id_comuna) VALUES ('2-8','Ana','Rosa','Las parcelas 41','correo2@gmail.com',1,162);
 INSERT INTO empleado(rut_empleado,nombre_empleado,apellido_empleado,direccion_empleado
 			,correo_empleado,id_cargo,id_comuna) VALUES ('20613734-7','Jose','Arancibia','Lautaro 899','admin@gmail.com',2,166);
+INSERT INTO empleado(rut_empleado,nombre_empleado,apellido_empleado,direccion_empleado
+			,correo_empleado,id_cargo,id_comuna) VALUES ('1-9','Pedro','Jorquera','Siempre viva 123','admin2@gmail.com',2,165)
 			
 			
 INSERT INTO producto (nombre_producto,descripcion_producto,precio_unitario,stock_producto) VALUES ('Champion dog','Comida para perro adulto',10000,100);
